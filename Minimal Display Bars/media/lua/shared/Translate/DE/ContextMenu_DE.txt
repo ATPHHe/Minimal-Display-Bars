@@ -1,0 +1,42 @@
+ContextMenu_DE = {
+    
+    
+    ----- ContextMenu (German) -----
+    
+    ----- Title for Display Bars when Right-Clicked -----
+    ContextMenu_MinimalDisplayBars_Title = "Minimale Anzeigeleisten",
+    
+    -- Menu Options
+    ContextMenu_MinimalDisplayBars_Reset = "Zurücksetzen",
+    ContextMenu_MinimalDisplayBars_Make_All_Bars_Visible = "Machen Sie alle Anzeigeleisten sichtbar",
+    ContextMenu_MinimalDisplayBars_Make_Visible = "Sichtbar machen",
+    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "Ein- / Ausschalten Beweglich für alle Anzeigeleisten",
+    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "Ein- / Ausschalten der Größenänderung für alle Anzeigeleisten",
+    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Ein- / Ausschalten Bringen Sie die Anzeigeleisten immer nach oben",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Ein- / Ausschalten der Moodlet-Schwellenwertlinien in den Anzeigeleisten",
+    ContextMenu_MinimalDisplayBars_Toggle_Compact = "Ein- / Ausschalten Kompakt",
+    
+    -- Display Bar Options
+    ontextMenu_MinimalDisplayBars_Reset_Display_Bar = "Anzeigeliste zurücksetzen",
+    ContextMenu_MinimalDisplayBars_Set_Vertical = "Vertikal einstellen",
+    ContextMenu_MinimalDisplayBars_Set_Horizontal = "Horizontal einstellen",
+    ContextMenu_MinimalDisplayBars_Set_Color = "Farbe einstellen",
+    ContextMenu_MinimalDisplayBars_Hide_Bar = "Anzeigeleiste ausblenden",
+    
+    -- Display Names
+    ContextMenu_MinimalDisplayBars_menu = "Speisekarte",
+    ContextMenu_MinimalDisplayBars_hp = "Gesundheit",
+    ContextMenu_MinimalDisplayBars_hunger = "Hunger",
+    ContextMenu_MinimalDisplayBars_thirst = "Durst",
+    ContextMenu_MinimalDisplayBars_endurance = "Ausdauer",
+    ContextMenu_MinimalDisplayBars_fatigue = "Ermüden",
+    ContextMenu_MinimalDisplayBars_boredomlevel = "Langeweile Stufe",
+    ContextMenu_MinimalDisplayBars_unhappynesslevel = "Traurigkeit Stufe",
+    ContextMenu_MinimalDisplayBars_temperature = "Temperatur",
+    
+    -- OTHER
+    ContextMenu_MinimalDisplayBars_ON = "EIN",
+    ContextMenu_MinimalDisplayBars_OFF = "AUS",
+    
+    
+}

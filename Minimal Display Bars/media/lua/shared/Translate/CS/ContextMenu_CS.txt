@@ -1,0 +1,44 @@
+ContextMenu_CS = {
+    
+    
+    ----- ContextMenu (Czech) -----
+    
+    ----- Title for Display Bars when Right-Clicked -----
+    ContextMenu_MinimalDisplayBars_Title = "Minimální Sloupce Displeje",
+    
+    -- Menu Options
+    ContextMenu_MinimalDisplayBars_Reset = "Resetujte pruhy displeje",
+    ContextMenu_MinimalDisplayBars_Show_Bar = "Zobrazit panel",
+    ContextMenu_MinimalDisplayBars_Show_All_Display_Bars = "Zobrazit všechny panely zobrazení",
+    ContextMenu_MinimalDisplayBars_Hide_Bar = "Skrýt panel",
+    ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars= "Skrýt všechny panely zobrazení",
+    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "Prepnout pohyblivé pro všechny",
+    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "Prepnout velikost pro všechny",
+    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Prepnete vždy zobrazovací pruhy nahoru",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Prepnout mezní cáry nálady na panelech displeje",
+    ContextMenu_MinimalDisplayBars_Toggle_Compact = "Prepnout Kompaktní",
+    
+    -- Display Bar Options
+    ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Resetovat lištu displeje",
+    ContextMenu_MinimalDisplayBars_Set_Vertical = "Nastavit svisle",
+    ContextMenu_MinimalDisplayBars_Set_Horizontal = "Nastavit vodorovne",
+    ContextMenu_MinimalDisplayBars_Set_Color = "Nastavit barvu",
+    ContextMenu_MinimalDisplayBars_Hide = "Skrýt",
+    
+    -- Display Names
+    ContextMenu_MinimalDisplayBars_menu = "Menu",
+    ContextMenu_MinimalDisplayBars_hp = "Zdraví",
+    ContextMenu_MinimalDisplayBars_hunger = "Hlad",
+    ContextMenu_MinimalDisplayBars_thirst = "Žízen",
+    ContextMenu_MinimalDisplayBars_endurance = "Odolnost",
+    ContextMenu_MinimalDisplayBars_fatigue = "Únava",
+    ContextMenu_MinimalDisplayBars_boredomlevel = "Úroven Nudy",
+    ContextMenu_MinimalDisplayBars_unhappynesslevel = "Úroven Neštestí",
+    ContextMenu_MinimalDisplayBars_temperature = "Teplota",
+    
+    -- OTHER
+    ContextMenu_MinimalDisplayBars_ON = "ZAPNUTÝ",
+    ContextMenu_MinimalDisplayBars_OFF = "VYPNUT",
+    
+    
+}

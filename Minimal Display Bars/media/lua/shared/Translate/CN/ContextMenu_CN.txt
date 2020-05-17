@@ -1,0 +1,44 @@
+ContextMenu_CN = {
+    
+    
+    ----- ContextMenu (Chinese/Mandarin) -----
+    
+    ----- Title for Display Bars when Right-Clicked -----
+    ContextMenu_MinimalDisplayBars_Title = "最小显示栏",
+    
+    -- Menu Options
+    ContextMenu_MinimalDisplayBars_Reset = "重置所有显示",
+    ContextMenu_MinimalDisplayBars_Show_Bar = "显示栏",
+    ContextMenu_MinimalDisplayBars_Show_All_Display_Bars = "显示所有显示栏",
+    ContextMenu_MinimalDisplayBars_Hide_Bar = "隐藏栏",
+    ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars= "隐藏所有显示栏",
+    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "所有人都可移动",
+    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "切换全部大小",
+    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "切换始终将显示栏置于顶部",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "在显示栏上切换Moodlet阈值线",
+    ContextMenu_MinimalDisplayBars_Toggle_Compact = "开启/关闭紧凑型",
+    
+    -- Display Bar Options
+    ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "重置显示栏",
+    ContextMenu_MinimalDisplayBars_Set_Vertical = "设置垂直",
+    ContextMenu_MinimalDisplayBars_Set_Horizontal = "设置水平",
+    ContextMenu_MinimalDisplayBars_Set_Color = "设置颜色",
+    ContextMenu_MinimalDisplayBars_Hide = "隐藏",
+    
+    -- Display Names
+    ContextMenu_MinimalDisplayBars_menu = "菜单",
+    ContextMenu_MinimalDisplayBars_hp = "身体",
+    ContextMenu_MinimalDisplayBars_hunger = "饥饿",
+    ContextMenu_MinimalDisplayBars_thirst = "口渴",
+    ContextMenu_MinimalDisplayBars_endurance = "耐力",
+    ContextMenu_MinimalDisplayBars_fatigue = "疲劳",
+    ContextMenu_MinimalDisplayBars_boredomlevel = "无聊的水平",
+    ContextMenu_MinimalDisplayBars_unhappynesslevel = "不快乐程度",
+    ContextMenu_MinimalDisplayBars_temperature = "温度",
+    
+    -- OTHER
+    ContextMenu_MinimalDisplayBars_ON = "上",
+    ContextMenu_MinimalDisplayBars_OFF = "关",
+    
+    
+}

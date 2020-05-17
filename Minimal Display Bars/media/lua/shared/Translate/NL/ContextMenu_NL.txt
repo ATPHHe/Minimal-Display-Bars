@@ -35,6 +35,7 @@ ContextMenu_NL = {
     ContextMenu_MinimalDisplayBars_boredomlevel = "Verveling Niveau",
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Verdriet Niveau",
     ContextMenu_MinimalDisplayBars_temperature = "Temperatuur",
+    ContextMenu_MinimalDisplayBars_calorie = "Calorieën",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "AAN",

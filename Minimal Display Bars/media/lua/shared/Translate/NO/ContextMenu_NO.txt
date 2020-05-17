@@ -35,6 +35,7 @@ ContextMenu_NO = {
     ContextMenu_MinimalDisplayBars_boredomlevel = "Kjedsomhet Nivå",
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Ulykkelighet Nivå",
     ContextMenu_MinimalDisplayBars_temperature = "Temperatur",
+    ContextMenu_MinimalDisplayBars_calorie = "Kalorier",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "AV",

@@ -35,6 +35,7 @@ ContextMenu_PL = {
     ContextMenu_MinimalDisplayBars_boredomlevel = "Poziom Nudy",
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Poziom Nieszczescia",
     ContextMenu_MinimalDisplayBars_temperature = "Temperatura",
+    ContextMenu_MinimalDisplayBars_calorie = "Kalorie",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "WLACZ",

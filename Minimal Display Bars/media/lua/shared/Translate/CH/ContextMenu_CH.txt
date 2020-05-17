@@ -35,6 +35,7 @@ ContextMenu_CH = {
     ContextMenu_MinimalDisplayBars_boredomlevel = "無聊的水平",
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "不快樂程度",
     ContextMenu_MinimalDisplayBars_temperature = "溫度",
+    ContextMenu_MinimalDisplayBars_calorie = "卡路里",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "上",

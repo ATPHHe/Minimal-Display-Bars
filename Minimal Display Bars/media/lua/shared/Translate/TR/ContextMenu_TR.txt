@@ -36,6 +36,7 @@ ContextMenu_TR = {
     ContextMenu_MinimalDisplayBars_boredomlevel = "Sýkkýnlýk Seviyesi",
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Mutsuzluk Seviyesi",
     ContextMenu_MinimalDisplayBars_temperature = "Sýcaklýk",
+    ContextMenu_MinimalDisplayBars_calorie = "Kalori",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "AÇIK",

@@ -33,6 +33,7 @@ ContextMenu_DE = {
     ContextMenu_MinimalDisplayBars_boredomlevel = "Langeweile Stufe",
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Traurigkeit Stufe",
     ContextMenu_MinimalDisplayBars_temperature = "Temperatur",
+    ContextMenu_MinimalDisplayBars_calorie = "Kalorien",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "EIN",

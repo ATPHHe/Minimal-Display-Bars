@@ -36,7 +36,8 @@ ContextMenu_PTBR = {
     ContextMenu_MinimalDisplayBars_boredomlevel = "Nível de Tédio",
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Nível de Infelicidade",
     ContextMenu_MinimalDisplayBars_temperature = "Temperatura",
-
+    ContextMenu_MinimalDisplayBars_calorie = "Calorias",
+    
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "ATIVADO",
     ContextMenu_MinimalDisplayBars_OFF = "DESATIVADO",

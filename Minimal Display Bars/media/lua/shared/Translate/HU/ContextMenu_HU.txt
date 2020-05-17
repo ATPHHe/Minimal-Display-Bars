@@ -35,6 +35,7 @@ ContextMenu_HU = {
     ContextMenu_MinimalDisplayBars_boredomlevel = "Unalom Szintje",
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Boldogtalanság Szintje",
     ContextMenu_MinimalDisplayBars_temperature = "Hofok",
+    ContextMenu_MinimalDisplayBars_calorie = "Kalória",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "BEKAPCSOLVA",

@@ -35,6 +35,7 @@ ContextMenu_CS = {
     ContextMenu_MinimalDisplayBars_boredomlevel = "Úroven Nudy",
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Úroven Neštestí",
     ContextMenu_MinimalDisplayBars_temperature = "Teplota",
+    ContextMenu_MinimalDisplayBars_calorie = "Kalorie",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "ZAPNUTÝ",

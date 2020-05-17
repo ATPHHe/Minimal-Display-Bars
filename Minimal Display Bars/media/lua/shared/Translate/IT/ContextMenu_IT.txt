@@ -35,6 +35,7 @@ ContextMenu_IT = {
     ContextMenu_MinimalDisplayBars_boredomlevel = "Livello di Noia",
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Livello di Infelicità",
     ContextMenu_MinimalDisplayBars_temperature = "Temperatura",
+    ContextMenu_MinimalDisplayBars_calorie = "Caloria",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "ATTIVA",

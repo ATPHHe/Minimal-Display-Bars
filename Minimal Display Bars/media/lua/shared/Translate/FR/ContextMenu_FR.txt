@@ -35,6 +35,7 @@ ContextMenu_FR = {
     ContextMenu_MinimalDisplayBars_boredomlevel = "Niveau d'ennui",
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Niveau de mécontentement",
     ContextMenu_MinimalDisplayBars_temperature = "Température",
+    ContextMenu_MinimalDisplayBars_calorie = "Calories",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "ALLUMÉ",

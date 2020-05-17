@@ -1,0 +1,10 @@
+Minimal Display Bars 4.1
+
+Changes:
+- Added a Calorie display bar to the top-left to track how many calories your character has.
+
+- Left-click and dragging a display bar will now show it's name and stats.
+- Hovering your mouse over a display bar will now show it's name and stats.
+
+- You may now change the color of all the display bars, except for the temperature bar. 
+        Right-click the menu box or a display bar and left-click on "Set Color".

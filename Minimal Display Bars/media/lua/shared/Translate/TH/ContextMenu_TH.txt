@@ -35,6 +35,7 @@ ContextMenu_TH = {
     ContextMenu_MinimalDisplayBars_boredomlevel = "ระดับความเบื่อ",
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "ระดับความโศกเศร้า",
     ContextMenu_MinimalDisplayBars_temperature = "อุณหภูมิ",
+    ContextMenu_MinimalDisplayBars_calorie = "แคลอรี่",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "สลับกับ",

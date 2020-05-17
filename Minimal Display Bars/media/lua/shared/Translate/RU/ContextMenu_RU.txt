@@ -36,6 +36,7 @@ ContextMenu_RU = {
     ContextMenu_MinimalDisplayBars_boredomlevel = "Уровень скуки",
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Уровень грусти",
     ContextMenu_MinimalDisplayBars_temperature = "Температура",
+    ContextMenu_MinimalDisplayBars_calorie = "Калории",
     
     /* ContextMenu_MinimalDisplayBars_stress = "Тревога", -- getStress() */
     /* ContextMenu_MinimalDisplayBars_catchAColdStrength = "Простуда", -- getCatchACold() */

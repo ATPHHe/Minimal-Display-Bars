@@ -186,9 +186,19 @@ function ISGenericMiniDisplayBar:render(...)
     -- Indicate that the user/player is moving or resizing this display bar.
 	if self.moving or self.resizing or self.showTooltip then
         
-        local yOff = self.idName == "menu" and 20 or 0
+        local xOff = 4
+        local yOff = self.idName == "menu" and 20 or 4
         local boxWidth = 150
         local boxHeight = 75
+        
+        local core = getCore()
+        if core:getScreenWidth() < self:getX() + boxWidth + xOff then
+            xOff = xOff - xOff - boxWidth
+        end
+        
+        if core:getScreenHeight() < self:getY() + boxHeight + yOff then
+            yOff = yOff - yOff - boxHeight
+        end
         
         local unit = ""
         local realValue = string.format("%.4g", self.valueFunction.getValue(self.isoPlayer, true))
@@ -223,7 +233,7 @@ function ISGenericMiniDisplayBar:render(...)
         -- ( x, y, w, h, a, r, g, b)
 		self:drawRectStatic(
             self.borderSizes.l,
-            border_t + yOff,
+            border_t,
             innerWidth,
             innerHeight,
             0.5,
@@ -233,7 +243,7 @@ function ISGenericMiniDisplayBar:render(...)
             
         -- ( x, y, w, h, a, r, g, b)
 		self:drawRectStatic(
-            self.borderSizes.l,
+            self.borderSizes.l + xOff,
             self.borderSizes.t + yOff,
             boxWidth,
             boxHeight,
@@ -243,7 +253,7 @@ function ISGenericMiniDisplayBar:render(...)
             0)
         -- ( x, y, w, h, a, r, g, b)
 		self:drawRectBorderStatic(
-            self.borderSizes.l,
+            self.borderSizes.l + xOff,
             self.borderSizes.t + yOff,
             boxWidth,
             boxHeight,
@@ -255,7 +265,7 @@ function ISGenericMiniDisplayBar:render(...)
         -- (str, x, y, r, g, b, a, font)
         self:drawText(
             tooltipTxt,
-            self.borderSizes.l + 2,
+            self.borderSizes.l + 2 + xOff,
             self.borderSizes.t + 2 + yOff,
             1,
             1,

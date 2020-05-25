@@ -18,6 +18,8 @@ ContextMenu_RU = {
     ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Панели поверх других окон",
     ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Пороги состояний",
     ContextMenu_MinimalDisplayBars_Toggle_Compact = "Компактный вид",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Переместить все панели дисплея вместе",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Показать значки панели дисплея",
     
     -- Display Bar Options
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Сбросить панель отображения",

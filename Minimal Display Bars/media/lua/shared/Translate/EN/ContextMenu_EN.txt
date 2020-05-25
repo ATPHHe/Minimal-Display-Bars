@@ -17,6 +17,8 @@ ContextMenu_EN = {
     ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Toggle Always Bring Display Bars To Top",
     ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Toggle Moodlet Threshold Lines on Display Bars",
     ContextMenu_MinimalDisplayBars_Toggle_Compact = "Toggle Compact",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Toggle Move Display Bars Together",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Toggle Display Bar Icons",
     
     -- Display Bar Options
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Reset Display Bar",

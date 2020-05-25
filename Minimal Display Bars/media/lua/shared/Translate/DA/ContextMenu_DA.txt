@@ -17,6 +17,8 @@ ContextMenu_DA = {
     ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Skift til / fra Altid medbring skærmbar til toppen",
     ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Skift til / fra Humørtærskelinjer på skærmbjælker",
     ContextMenu_MinimalDisplayBars_Toggle_Compact = "Skift til / fra Kompakt",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Skift til / fra Flyt skærmbjælker sammen",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Skift til / fra Ikoner for skærmbjælker",
     
     -- Display Bar Options
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Nulstil skærmbjælken",

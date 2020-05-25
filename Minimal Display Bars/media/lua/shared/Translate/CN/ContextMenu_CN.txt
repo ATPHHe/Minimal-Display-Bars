@@ -17,6 +17,8 @@ ContextMenu_CN = {
     ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "切换始终将显示栏置于顶部",
     ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "在显示栏上切换Moodlet阈值线",
     ContextMenu_MinimalDisplayBars_Toggle_Compact = "开启/关闭紧凑型",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "切换在一起移动显示栏",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "切换显示栏图标",
     
     -- Display Bar Options
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "重置显示栏",

@@ -17,6 +17,8 @@ ContextMenu_TH = {
     ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "สลับเปิดหรือปิดนำแถบแสดงผลขึ้นด้านบนเสมอ",
     ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "สลับเปิดหรือปิดบรรทัดเกณฑ์ Moodlet บนแถบแสดงผล",
     ContextMenu_MinimalDisplayBars_Toggle_Compact = "สลับเปิดหรือปิดกะทัดรัด",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "สลับเลื่อนแผงจอแสดงผลทั้งหมดพร้อมกัน",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "สลับแสดงไอคอนแต่ละแถบแสดงผล",
     
     -- Display Bar Options
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "รีเซ็ตแถบแสดงผล",

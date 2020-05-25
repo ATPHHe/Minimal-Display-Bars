@@ -54,13 +54,44 @@ function ISGenericMiniDisplayBar:onMouseDown(x, y, ...)
     return panel
 end
 
+function ISGenericMiniDisplayBar:onMouseUp(x, y, ...)
+    local panel = ISPanel.onMouseUp(self, x, y, ...)
+    self.moving = false
+    return panel
+end
+
+function ISGenericMiniDisplayBar:setOnMouseDoubleClick(target, onmousedblclick, ...)
+    local panel = ISPanel.setOnMouseDoubleClick(self, target, onmousedblclick, ...)
+    return panel
+end
+
+function ISGenericMiniDisplayBar:onMouseUpOutside(x, y, ...)
+    local panel = ISPanel.onMouseUpOutside(self, x, y, ...)
+    self.moving = false
+    return panel
+end
+
 local toolTip = nil
 function ISGenericMiniDisplayBar:onMouseMoveOutside(dx, dy, ...)
-    local panel = ISPanel.onMouseMoveOutside(self, dx, dy, ...)
+    local panel = ISPanel.onMouseMove(self, dx, dy, ...)
     
     self.showTooltip = false
     
-    return panel
+    --[[
+    if not self.moveWithMouse then return; end
+    self.mouseOver = false;
+
+    if self.moving then
+        if self.parent then
+            self.parent:setX(self.parent.x + dx);
+            self.parent:setY(self.parent.y + dy);
+        else
+            self:setX(self.x + dx);
+            self:setY(self.y + dy);
+            self:bringToTop();
+        end
+    end
+    --]]
 end
 
 function ISGenericMiniDisplayBar:onMouseMove(dx, dy, ...)
@@ -69,7 +100,22 @@ function ISGenericMiniDisplayBar:onMouseMove(dx, dy, ...)
     self.showTooltip = true
     self:bringToTop();
     
-    return panel
+    --[[
+    if not self.moveWithMouse then return; end
+    self.mouseOver = true;
+
+    if self.moving then
+        if self.parent then
+            self.parent:setX(self.parent.x + dx);
+            self.parent:setY(self.parent.y + dy);
+        else
+            self:setX(self.x + dx);
+            self:setY(self.y + dy);
+            self:bringToTop();
+        end
+        --ISMouseDrag.dragView = self;
+    end
+    --]]
 end
 
 function ISGenericMiniDisplayBar:render(...)
@@ -88,6 +134,28 @@ function ISGenericMiniDisplayBar:render(...)
         self:setY(self:getY() - self:getHeight())
     end]]
     
+    -- Move bar with parent.
+    if self.parent then
+        if not self.parentOldX or not self.parentOldY then
+            self.parentOldX = self.parent.x
+            self.parentOldY = self.parent.y
+        end
+        
+        local pDX = self.parentOldX - self.parent.x
+        local pDY = self.parentOldY - self.parent.y
+        if pDX ~= 0 then
+            self:setX(self.x - pDX)
+            self.parentOldX = self.parent.x
+        end
+        if pDY ~= 0 then
+            self:setY(self.y - pDY)
+            self.parentOldY = self.parent.y
+        end
+    else
+        self.parentOldX = nil
+        self.parentOldY = nil
+    end
+    
     -- Use the color function of this bar if one exists.
     local value = self.valueFunction.getValue(self.isoPlayer)
     local colorFunc = self.colorFunction
@@ -105,16 +173,35 @@ function ISGenericMiniDisplayBar:render(...)
     end
     
     -- Automatically picks the way that the bar will decrease and increase visually.
+    local imgOffset = 12
     if self.width > self.height then
         -- Horizontal
         innerWidth = math.floor((self.innerWidth * value) + 0.5)
         innerHeight = self.innerHeight
         border_t = self.borderSizes.t
+        
+        -- SHOW IMAGE Horizontal
+        if self.showImage and self.imageName then
+            local h = self:getHeight() + imgOffset
+            local tex = getTexture(self.imageName)
+            if tex then
+                self:drawTextureScaled(tex, -h, -imgOffset/2, h, h, 1, 1, 1, 1)
+            end
+        end
     else 
         -- Vertical
         innerWidth = self.innerWidth
         innerHeight = math.floor((self.innerHeight * value) + 0.5)
         border_t = self.borderSizes.t + ((self.height - self.borderSizes.t - self.borderSizes.b) - innerHeight)
+        
+        -- SHOW IMAGE Vertical
+        if self.showImage and self.imageName then
+            local w = self:getWidth() + imgOffset
+            local tex = getTexture(self.imageName)
+            if tex then
+                self:drawTextureScaled(tex, -imgOffset/2, -w, w, w, 1, 1, 1, 1)
+            end
+        end
     end
     
     --[[self:drawRectStatic(
@@ -181,6 +268,17 @@ function ISGenericMiniDisplayBar:render(...)
                 tColor.green,
                 tColor.blue)
         end
+    end
+    
+    if self.moveBarsTogether and self.moveBarsTogetherRectangle then
+        local topLeft = {0, 0}
+        local topRight = {0, 0}
+        local botLeft = {0, 0}
+        local botRight = {0, 0}
+        for k, v in pairs(MinimalDisplayBars.displayBars) do
+            
+        end
+        self.rectangle = {topLeft, topRight, botLeft, botRight}
     end
     
     -- Indicate that the user/player is moving or resizing this display bar.
@@ -273,6 +371,8 @@ function ISGenericMiniDisplayBar:render(...)
             1,
             UIFont.Small)
     end
+    
+    
     
     --[[if self.showTooltip then
         self:bringToTop()
@@ -392,6 +492,10 @@ function ISGenericMiniDisplayBar:resetToconfigTable(...)
         end
     end
     
+    self.imageName = MinimalDisplayBars.configTables[self.coopNum][self.idName]["imageName"]
+    self.showImage = MinimalDisplayBars.configTables[self.coopNum][self.idName]["showImage"]
+    self.moveBarsTogether = MinimalDisplayBars.configTables[self.coopNum]["moveBarsTogether"]
+    
 	self:setVisible(MinimalDisplayBars.configTables[self.coopNum][self.idName]["isVisible"])
     
     self.alwaysBringToTop = MinimalDisplayBars.configTables[self.coopNum][self.idName]["alwaysBringToTop"]
@@ -481,6 +585,10 @@ function ISGenericMiniDisplayBar:new(
     
     panel.alwaysBringToTop = configTable[idName]["alwaysBringToTop"]
     --panel:setAlwaysOnTop(true)
+    
+    panel.imageName = configTable[idName]["imageName"]
+    panel.showImage = configTable[idName]["showImage"]
+    panel.moveBarsTogether = configTable["moveBarsTogether"]
     
 	return panel
 end

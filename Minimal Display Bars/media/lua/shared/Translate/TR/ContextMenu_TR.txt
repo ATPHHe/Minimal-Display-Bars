@@ -18,6 +18,8 @@ ContextMenu_TR = {
     ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Göstergeleri Daima En Üste Getir Aç / Kapat",
     ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Göstergelerde Sýnýr Çizgileri Aç / Kapat",
     ContextMenu_MinimalDisplayBars_Toggle_Compact = "Göstergeleri Daha Küçük Yap Aç / Kapat",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Ekran Çubuklarini Birlikte Tasi Aç / Kapat",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Ekran Çubugu Simgelerini Aç / Kapat",
     
     -- Display Bar Options
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Ekran Çubugunu Sifirla",

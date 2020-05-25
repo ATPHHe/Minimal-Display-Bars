@@ -17,6 +17,8 @@ ContextMenu_ES = {
     ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Activar / Desactivar Siempre lleve las barras de visualización hacia arriba",
     ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Activar / Desactivar líneas de umbral de Moodlet en barras de visualización",
     ContextMenu_MinimalDisplayBars_Toggle_Compact = "Activar / Desactivar Compacto",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Activar / Desactivar Mover barras de visualización juntas",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Activar / Desactivar Mostrar los iconos de la barra de visualización",
     
     -- Display Bar Options
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Restablecer barra de visualización",

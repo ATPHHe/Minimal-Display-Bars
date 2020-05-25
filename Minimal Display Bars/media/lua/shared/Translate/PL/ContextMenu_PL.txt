@@ -17,6 +17,8 @@ ContextMenu_PL = {
     ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Przelacz Zawsze doprowadzaj paski wyswietlacza do góry",
     ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Przelacz linie progowe Moodleta na paskach wyswietlacza",
     ContextMenu_MinimalDisplayBars_Toggle_Compact = "Przelacz Kompaktowe paski wyswietlacza",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Przelacz Przenies paski wyswietlania razem",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Przelacz ikony paska wyswietlacza",
     
     -- Display Bar Options
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Zresetuj pasek wyswietlacza",

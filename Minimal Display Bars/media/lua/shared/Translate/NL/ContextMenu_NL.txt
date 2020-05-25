@@ -17,6 +17,8 @@ ContextMenu_NL = {
     ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Schakel AAN / UIT Breng altijd weergavebalken naar boven",
     ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Schakel AAN / UIT de Moodlet-drempellijnen op de weergavebalken",
     ContextMenu_MinimalDisplayBars_Toggle_Compact = "Schakel AAN / UIT Compact",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Schakel AAN / UIT Weergavebalken samen verplaatsen",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Schakel AAN / UIT Pictogrammen op de balk weergevens",
     
     -- Display Bar Options
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Reset weergavebalk",

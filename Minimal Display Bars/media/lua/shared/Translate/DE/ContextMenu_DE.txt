@@ -15,6 +15,8 @@ ContextMenu_DE = {
     ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Ein- / Ausschalten Bringen Sie die Anzeigeleisten immer nach oben",
     ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Ein- / Ausschalten der Moodlet-Schwellenwertlinien in den Anzeigeleisten",
     ContextMenu_MinimalDisplayBars_Toggle_Compact = "Ein- / Ausschalten Kompakt",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Ein- / Ausschalten Verschieben Sie die Anzeigeleisten zusammen",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Ein- / Ausschalten Zeigen Sie die Symbole der Anzeigeleiste an",
     
     -- Display Bar Options
     ontextMenu_MinimalDisplayBars_Reset_Display_Bar = "Anzeigeliste zurücksetzen",

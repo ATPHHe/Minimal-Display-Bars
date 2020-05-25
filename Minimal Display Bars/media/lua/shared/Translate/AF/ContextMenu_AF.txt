@@ -17,6 +17,8 @@ ContextMenu_AF = {
     ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Wissel aan / af altyd bring vertoonstawe na bo",
     ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Wissel aan / af Moodlet-drempellyne op vertoonstawe",
     ContextMenu_MinimalDisplayBars_Toggle_Compact = "Wissel aan / af kompak",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Wissel aan / af Skuif vertoonstawe saam",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Wissel aan / af Vertoonstawe ikone",
     
     -- Display Bar Options
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Stel vertoonbalk weer in",

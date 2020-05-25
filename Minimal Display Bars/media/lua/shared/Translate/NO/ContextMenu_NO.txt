@@ -15,8 +15,10 @@ ContextMenu_NO = {
     ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "Slå PÅ / AV flyttbare skjermpaneler",
     ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "Slå PÅ / AV Endre størrelse for alle skjermpaneler",
     ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Slå PÅ / AV alltid Ta skjermpaneler til toppen",
-    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Slå PÅ / AV humør terskel-linjer på visningsradene",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Slå PÅ / AV humør terskel-linjer på skjermpaneler",
     ContextMenu_MinimalDisplayBars_Toggle_Compact = "Slå PÅ / AV Kompakt",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Slå PÅ / AV Flytte skjermpaneler sammen",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Slå PÅ / AV Skjermpaneler Ikoner",
     
     -- Display Bar Options
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Tilbakestill skjermpanel",

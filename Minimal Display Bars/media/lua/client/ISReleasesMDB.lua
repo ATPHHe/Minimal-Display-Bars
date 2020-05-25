@@ -12,7 +12,7 @@
 
 require "ISUI/ISPanel"
 
-ISReleases = ISPanel:derive("ISReleases");
+ISReleasesMDB = ISPanel:derive("ISReleasesMDB");
 
 local FONT_HGT_SMALL = getTextManager():getFontHeight(UIFont.Small)
 local FONT_HGT_MEDIUM = getTextManager():getFontHeight(UIFont.Medium)
@@ -23,18 +23,18 @@ local FONT_HGT_LARGE = getTextManager():getFontHeight(UIFont.Large)
 --**
 --************************************************************************--
 
-function ISReleases:initialise()
+function ISReleasesMDB:initialise()
     ISPanel.initialise(self);
     self:create();
 end
 
 
-function ISReleases:setVisible(visible)
+function ISReleasesMDB:setVisible(visible)
     --    self.parent:setVisible(visible);
     self.javaObject:setVisible(visible);
 end
 
-function ISReleases:render()
+function ISReleasesMDB:render()
     local z = 20;
 
     self:drawText(getText("UI_mainscreen_userpanel"), self.width/2 - (getTextManager():MeasureStringX(UIFont.Medium, getText("UI_mainscreen_userpanel")) / 2), z, 1,1,1,1, UIFont.Medium);
@@ -44,7 +44,7 @@ function ISReleases:render()
 
 end
 
-function ISReleases:create()
+function ISReleasesMDB:create()
     local btnWid = 150
     local btnHgt = math.max(25, FONT_HGT_SMALL + 3 * 2)
     local padBottom = 10
@@ -66,7 +66,7 @@ function ISReleases:create()
 
     self:setWidth(10 + width + 20 + width + 10)
 
-    self.cancel = ISButton:new((self:getWidth() / 2) + 5, self:getHeight() - padBottom - btnHgt, btnWid, btnHgt, getText("UI_btn_close"), self, ISReleases.onOptionMouseDown);
+    self.cancel = ISButton:new((self:getWidth() / 2) + 5, self:getHeight() - padBottom - btnHgt, btnWid, btnHgt, getText("UI_btn_close"), self, ISReleasesMDB.onOptionMouseDown);
     self.cancel.internal = "CLOSE";
     self.cancel:initialise();
     self.cancel:instantiate();
@@ -74,22 +74,22 @@ function ISReleases:create()
     self:addChild(self.cancel);
 end
 
-function ISReleases:updateButtons()
+function ISReleasesMDB:updateButtons()
     
 end
 
-function ISReleases:onOptionMouseDown(button, x, y)
+function ISReleasesMDB:onOptionMouseDown(button, x, y)
     if button.internal == "CLOSE" then
         self:close()
     end
 end
 
-function ISReleases:close()
+function ISReleasesMDB:close()
     self:setVisible(false)
     self:removeFromUIManager()
 end
 
-function ISReleases:new(x, y, width, height, player)
+function ISReleasesMDB:new(x, y, width, height, player)
     local o = {};
     o = ISPanel:new(x, y, width, height);
     setmetatable(o, self);
@@ -101,7 +101,7 @@ function ISReleases:new(x, y, width, height, player)
     o.buttonBorderColor = {r=0.7, g=0.7, b=0.7, a=0.5};
     o.zOffsetSmallFont = 25;
     o.moveWithMouse = true;
-    ISReleases.instance = o
+    ISReleasesMDB.instance = o
     return o;
 end
 
@@ -141,11 +141,25 @@ Events.OnGameStart.Add(function()
     
     local text = "";
     for i, v in ipairs(fContents) do
+        
+        local pattern = "%$[%a%p%d]+%$"
+        local i1, j1 = v:find(pattern)
+        while i1 do
+            
+            local t1 = v:sub(i1, j1)
+            t1 = t1:gsub("%$", "%%$")
+            local t2 = v:sub(i1 + 1, j1 - 1)
+            v = v:gsub(t1, getText(t2))
+            
+            i1, j1 = v:find(pattern)
+        end
+        
         if fContents[i+1] ~= nil then
             text = text .. tostring(v) .. "\r\n"
         else
             text = text .. tostring(v)
         end
+        
     end
     
     okModal(text, true, nil, nil, nil, nil, 
@@ -168,7 +182,7 @@ Events.OnGameStart.Add(function()
                 end)
     
     --[[
-    local update = ISReleases:new(200, 200, 400, 400, getSpecificPlayer(0))
+    local update = ISReleasesMDB:new(200, 200, 400, 400, getSpecificPlayer(0))
     update:initialise()
     update:instantiate()
     update:setVisible(true)

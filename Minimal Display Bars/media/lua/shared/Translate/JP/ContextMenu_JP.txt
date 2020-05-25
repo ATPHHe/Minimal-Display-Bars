@@ -17,6 +17,8 @@
     ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "トグル常に表示バーを上部に移動する常に表示バーを上部に移動する",
     ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "ディスプレイバーのMoodletしきい値線の切り替え",
     ContextMenu_MinimalDisplayBars_Toggle_Compact = "トグルコンパクト",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "表示バーを一緒に移動するように切り替え",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "表示バーアイコンの切り替え",
     
     -- Display Bar Options
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "ディスプレイバーをリセット",

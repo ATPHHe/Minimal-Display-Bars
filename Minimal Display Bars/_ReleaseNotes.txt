@@ -1,3 +1,6 @@
+Minimal Display Bars 4.2.1
+- Translation: Improved German (DE) Translation.
+
 Minimal Display Bars 4.2
 - Menu Box: Added new option "$ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together$".
         Allows display bars to be dragged together.

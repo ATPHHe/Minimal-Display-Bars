@@ -1,5 +1,5 @@
 Minimal Display Bars 4.2.1
-- Translation: Improved German (DE) Translation.
+- Improved German (DE) Translation by Amalek.
 
 Minimal Display Bars 4.2
 - Menu Box: Added new option "$ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together$".

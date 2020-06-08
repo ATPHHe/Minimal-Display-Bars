@@ -1,5 +1,8 @@
+Minimal Display Bars 4.2.2
+- Hotfix: Fixed issue with the menu option "$ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together$" not working properly when some display bars are hidden.
+
 Minimal Display Bars 4.2.1
-- Improved German (DE) Translation by Amalek.
+- Improved German (DE) Translation (Thanks to Amalek for the translation).
 
 Minimal Display Bars 4.2
 - Menu Box: Added new option "$ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together$".

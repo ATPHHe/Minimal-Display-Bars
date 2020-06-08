@@ -135,7 +135,7 @@ function ISGenericMiniDisplayBar:render(...)
     end]]
     
     -- Move bar with parent.
-    if self.parent then
+    if self.parent and self:isVisible() then
         if not self.parentOldX or not self.parentOldY then
             self.parentOldX = self.parent.x
             self.parentOldY = self.parent.y

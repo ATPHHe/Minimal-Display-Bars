@@ -4,7 +4,7 @@
 --****************************
 --* Coded by: ATPHHe
 --* Date Created: 02/19/2020
---* Date Modified: 05/25/2020
+--* Date Modified: 06/08/2020
 --*******************************
 --
 --============================================================
@@ -1231,7 +1231,7 @@ local function createMoveBarsTogetherPanel(playerIndex)
     local maxY = 0
     
     for _, bar in pairs(MinimalDisplayBars.displayBars[playerIndex]) do
-        if bar then 
+        if bar and bar:isVisible() then 
             bar.parentOldX = nil
             bar.parentOldY = nil
             
@@ -1550,6 +1550,9 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
                         
                         MinimalDisplayBars.io_persistence.store(generic_bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[generic_bar.coopNum])
                         
+                        -- recreate MoveBarsTogether panel when showing a display bar
+                        createMoveBarsTogetherPanel(generic_bar.playerIndex)
+                        
                         return
                     end)
         for k, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
@@ -1562,6 +1565,9 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
                             bar:setVisible(true)
                             
                             MinimalDisplayBars.io_persistence.store(bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[bar.coopNum])
+                            
+                            -- recreate MoveBarsTogether panel when showing a display bar
+                            createMoveBarsTogetherPanel(generic_bar.playerIndex)
                             
                             return
                         end
@@ -1588,6 +1594,9 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
                         
                         MinimalDisplayBars.io_persistence.store(generic_bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[generic_bar.coopNum])
                         
+                        -- recreate MoveBarsTogether panel when hiding a display bar
+                        createMoveBarsTogetherPanel(generic_bar.playerIndex)
+                        
                         return
                     end)
         for k, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
@@ -1600,6 +1609,9 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
                             bar:setVisible(false)
                             
                             MinimalDisplayBars.io_persistence.store(bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[bar.coopNum])
+                            
+                            -- recreate MoveBarsTogether panel when hiding a display bar
+                            createMoveBarsTogetherPanel(generic_bar.playerIndex)
                             
                             return
                         end
@@ -1917,6 +1929,9 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
                         MinimalDisplayBars.configTables[generic_bar.coopNum][generic_bar.idName]["isVisible"] = false
                         
                         MinimalDisplayBars.io_persistence.store(generic_bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[generic_bar.coopNum])
+                        
+                        -- recreate MoveBarsTogether panel when hiding a display bar
+                        createMoveBarsTogetherPanel(generic_bar.playerIndex)
                         
                         return
                     end)

@@ -24,6 +24,7 @@ ContextMenu_CN = {
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "重置显示栏",
     ContextMenu_MinimalDisplayBars_Set_Vertical = "设置垂直",
     ContextMenu_MinimalDisplayBars_Set_Horizontal = "设置水平",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "设置高度/宽度",
     ContextMenu_MinimalDisplayBars_Set_Color = "设置颜色",
     ContextMenu_MinimalDisplayBars_Hide = "隐藏",
     
@@ -38,6 +39,10 @@ ContextMenu_CN = {
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "不快乐程度",
     ContextMenu_MinimalDisplayBars_temperature = "温度",
     ContextMenu_MinimalDisplayBars_calorie = "卡路里",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "左键按住，拖动移动。",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "右键单击以获取更多选项。",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "上",

@@ -118,6 +118,83 @@ function ISGenericMiniDisplayBar:onMouseMove(dx, dy, ...)
     --]]
 end
 
+--[[
+ISGenericMiniDisplayBar.Back_Bad_1 = Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Bad_1.png");
+ISGenericMiniDisplayBar.Back_Bad_2 = Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Bad_2.png");
+ISGenericMiniDisplayBar.Back_Bad_3 = Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Bad_3.png");
+ISGenericMiniDisplayBar.Back_Bad_4 = Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Bad_4.png");
+ISGenericMiniDisplayBar.Back_Good_1 = Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_1.png");
+ISGenericMiniDisplayBar.Back_Good_2 = Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_2.png");
+ISGenericMiniDisplayBar.Back_Good_3 = Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_3.png");
+ISGenericMiniDisplayBar.Back_Good_4 = Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_4.png");
+ISGenericMiniDisplayBar.Back_Neutral = Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Bad_1.png");
+ISGenericMiniDisplayBar.Endurance = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_Endurance.png");
+ISGenericMiniDisplayBar.Tired = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_Tired.png");
+ISGenericMiniDisplayBar.Hungry = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_Hungry.png");
+ISGenericMiniDisplayBar.Panic = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_Panic.png");
+ISGenericMiniDisplayBar.Sick = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_Sick.png");
+ISGenericMiniDisplayBar.Bored = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_Bored.png");
+ISGenericMiniDisplayBar.Unhappy = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_Unhappy.png");
+ISGenericMiniDisplayBar.Bleeding = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_Bleeding.png");
+ISGenericMiniDisplayBar.Wet = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_Wet.png");
+ISGenericMiniDisplayBar.HasACold = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_Cold.png");
+ISGenericMiniDisplayBar.Angry = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_Angry.png");
+ISGenericMiniDisplayBar.Stress = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_Stressed.png");
+ISGenericMiniDisplayBar.Thirst = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_Thirsty.png");
+ISGenericMiniDisplayBar.Injured = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_Injured.png");
+ISGenericMiniDisplayBar.Pain = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_Pain.png");
+ISGenericMiniDisplayBar.HeavyLoad = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_HeavyLoad.png");
+ISGenericMiniDisplayBar.Drunk = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_Drunk.png");
+ISGenericMiniDisplayBar.Dead = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_Dead.png");
+ISGenericMiniDisplayBar.Zombie = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_Zombie.png");
+ISGenericMiniDisplayBar.FoodEaten = Texture.getSharedTexture("media/ui/Moodles/Moodle_Icon_Hungry.png");
+ISGenericMiniDisplayBar.Hyperthermia = Texture.getSharedTexture("media/ui/weather/Moodle_Icon_TempHot.png");
+ISGenericMiniDisplayBar.Hypothermia = Texture.getSharedTexture("media/ui/weather/Moodle_Icon_TempCold.png");
+ISGenericMiniDisplayBar.Windchill = Texture.getSharedTexture("media/ui/Moodle_Icon_Windchill.png");
+ISGenericMiniDisplayBar.plusRed = Texture.getSharedTexture("media/ui/Moodle_internal_plus_red.png");
+ISGenericMiniDisplayBar.minusRed = Texture.getSharedTexture("media/ui/Moodle_internal_minus_red.png");
+ISGenericMiniDisplayBar.plusGreen = Texture.getSharedTexture("media/ui/Moodle_internal_plus_green.png");
+ISGenericMiniDisplayBar.minusGreen = Texture.getSharedTexture("media/ui/Moodle_internal_minus_green.png");
+ISGenericMiniDisplayBar.chevronUp = Texture.getSharedTexture("media/ui/Moodle_chevron_up.png");
+ISGenericMiniDisplayBar.chevronUpBorder = Texture.getSharedTexture("media/ui/Moodle_chevron_up_border.png");
+ISGenericMiniDisplayBar.chevronDown = Texture.getSharedTexture("media/ui/Moodle_chevron_down.png");
+ISGenericMiniDisplayBar.chevronDownBorder = Texture.getSharedTexture("media/ui/Moodle_chevron_down_border.png");
+--]]
+function ISGenericMiniDisplayBar:getImageBG(isoPlayer, index)
+    
+    local moodles = isoPlayer:getMoodles()
+    local goodBadNeutral = moodles:getGoodBadNeutral(index)
+    local moodleLevel = moodles:getMoodleLevel(index)
+    
+    if goodBadNeutral == 0 then
+        return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_4.png")
+    elseif goodBadNeutral == 1 then
+        if moodleLevel == 1 then
+            Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_1.png")
+        elseif moodleLevel == 2 then
+            Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_2.png")
+        elseif moodleLevel == 3 then
+            Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_3.png")
+        elseif moodleLevel == 4 then
+            Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_4.png")
+        end
+    elseif goodBadNeutral == 2 then
+        if moodleLevel == 0 then
+            return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_4.png")
+        elseif moodleLevel == 1 then
+            return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Bad_1.png")
+        elseif moodleLevel == 2 then
+            return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Bad_2.png")
+        elseif moodleLevel == 3 then
+            return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Bad_3.png")
+        elseif moodleLevel == 4 then
+            return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Bad_4.png")
+        end
+    end
+    
+    return nil
+end
+
 function ISGenericMiniDisplayBar:render(...)
     local panel = ISPanel.render(self, ...)
     
@@ -173,7 +250,19 @@ function ISGenericMiniDisplayBar:render(...)
     end
     
     -- Automatically picks the way that the bar will decrease and increase visually.
-    local imgOffset = 12
+    local texBG
+    if self.idName == "hunger" then texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Hungry")) )
+    elseif self.idName == "thirst" then texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Thirst")) )
+    elseif self.idName == "endurance" then texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Endurance")) )
+    elseif self.idName == "fatigue" then texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Tired")) )
+    elseif self.idName == "boredomlevel" then texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Bored")) )
+    elseif self.idName == "unhappynesslevel" then texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Unhappy")) )
+    elseif self.idName == "temperature" then 
+        texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Hyperthermia")) ) 
+        if not texBG then texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Hypothermia")) ) end
+    end
+    
+    local imgOffset = 14
     if self.width > self.height then
         -- Horizontal
         innerWidth = math.floor((self.innerWidth * value) + 0.5)
@@ -184,8 +273,27 @@ function ISGenericMiniDisplayBar:render(...)
         if self.showImage and self.imageName then
             local h = self:getHeight() + imgOffset
             local tex = getTexture(self.imageName)
+            --local texBG = getTexture("media/ui/Moodles/Moodle_Bkg_Bad_1.png")
             if tex then
-                self:drawTextureScaled(tex, -h, -imgOffset/2, h, h, 1, 1, 1, 1)
+                local texH = tex:getHeightOrig()
+                local texW = tex:getWidthOrig()
+                local texLargeVal = (texH > texW) and texH or texW
+                
+                local texScale = h / texLargeVal
+                
+                local w = h
+                local x = -h
+                local y = -imgOffset/2
+                
+                -- Draw images/textures
+                --self:drawTextureScaled(tex, -imgOffset/2, -w, w, w, 1, 1, 1, 1)
+                if texBG and self.idName ~= "calorie" then
+                    self:drawTextureScaled(texBG, x, y, w, h, 1, 1, 1, 1)
+                end
+                
+                if self.idName ~= "temperature" and self.idName ~= "calorie" then x = x + 1; y = y + 1; end
+                self:drawTextureScaledAspect(tex, x, y, w, h, 1, 1, 1, 1)
+                --self:drawTextureScaledUniform(tex, (-imgOffset/2), -w, texScale, 1, 1, 1, 1)
             end
         end
     else 
@@ -198,8 +306,27 @@ function ISGenericMiniDisplayBar:render(...)
         if self.showImage and self.imageName then
             local w = self:getWidth() + imgOffset
             local tex = getTexture(self.imageName)
+            --local texBG = getTexture("media/ui/Moodles/Moodle_Bkg_Bad_1.png")
             if tex then
-                self:drawTextureScaled(tex, -imgOffset/2, -w, w, w, 1, 1, 1, 1)
+                local texH = tex:getHeightOrig()
+                local texW = tex:getWidthOrig()
+                local texLargeVal = (texH > texW) and texH or texW
+                
+                local texScale = w / texLargeVal
+                
+                local h = w
+                local x = -imgOffset/2
+                local y = -w
+                
+                -- Draw images/textures
+                --self:drawTextureScaled(tex, -imgOffset/2, -w, w, w, 1, 1, 1, 1)
+                if texBG and self.idName ~= "calorie" then
+                    self:drawTextureScaled(texBG, x, y, w, h, 1, 1, 1, 1)
+                end
+                
+                if self.idName ~= "temperature" and self.idName ~= "calorie" then x = x + 1; y = y + 1; end
+                self:drawTextureScaledAspect(tex, x, y, w, h, 1, 1, 1, 1)
+                --self:drawTextureScaledUniform(tex, (-imgOffset/2), -w, texScale, 1, 1, 1, 1)
             end
         end
     end
@@ -286,22 +413,16 @@ function ISGenericMiniDisplayBar:render(...)
         
         local xOff = 4
         local yOff = self.idName == "menu" and 20 or 4
-        local boxWidth = 150
-        local boxHeight = 75
+        local boxWidth = 200
+        local boxHeight = FONT_HGT_SMALL * 7
         
         local core = getCore()
-        if core:getScreenWidth() < self:getX() + boxWidth + xOff then
-            xOff = xOff - xOff - boxWidth
-        end
         
-        if core:getScreenHeight() < self:getY() + boxHeight + yOff then
-            yOff = yOff - yOff - boxHeight
-        end
-        
+        -- units
         local unit = ""
         local realValue = string.format("%.4g", self.valueFunction.getValue(self.isoPlayer, true))
         if self.idName == "temperature" then
-            if getCore():isCelsius() then
+            if core:isCelsius() then
                 unit = "°C"
             else
                 realValue = string.format("%.4g", (self.valueFunction.getValue(self.isoPlayer, true) * 9/5) + 32)
@@ -314,18 +435,59 @@ function ISGenericMiniDisplayBar:render(...)
         
         local realValue = realValue.. " " ..unit
         
+        -- create tooltip text stuff
+        local tutorialLeftClick = getText("ContextMenu_MinimalDisplayBars_Tutorial_LeftClick")
+        local tutorialRightClick = getText("ContextMenu_MinimalDisplayBars_Tutorial_RightClick")
+        local tutorialLeftClickLength = getTextManager():MeasureStringX(UIFont.Small, tutorialLeftClick)
+        local tutorialRightClickLength = getTextManager():MeasureStringX(UIFont.Small, tutorialRightClick)
+        if tutorialLeftClickLength > boxWidth then
+            boxWidth = tutorialLeftClickLength + 20
+        end
+        if tutorialRightClickLength > boxWidth then
+            boxWidth = tutorialRightClickLength + 20
+        end
+        
         local tooltipTxt
         if self.idName == "menu" then
-            tooltipTxt = "" ..getText("ContextMenu_MinimalDisplayBars_".. self.idName .."").. 
-                " \r\nx: " ..self.x.. 
-                " \r\ny: " ..self.y
+            tooltipTxt = "" ..getText("ContextMenu_MinimalDisplayBars_".. self.idName .."")
+                .."\r\n" ..tutorialLeftClick
+                .."\r\n" ..tutorialRightClick
+                .."\r\n"
+                --.." \r\nx: " ..self.x
+                --.." \r\ny: " ..self.y
+                boxHeight = boxHeight - FONT_HGT_SMALL
+            if self.moving == true then
+                tooltipTxt = tooltipTxt
+                    .." \r\nx: " ..self.x
+                    .." \r\ny: " ..self.y
+                boxHeight = boxHeight + FONT_HGT_SMALL*3
+            end
             boxHeight = boxHeight - FONT_HGT_SMALL*2
         else
-            tooltipTxt = "" ..getText("ContextMenu_MinimalDisplayBars_".. self.idName .."").. 
-                " \r\nratio: " ..string.format("%.4g", value)..
-                " \r\nreal value: " ..realValue..
-                " \r\nx: " ..self.x.. 
-                " \r\ny: " ..self.y
+            tooltipTxt = "" ..getText("ContextMenu_MinimalDisplayBars_".. self.idName .."")
+                .." \r\nratio: " ..string.format("%.4g", value)
+                .." \r\nreal value: " ..realValue
+                .."\r\n"
+                .."\r\n" ..tutorialLeftClick
+                .."\r\n" ..tutorialRightClick
+                .."\r\n"
+                --.." \r\nx: " ..self.x.. 
+                --.." \r\ny: " ..self.y
+            if self.moving == true then
+                tooltipTxt = tooltipTxt
+                    .." \r\nx: " ..self.x
+                    .." \r\ny: " ..self.y
+                boxHeight = boxHeight + FONT_HGT_SMALL*3
+            end
+        end
+        
+        -- make sure tooltips don't go off screen
+        if core:getScreenWidth() < self:getX() + boxWidth + xOff then
+            xOff = xOff - xOff - boxWidth
+        end
+        
+        if core:getScreenHeight() < self:getY() + boxHeight + yOff then
+            yOff = yOff - yOff - boxHeight
         end
         
         -- ( x, y, w, h, a, r, g, b)
@@ -493,6 +655,7 @@ function ISGenericMiniDisplayBar:resetToconfigTable(...)
     end
     
     self.imageName = MinimalDisplayBars.configTables[self.coopNum][self.idName]["imageName"]
+    self.imageShowBack = MinimalDisplayBars.configTables[self.coopNum][self.idName]["imageShowBack"]
     self.showImage = MinimalDisplayBars.configTables[self.coopNum][self.idName]["showImage"]
     self.moveBarsTogether = MinimalDisplayBars.configTables[self.coopNum]["moveBarsTogether"]
     
@@ -587,6 +750,7 @@ function ISGenericMiniDisplayBar:new(
     --panel:setAlwaysOnTop(true)
     
     panel.imageName = configTable[idName]["imageName"]
+    panel.imageShowBack = configTable[idName]["imageShowBack"]
     panel.showImage = configTable[idName]["showImage"]
     panel.moveBarsTogether = configTable["moveBarsTogether"]
     

@@ -24,6 +24,7 @@ ContextMenu_DA = {
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Nulstil skærmbjælken",
     ContextMenu_MinimalDisplayBars_Set_Vertical = "Indstil lodret",
     ContextMenu_MinimalDisplayBars_Set_Horizontal = "Indstil vandret",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Indstil højde / bredde",
     ContextMenu_MinimalDisplayBars_Set_Color = "Indstil farve",
     ContextMenu_MinimalDisplayBars_Hide = "Skjule",
     
@@ -38,6 +39,10 @@ ContextMenu_DA = {
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Ulykke Niveau",
     ContextMenu_MinimalDisplayBars_temperature = "Temperatur",
     ContextMenu_MinimalDisplayBars_calorie = "Kalorier",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Venstreklik på Hold + Træk for at flytte.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Højreklik for flere muligheder.",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "TÆNDT",

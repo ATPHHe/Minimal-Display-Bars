@@ -28,6 +28,7 @@ ContextMenu_DE = {
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Anzeigeleiste zurücksetzen",
     ContextMenu_MinimalDisplayBars_Set_Vertical = "Vertikal einstellen",
     ContextMenu_MinimalDisplayBars_Set_Horizontal = "Horizontal einstellen",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Höhe / Breite einstellen",
     ContextMenu_MinimalDisplayBars_Set_Color = "Farbe einstellen",
     ContextMenu_MinimalDisplayBars_Hide_Bar = "Anzeigeleiste ausblenden",
     ContextMenu_MinimalDisplayBars_Show_Bar = "Anzeigeleiste einbelenden",
@@ -45,6 +46,10 @@ ContextMenu_DE = {
     ContextMenu_MinimalDisplayBars_temperature = "Temperatur",
     ContextMenu_MinimalDisplayBars_calorie = "Kalorien",
 
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Klicken, halten und ziehen Sie mit der linken Maustaste, um es zu verschieben.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Klicken Sie mit der rechten Maustaste, um weitere Optionen anzuzeigen.",
+    
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "EIN",
     ContextMenu_MinimalDisplayBars_OFF = "AUS",

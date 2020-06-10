@@ -24,6 +24,7 @@
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "ディスプレイバーをリセット",
     ContextMenu_MinimalDisplayBars_Set_Vertical = "垂直に設定",
     ContextMenu_MinimalDisplayBars_Set_Horizontal = "水平に設定",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "高さ/幅を設定",
     ContextMenu_MinimalDisplayBars_Set_Color = "色を設定",
     ContextMenu_MinimalDisplayBars_Hide = "バーを非表示",
     
@@ -38,6 +39,10 @@
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "悲しみレベル",
     ContextMenu_MinimalDisplayBars_temperature = "温度",
     ContextMenu_MinimalDisplayBars_calorie = "カロリー",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "左クリックホールド+ドラッグして移動します。",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "右クリックしてその他のオプションを表示します。",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "オン",

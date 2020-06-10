@@ -24,6 +24,7 @@ ContextMenu_ES = {
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Restablecer barra de visualización",
     ContextMenu_MinimalDisplayBars_Set_Vertical = "Establecer vertical",
     ContextMenu_MinimalDisplayBars_Set_Horizontal = "Establecer horizontal",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Establecer altura / ancho",
     ContextMenu_MinimalDisplayBars_Set_Color = "Establecer color",
     ContextMenu_MinimalDisplayBars_Hide = "Ocultar barra",
     
@@ -38,6 +39,10 @@ ContextMenu_ES = {
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Nivel de Infelicidad",
     ContextMenu_MinimalDisplayBars_temperature = "Temperatura",
     ContextMenu_MinimalDisplayBars_calorie = "Calorías",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Haga clic izquierdo, mantenga presionado y arrastre para mover.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Haga clic derecho para más opciones.",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "ACTIVADO",

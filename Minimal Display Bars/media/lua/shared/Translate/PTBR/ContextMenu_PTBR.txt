@@ -25,6 +25,7 @@ ContextMenu_PTBR = {
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Resetar barra de exibição",
     ContextMenu_MinimalDisplayBars_Set_Vertical = "Definir vertical",
     ContextMenu_MinimalDisplayBars_Set_Horizontal = "Definir horizontal",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Definir a altura / largura",
     ContextMenu_MinimalDisplayBars_Set_Color = "Definir cor",
     ContextMenu_MinimalDisplayBars_Hide = "Ocultar barra",
 
@@ -39,6 +40,10 @@ ContextMenu_PTBR = {
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Nível de Infelicidade",
     ContextMenu_MinimalDisplayBars_temperature = "Temperatura",
     ContextMenu_MinimalDisplayBars_calorie = "Calorias",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Carregue com o botão esquerdo, segure e arraste para se mover.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Clique com o botão direito para mais opções.",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "ATIVADO",

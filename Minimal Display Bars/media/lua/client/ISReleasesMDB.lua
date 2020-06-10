@@ -108,22 +108,25 @@ end
 
 
 local function okModal(_text, _centered, _width, _height, _posX, _posY, _func)
+    
+    local core = getCore();
+    
     local posX = _posX or 0;
     local posY = _posY or 0;
-    local width = _width or 230;
-    local height = _height or 120;
+    local width = _width or 400;
+    local height = _height or core:getScreenHeight() * 0.75;
     local centered = _centered;
     local txt = _text;
 	local func = _func or nil;
-    local core = getCore();
-
+    
     -- center the modal if necessary
     if centered then
         posX = core:getScreenWidth() * 0.5 - width * 0.5;
         posY = core:getScreenHeight() * 0.5 - height * 0.5;
     end
-
-    local modal = ISModalDialog:new(posX, posY, width, height, txt, false, nil, func);
+    
+    local modal = ISScrolledModalRichTextMDB:new(posX, posY, width, height, txt, false, nil, func);
+    modal.backgroundColor = {r=0, g=0, b=0, a=0.8};
     modal:initialise();
     modal:addToUIManager();
 end

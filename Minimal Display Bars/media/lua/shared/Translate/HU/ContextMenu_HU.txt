@@ -24,6 +24,7 @@ ContextMenu_HU = {
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Visszaállítja a kijelzosávot",
     ContextMenu_MinimalDisplayBars_Set_Vertical = "Állítsa függolegesre",
     ContextMenu_MinimalDisplayBars_Set_Horizontal = "Állítsa vízszintesen",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Állítsa be a magasságot / szélességet",
     ContextMenu_MinimalDisplayBars_Set_Color = "Állítsa be a színt",
     ContextMenu_MinimalDisplayBars_Hide = "Elrejt",
     
@@ -38,6 +39,10 @@ ContextMenu_HU = {
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Boldogtalanság Szintje",
     ContextMenu_MinimalDisplayBars_temperature = "Hofok",
     ContextMenu_MinimalDisplayBars_calorie = "Kalória",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "A bal egérgombbal tartsa és húzza a mozgatáshoz.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Kattintson jobb gombbal erre a további lehetoségekhez.",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "BEKAPCSOLVA",

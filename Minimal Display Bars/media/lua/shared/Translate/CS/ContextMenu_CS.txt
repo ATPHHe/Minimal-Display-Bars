@@ -24,6 +24,7 @@ ContextMenu_CS = {
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Resetovat lištu displeje",
     ContextMenu_MinimalDisplayBars_Set_Vertical = "Nastavit svisle",
     ContextMenu_MinimalDisplayBars_Set_Horizontal = "Nastavit vodorovne",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Nastavit výšku / šírku",
     ContextMenu_MinimalDisplayBars_Set_Color = "Nastavit barvu",
     ContextMenu_MinimalDisplayBars_Hide = "Skrýt",
     
@@ -38,6 +39,10 @@ ContextMenu_CS = {
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Úroven Neštestí",
     ContextMenu_MinimalDisplayBars_temperature = "Teplota",
     ContextMenu_MinimalDisplayBars_calorie = "Kalorie",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Levým kliknutím, pridržením a pretažením se pohybujete.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Klepnutím pravým tlacítkem myši zobrazíte další možnosti.",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "ZAPNUTÝ",

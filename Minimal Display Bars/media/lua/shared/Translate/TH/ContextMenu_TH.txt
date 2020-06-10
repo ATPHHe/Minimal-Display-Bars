@@ -24,6 +24,7 @@ ContextMenu_TH = {
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "รีเซ็ตแถบแสดงผล",
     ContextMenu_MinimalDisplayBars_Set_Vertical = "ตั้งค่าแนวตั้ง",
     ContextMenu_MinimalDisplayBars_Set_Horizontal = "ตั้งแนวนอน",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "ตั้งค่าความสูง / ความกว้าง",
     ContextMenu_MinimalDisplayBars_Set_Color = "ตั้งค่าสี",
     ContextMenu_MinimalDisplayBars_Hide = "ซ่อนแถบแสดงผล",
     
@@ -38,6 +39,10 @@ ContextMenu_TH = {
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "ระดับความโศกเศร้า",
     ContextMenu_MinimalDisplayBars_temperature = "อุณหภูมิ",
     ContextMenu_MinimalDisplayBars_calorie = "แคลอรี่",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "คลิกซ้ายค้างไว้แล้วลากเพื่อย้าย",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "คลิกขวาเพื่อดูตัวเลือกเพิ่มเติม",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "สลับกับ",

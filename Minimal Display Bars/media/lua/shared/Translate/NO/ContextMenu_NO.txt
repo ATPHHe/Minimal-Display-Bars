@@ -24,6 +24,7 @@ ContextMenu_NO = {
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Tilbakestill skjermpanel",
     ContextMenu_MinimalDisplayBars_Set_Vertical = "Angi vertikal",
     ContextMenu_MinimalDisplayBars_Set_Horizontal = "Sett horisontalt",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Still høyde / bredde",
     ContextMenu_MinimalDisplayBars_Set_Color = "Set Color",
     ContextMenu_MinimalDisplayBars_Hide = "Skjul skjermpanel",
     
@@ -38,6 +39,10 @@ ContextMenu_NO = {
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Ulykkelighet Nivå",
     ContextMenu_MinimalDisplayBars_temperature = "Temperatur",
     ContextMenu_MinimalDisplayBars_calorie = "Kalorier",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Venstreklikk Hold + Dra for å flytte.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Høyreklikk for flere alternativer.",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "AV",

@@ -24,6 +24,7 @@ ContextMenu_PL = {
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Zresetuj pasek wyswietlacza",
     ContextMenu_MinimalDisplayBars_Set_Vertical = "Ustaw w pionie",
     ContextMenu_MinimalDisplayBars_Set_Horizontal = "Ustaw poziomo",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Ustaw wysokosc / szerokosc",
     ContextMenu_MinimalDisplayBars_Set_Color = "Ustaw kolor",
     ContextMenu_MinimalDisplayBars_Hide = "Ukryc",
     
@@ -38,6 +39,10 @@ ContextMenu_PL = {
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Poziom Nieszczescia",
     ContextMenu_MinimalDisplayBars_temperature = "Temperatura",
     ContextMenu_MinimalDisplayBars_calorie = "Kalorie",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Kliknij lewym przyciskiem przytrzymaj + przeciagnij, aby przeniesc.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Kliknij prawym przyciskiem myszy, aby uzyskac wiecej opcji.",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "WLACZ",

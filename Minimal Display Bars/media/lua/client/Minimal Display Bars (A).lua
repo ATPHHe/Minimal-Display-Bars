@@ -4,7 +4,7 @@
 --****************************
 --* Coded by: ATPHHe
 --* Date Created: 02/19/2020
---* Date Modified: 06/08/2020
+--* Date Modified: 06/10/2020
 --*******************************
 --
 --============================================================
@@ -426,6 +426,7 @@ local DEFAULT_SETTINGS = {
         ["alwaysBringToTop"] = true,
         ["showMoodletThresholdLines"] = true,
         ["isCompact"] = false,
+        ["imageShowBack"] = false,
         ["imageName"] = "",
         ["showImage"] = false,
         },
@@ -449,6 +450,7 @@ local DEFAULT_SETTINGS = {
         ["alwaysBringToTop"] = true,
         ["showMoodletThresholdLines"] = true,
         ["isCompact"] = false,
+        ["imageShowBack"] = false,
         ["imageName"] = "",
         ["showImage"] = false,
         },
@@ -472,7 +474,8 @@ local DEFAULT_SETTINGS = {
         ["alwaysBringToTop"] = true,
         ["showMoodletThresholdLines"] = true,
         ["isCompact"] = false,
-        ["imageName"] = "media/ui/Moodle_hungry.png",
+        ["imageShowBack"] = true,
+        ["imageName"] = "media/ui/Moodles/Moodle_Icon_Hungry.png",
         ["showImage"] = false,
         },
     ["thirst"] = {
@@ -495,7 +498,8 @@ local DEFAULT_SETTINGS = {
         ["alwaysBringToTop"] = true,
         ["showMoodletThresholdLines"] = true,
         ["isCompact"] = false,
-        ["imageName"] = "media/ui/Moodle_thirsty.png",
+        ["imageShowBack"] = true,
+        ["imageName"] = "media/ui/Moodles/Moodle_Icon_Thirsty.png",
         ["showImage"] = false,
         },
     ["endurance"] = {
@@ -518,7 +522,8 @@ local DEFAULT_SETTINGS = {
         ["alwaysBringToTop"] = true,
         ["showMoodletThresholdLines"] = true,
         ["isCompact"] = false,
-        ["imageName"] = "media/ui/Moodle_endurance.png",
+        ["imageShowBack"] = true,
+        ["imageName"] = "media/ui/Moodles/Moodle_Icon_Endurance.png",
         ["showImage"] = false,
         },
     ["fatigue"] = {
@@ -541,7 +546,8 @@ local DEFAULT_SETTINGS = {
         ["alwaysBringToTop"] = true,
         ["showMoodletThresholdLines"] = true,
         ["isCompact"] = false,
-        ["imageName"] = "media/ui/Moodle_tired.png",
+        ["imageShowBack"] = true,
+        ["imageName"] = "media/ui/Moodles/Moodle_Icon_Tired.png",
         ["showImage"] = false,
         },
     ["boredomlevel"] = {
@@ -564,7 +570,8 @@ local DEFAULT_SETTINGS = {
         ["alwaysBringToTop"] = true,
         ["showMoodletThresholdLines"] = true,
         ["isCompact"] = false,
-        ["imageName"] = "media/ui/Moodle_bored.png",
+        ["imageShowBack"] = true,
+        ["imageName"] = "media/ui/Moodles/Moodle_Icon_Bored.png",
         ["showImage"] = false,
         },
     ["unhappynesslevel"] = {
@@ -587,7 +594,8 @@ local DEFAULT_SETTINGS = {
         ["alwaysBringToTop"] = true,
         ["showMoodletThresholdLines"] = true,
         ["isCompact"] = false,
-        ["imageName"] = "media/ui/Moodle_unhappy.png",
+        ["imageShowBack"] = true,
+        ["imageName"] = "media/ui/Moodles/Moodle_Icon_Unhappy.png",
         ["showImage"] = false,
         },
     ["temperature"] = {
@@ -610,6 +618,7 @@ local DEFAULT_SETTINGS = {
         ["alwaysBringToTop"] = true,
         ["showMoodletThresholdLines"] = true,
         ["isCompact"] = false,
+        ["imageShowBack"] = true,
         ["imageName"] = "media/ui/MDBTemperature.png",
         ["showImage"] = false,
         },
@@ -633,6 +642,7 @@ local DEFAULT_SETTINGS = {
         ["alwaysBringToTop"] = true,
         ["showMoodletThresholdLines"] = true,
         ["isCompact"] = false,
+        ["imageShowBack"] = false,
         ["imageName"] = "media/ui/TraitNutritionist.png",
         ["showImage"] = false,
         },
@@ -1381,9 +1391,77 @@ local function toggleShowImage(bar)
     bar:resetToconfigTable() 
 end
 
-
-
+-- ContextMenu
+local contextMenu = nil
+local heightWidthPanel = nil
 local colorPicker = nil
+
+local function setHeightWidth(bar)
+    
+    if not bar then return end
+    
+    ISGenericMiniDisplayBar.alwaysBringToTop = false
+    
+    if heightWidthPanel and heightWidthPanel.close then heightWidthPanel:close() end
+    
+    local onApply = function()
+                        
+                    end
+    local onReset = function()
+                        
+                    end
+    local onCancel = function()
+                        
+                    end
+    
+    heightWidthPanel = ISSetHeightWidthPanel:new(bar.x, bar.y, onApply, onReset, onCancel)
+    bar.heightWidthPanel = heightWidthPanel
+    heightWidthPanel:initialise()
+    bar:addChild(heightWidthPanel)
+    
+    heightWidthPanel:setInitialColor(
+        ColorInfo.new(
+            bar.color.red, 
+            bar.color.green, 
+            bar.color.blue, 
+            bar.color.alpha)
+        )
+        
+    heightWidthPanel.pickedTarget = bar
+    heightWidthPanel.pickedFunc = 
+        function(bar, color)
+            bar.color = {
+                red = color.r, 
+                green = color.g, 
+                blue = color.b, 
+                alpha = bar.color.alpha
+            }
+                
+            MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["color"] = bar.color
+            MinimalDisplayBars.io_persistence.store(bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[bar.coopNum])
+            
+            heightWidthPanel:close()
+            
+            return
+        end
+        
+    local screenHeight = getCore():getScreenHeight()
+    local bottom = (heightWidthPanel.y + heightWidthPanel.height)
+    if bottom > screenHeight then
+        heightWidthPanel.y = (heightWidthPanel.y - (bottom - screenHeight))
+    end
+    
+    local screenWidth = getCore():getScreenWidth()
+    local right = (heightWidthPanel.x + heightWidthPanel.width)
+    if right > screenWidth then
+        heightWidthPanel.x = (heightWidthPanel.x - (right - screenWidth))
+    end
+    
+    heightWidthPanel:addToUIManager()
+    
+    return
+end
+
 local function setBarColor(bar)
     
     if not bar then return end
@@ -1391,10 +1469,12 @@ local function setBarColor(bar)
     ISGenericMiniDisplayBar.alwaysBringToTop = false
     
     if colorPicker and colorPicker.close then colorPicker:close() end
+    --if colorPicker and colorPicker.removeSelf then colorPicker:removeSelf() end
     
-    colorPicker = ISColorPicker:new(bar.x, bar.y)
+    colorPicker = ISColorPickerMDB:new(bar.x, bar.y)
     bar.colorPicker = colorPicker
     colorPicker:initialise()
+    --bar:addChild(colorPicker)
     
     colorPicker:setInitialColor(
         ColorInfo.new(
@@ -1423,15 +1503,15 @@ local function setBarColor(bar)
         end
         
     local screenHeight = getCore():getScreenHeight()
-    local colorPickerBottom = (colorPicker.y + colorPicker.height)
-    if colorPickerBottom > screenHeight then
-        colorPicker.y = (colorPicker.y - (colorPickerBottom - screenHeight))
+    local bottom = (colorPicker.y + colorPicker.height)
+    if bottom > screenHeight then
+        colorPicker.y = (colorPicker.y - (bottom - screenHeight))
     end
     
     local screenWidth = getCore():getScreenWidth()
-    local colorPickerRight = (colorPicker.x + colorPicker.width)
-    if colorPickerRight > screenWidth then
-        colorPicker.x = (colorPicker.x - (colorPickerRight - screenWidth))
+    local right = (colorPicker.x + colorPicker.width)
+    if right > screenWidth then
+        colorPicker.x = (colorPicker.x - (right - screenWidth))
     end
     
     colorPicker:addToUIManager()
@@ -1439,32 +1519,35 @@ local function setBarColor(bar)
     return
 end
 
-
--- ContextMenu
-local contextMenu = nil
-
 -- prevent UI from covering this context menu and color picker
 local contextMenuTicks = 0
 Events.OnRenderTick.Add(function()
     
     contextMenuTicks = contextMenuTicks + 1
     
-    if contextMenuTicks >= 8 then
+    if contextMenuTicks >= 16 then
         contextMenuTicks = 0
         
+        -- Prevent minimal display bars from covering context and other clicked UI.
         if contextMenu and not contextMenu:isVisible() then
             contextMenu = nil
-        end
-        if colorPicker and not colorPicker:isVisible() then
+        elseif heightWidthPanel and not heightWidthPanel:isVisible() then
+            heightWidthPanel = nil
+        elseif colorPicker and not colorPicker:isVisible() then
             colorPicker = nil
         end
         
-        if not contextMenu and not colorPicker then
+        -- Allow bring to top when all display bar UI's are closed.
+        if not contextMenu 
+                and not colorPicker 
+                and not heightWidthPanel then
             ISGenericMiniDisplayBar.alwaysBringToTop = true
         end
     end
     
 end)
+
+
 
 MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
 
@@ -1474,7 +1557,8 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
                             generic_bar.playerIndex, 
                             (generic_bar.x + dx), (generic_bar.y + dy), 1, 1)
     -- Title
-	contextMenu:addOption("--- " .. getText("ContextMenu_MinimalDisplayBars_Title") .. " ---")
+	--contextMenu:addOption("--- " .. getText("ContextMenu_MinimalDisplayBars_Title") .. " ---")
+    contextMenu:addOption("--- " .. "Minimal Display Bars" .. " ---")
     
     -- Display Bar Name
     contextMenu:addOption("==/   " .. getText("ContextMenu_MinimalDisplayBars_".. generic_bar.idName .."") .. "   \\==")
@@ -1885,6 +1969,9 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
                             generic_bar:setHeight(oldW)
                             
                             MinimalDisplayBars.io_persistence.store(generic_bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[generic_bar.coopNum])
+                            
+                            -- recreate MoveBarsTogether panel
+                            createMoveBarsTogetherPanel(generic_bar.playerIndex)
                         end
                         return
                     end)
@@ -1905,6 +1992,9 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
                             generic_bar:setHeight(oldW)
                             
                             MinimalDisplayBars.io_persistence.store(generic_bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[generic_bar.coopNum])
+                            
+                            -- recreate MoveBarsTogether panel
+                            createMoveBarsTogetherPanel(generic_bar.playerIndex)
                         end
                         return
                     end)
@@ -2255,6 +2345,8 @@ local function createUI(playerIndex, isoPlayer)
             -- Override settings
             MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["imageName"] = DEFAULT_SETTINGS[bar.idName]["imageName"]
             bar.imageName = DEFAULT_SETTINGS[bar.idName]["imageName"]
+            MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["imageShowBack"] = DEFAULT_SETTINGS[bar.idName]["imageShowBack"]
+            bar.imageShowBack = DEFAULT_SETTINGS[bar.idName]["imageShowBack"]
             
             -- Make sure bars are toggled correctly
             if barHP[playerIndex].moveWithMouse ~= bar.moveWithMouse then

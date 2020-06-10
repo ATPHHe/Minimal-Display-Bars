@@ -25,6 +25,7 @@ ContextMenu_TR = {
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Ekran Çubugunu Sifirla",
     ContextMenu_MinimalDisplayBars_Set_Vertical = "Göstergeyi Dikey Durumuna Getir",
     ContextMenu_MinimalDisplayBars_Set_Horizontal = "Göstergeyi Yatay Durumuna Getir",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Gösterge Yüksekligini ve Genisligini Ayarla",
     ContextMenu_MinimalDisplayBars_Set_Color = "Rengini Deðiþtir",
     ContextMenu_MinimalDisplayBars_Hide = "Göstergeyi Gizle",
     
@@ -39,6 +40,10 @@ ContextMenu_TR = {
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Mutsuzluk Seviyesi",
     ContextMenu_MinimalDisplayBars_temperature = "Sýcaklýk",
     ContextMenu_MinimalDisplayBars_calorie = "Kalori",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Tasimak için Sol tiklayin Tut ve Sürükle.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Daha fazla seçenek için Sag Tiklayin.",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "AÇIK",

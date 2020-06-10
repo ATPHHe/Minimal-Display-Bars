@@ -25,7 +25,8 @@ ContextMenu_RU = {
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Сбросить панель отображения",
     ContextMenu_MinimalDisplayBars_Set_Vertical = "Вертикальное отображение",
     ContextMenu_MinimalDisplayBars_Set_Horizontal = "Горизонтальное отображение",
-    ContextMenu_MinimalDisplayBars_Set_Color = "Установить цвет",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Установите отображение высоту и ширину",
+    ContextMenu_MinimalDisplayBars_Set_Color = "Установить отображение цвет",
     ContextMenu_MinimalDisplayBars_Hide = "Скрыть панель",
     
     -- Display Names
@@ -44,6 +45,10 @@ ContextMenu_RU = {
     /* ContextMenu_MinimalDisplayBars_catchAColdStrength = "Простуда", -- getCatchACold() */
     /* ContextMenu_MinimalDisplayBars_coldStrength = "Слабость иммунитета", -- getColdStrength() */
     /* ContextMenu_MinimalDisplayBars_poison = "Яд", -- getPoisonLevel() */
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Удерживая левую кнопку мыши, перетащите для перемещения.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Щелкните правой кнопкой мыши, чтобы увидеть больше вариантов.",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "Да",

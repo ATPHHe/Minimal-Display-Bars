@@ -24,6 +24,7 @@ ContextMenu_AF = {
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Stel vertoonbalk weer in",
     ContextMenu_MinimalDisplayBars_Set_Vertical = "Stel vertikaal",
     ContextMenu_MinimalDisplayBars_Set_Horizontal = "Stel horisontaal",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Stel hoogte / breedte in",
     ContextMenu_MinimalDisplayBars_Set_Color = "Stel kleur in",
     ContextMenu_MinimalDisplayBars_Hide = "Verberg",
     
@@ -38,6 +39,10 @@ ContextMenu_AF = {
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Ongelukkigheid Vlak",
     ContextMenu_MinimalDisplayBars_temperature = "Temperatuur",
     ContextMenu_MinimalDisplayBars_calorie = "Kalorieë",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Links klik, hou en sleep om te skuif.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Regsklik vir meer opsies.",
     
     -- OTHER
     ContextMenu_MinimalDisplayBars_ON = "AAN",

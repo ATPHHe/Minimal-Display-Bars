@@ -45,8 +45,14 @@
     ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "右クリックしてその他のオプションを表示します。",
     
     -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "すべて",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "設定を復元する",
     ContextMenu_MinimalDisplayBars_ON = "オン",
     ContextMenu_MinimalDisplayBars_OFF = "オフ",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "アイコンサイズ",
+    ContextMenu_MinimalDisplayBars_Width = "幅",
+    ContextMenu_MinimalDisplayBars_Height = "高さ",
     
     
 }

@@ -3,7 +3,7 @@
 ISGenericMiniDisplayBar = ISPanel:derive("ISGenericMiniDisplayBar")
 
 ISGenericMiniDisplayBar.alwaysBringToTop = true
-
+ISGenericMiniDisplayBar.isEditing = false
 
 local FONT_HGT_SMALL = getTextManager():getFontHeight(UIFont.Small)
 local FONT_HGT_MEDIUM = getTextManager():getFontHeight(UIFont.Medium)
@@ -77,6 +77,13 @@ function ISGenericMiniDisplayBar:onMouseMoveOutside(dx, dy, ...)
     
     self.showTooltip = false
     
+    if self.moving then 
+        if MinimalDisplayBars.displayBarPropertiesPanel then
+            MinimalDisplayBars.displayBarPropertiesPanel.textEntryX:setText(tostring(self:getX()))
+            MinimalDisplayBars.displayBarPropertiesPanel.textEntryY:setText(tostring(self:getY()))
+        end
+    end
+    
     --[[
     if not self.moveWithMouse then return; end
     self.mouseOver = false;
@@ -99,6 +106,13 @@ function ISGenericMiniDisplayBar:onMouseMove(dx, dy, ...)
     
     self.showTooltip = true
     self:bringToTop();
+    
+    if self.moving then 
+        if MinimalDisplayBars.displayBarPropertiesPanel and self == MinimalDisplayBars.displayBarPropertiesPanel.displayBar then
+            MinimalDisplayBars.displayBarPropertiesPanel.textEntryX:setText(tostring(self:getX()))
+            MinimalDisplayBars.displayBarPropertiesPanel.textEntryY:setText(tostring(self:getY()))
+        end
+    end
     
     --[[
     if not self.moveWithMouse then return; end
@@ -166,33 +180,76 @@ function ISGenericMiniDisplayBar:getImageBG(isoPlayer, index)
     local goodBadNeutral = moodles:getGoodBadNeutral(index)
     local moodleLevel = moodles:getMoodleLevel(index)
     
-    if goodBadNeutral == 0 then
-        return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_4.png")
-    elseif goodBadNeutral == 1 then
-        if moodleLevel == 1 then
-            Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_1.png")
-        elseif moodleLevel == 2 then
-            Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_2.png")
-        elseif moodleLevel == 3 then
-            Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_3.png")
-        elseif moodleLevel == 4 then
-            Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_4.png")
-        end
-    elseif goodBadNeutral == 2 then
-        if moodleLevel == 0 then
+    local switchA = 
+    {
+        [0] = function()
             return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_4.png")
-        elseif moodleLevel == 1 then
-            return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Bad_1.png")
-        elseif moodleLevel == 2 then
-            return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Bad_2.png")
-        elseif moodleLevel == 3 then
-            return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Bad_3.png")
-        elseif moodleLevel == 4 then
-            return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Bad_4.png")
-        end
+        end,
+        [1] = function()
+            
+            local switchB = 
+            {
+                [1] = function()
+                    return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_1.png")
+                end,
+                [2] = function()
+                    return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_2.png")
+                end,
+                [3] = function()
+                    return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_3.png")
+                end,
+                [4] = function()
+                    return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_4.png")
+                end,
+            }
+            
+            local sFunc = switchB[moodleLevel]
+            if (sFunc) then
+                return sFunc()
+            else
+                return nil
+            end
+            
+        end,
+        [2] = function()
+            
+            local switchB = 
+            {
+                [0] = function()
+                    return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Good_4.png")
+                end,
+                [1] = function()
+                    return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Bad_1.png")
+                end,
+                [2] = function()
+                    return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Bad_2.png")
+                end,
+                [3] = function()
+                    return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Bad_3.png")
+                end,
+                [4] = function()
+                    return Texture.getSharedTexture("media/ui/Moodles/Moodle_Bkg_Bad_4.png")
+                end,
+            }
+            
+            local sFunc = switchB[moodleLevel]
+            if (sFunc) then
+                return sFunc()
+            else
+                return nil
+            end
+            
+        end,
+    }
+    
+    local sFunc = switchA[goodBadNeutral]
+    
+    if (sFunc) then
+        return sFunc()
+    else
+        return nil
     end
     
-    return nil
 end
 
 function ISGenericMiniDisplayBar:render(...)
@@ -228,6 +285,11 @@ function ISGenericMiniDisplayBar:render(...)
             self:setY(self.y - pDY)
             self.parentOldY = self.parent.y
         end
+        
+        if MinimalDisplayBars.displayBarPropertiesPanel and self == MinimalDisplayBars.displayBarPropertiesPanel.displayBar then
+            MinimalDisplayBars.displayBarPropertiesPanel.textEntryX:setText(tostring(self:getX()))
+            MinimalDisplayBars.displayBarPropertiesPanel.textEntryY:setText(tostring(self:getY()))
+        end
     else
         self.parentOldX = nil
         self.parentOldY = nil
@@ -249,54 +311,56 @@ function ISGenericMiniDisplayBar:render(...)
         if not self:isVisible() then self:setVisible(true) end
     end
     
-    -- Automatically picks the way that the bar will decrease and increase visually.
-    local texBG
-    if self.idName == "hunger" then texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Hungry")) )
-    elseif self.idName == "thirst" then texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Thirst")) )
-    elseif self.idName == "endurance" then texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Endurance")) )
-    elseif self.idName == "fatigue" then texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Tired")) )
-    elseif self.idName == "boredomlevel" then texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Bored")) )
-    elseif self.idName == "unhappynesslevel" then texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Unhappy")) )
-    elseif self.idName == "temperature" then 
-        texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Hyperthermia")) ) 
-        if not texBG then texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Hypothermia")) ) end
+    if self.imageShowBack then
+        
+        -- Automatically picks the way that the bar will show moodle status via an icon/image.
+        local switchMoodle = 
+        {
+            ["hunger"] = function()
+                self.texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString( "Hungry" )) )
+            end,
+            ["thirst"] = function()
+                self.texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString( "Thirst" )) )
+            end,
+            ["endurance"] = function()
+                self.texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString( "Endurance" )) )
+            end,
+            ["fatigue"] = function()
+                self.texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString( "Tired" )) )
+            end,
+            ["boredomlevel"] = function()
+                self.texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString( "Bored" )) )
+            end,
+            ["unhappynesslevel"] = function()
+                self.texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString( "Unhappy" )) )
+            end,
+            ["temperature"] = function()
+                self.texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString( "Hyperthermia" )) ) 
+                if not self.texBG then self.texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString( "Hypothermia" )) ) end
+            end,
+        }
+        
+        local switchFunc = switchMoodle[self.idName]
+        if (switchFunc) then
+            switchFunc()
+        end
+        
+        --[[
+        if self.idName == "hunger" then self.texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Hungry")) )
+        elseif self.idName == "thirst" then self.texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Thirst")) )
+        elseif self.idName == "endurance" then self.texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Endurance")) )
+        elseif self.idName == "fatigue" then self.texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Tired")) )
+        elseif self.idName == "boredomlevel" then self.texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Bored")) )
+        elseif self.idName == "unhappynesslevel" then self.texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Unhappy")) )
+        elseif self.idName == "temperature" then 
+            self.texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Hyperthermia")) ) 
+            if not self.texBG then self.texBG = self:getImageBG(self.isoPlayer, MoodleType.ToIndex(MoodleType.FromString("Hypothermia")) ) end
+        end
+        --]]
     end
     
-    local imgOffset = 14
-    if self.width > self.height then
-        -- Horizontal
-        innerWidth = math.floor((self.innerWidth * value) + 0.5)
-        innerHeight = self.innerHeight
-        border_t = self.borderSizes.t
+    if self.isVertical then
         
-        -- SHOW IMAGE Horizontal
-        if self.showImage and self.imageName then
-            local h = self:getHeight() + imgOffset
-            local tex = getTexture(self.imageName)
-            --local texBG = getTexture("media/ui/Moodles/Moodle_Bkg_Bad_1.png")
-            if tex then
-                local texH = tex:getHeightOrig()
-                local texW = tex:getWidthOrig()
-                local texLargeVal = (texH > texW) and texH or texW
-                
-                local texScale = h / texLargeVal
-                
-                local w = h
-                local x = -h
-                local y = -imgOffset/2
-                
-                -- Draw images/textures
-                --self:drawTextureScaled(tex, -imgOffset/2, -w, w, w, 1, 1, 1, 1)
-                if texBG and self.idName ~= "calorie" then
-                    self:drawTextureScaled(texBG, x, y, w, h, 1, 1, 1, 1)
-                end
-                
-                if self.idName ~= "temperature" and self.idName ~= "calorie" then x = x + 1; y = y + 1; end
-                self:drawTextureScaledAspect(tex, x, y, w, h, 1, 1, 1, 1)
-                --self:drawTextureScaledUniform(tex, (-imgOffset/2), -w, texScale, 1, 1, 1, 1)
-            end
-        end
-    else 
         -- Vertical
         innerWidth = self.innerWidth
         innerHeight = math.floor((self.innerHeight * value) + 0.5)
@@ -304,7 +368,7 @@ function ISGenericMiniDisplayBar:render(...)
         
         -- SHOW IMAGE Vertical
         if self.showImage and self.imageName then
-            local w = self:getWidth() + imgOffset
+            local w = self.imageSize or 22
             local tex = getTexture(self.imageName)
             --local texBG = getTexture("media/ui/Moodles/Moodle_Bkg_Bad_1.png")
             if tex then
@@ -315,16 +379,73 @@ function ISGenericMiniDisplayBar:render(...)
                 local texScale = w / texLargeVal
                 
                 local h = w
-                local x = -imgOffset/2
+                local x = (-w/2) + self:getWidth()/2
                 local y = -w
                 
                 -- Draw images/textures
                 --self:drawTextureScaled(tex, -imgOffset/2, -w, w, w, 1, 1, 1, 1)
-                if texBG and self.idName ~= "calorie" then
-                    self:drawTextureScaled(texBG, x, y, w, h, 1, 1, 1, 1)
+                
+                -- background texture
+                if self.imageShowBack and self.texBG and self.idName ~= "calorie" then
+                    self:drawTextureScaled(self.texBG, x, y, w, h, 1, 1, 1, 1)
                 end
                 
-                if self.idName ~= "temperature" and self.idName ~= "calorie" then x = x + 1; y = y + 1; end
+                if self.idName ~= "temperature" and self.idName ~= "calorie" then 
+                    if w % 2 == 0 then
+                        x = x + 1; 
+                        y = y + 1; 
+                    else
+                        y = y + 1; 
+                    end
+                end
+                
+                -- moodle texture
+                self:drawTextureScaledAspect(tex, x, y, w, h, 1, 1, 1, 1)
+                --self:drawTextureScaledUniform(tex, (-imgOffset/2), -w, texScale, 1, 1, 1, 1)
+            end
+        end
+        
+    else 
+        
+        -- Horizontal
+        innerWidth = math.floor((self.innerWidth * value) + 0.5)
+        innerHeight = self.innerHeight
+        border_t = self.borderSizes.t
+        
+        -- SHOW IMAGE Horizontal
+        if self.showImage and self.imageName then
+            local h = self.imageSize or 22
+            local tex = getTexture(self.imageName)
+            --local texBG = getTexture("media/ui/Moodles/Moodle_Bkg_Bad_1.png")
+            if tex then
+                local texH = tex:getHeightOrig()
+                local texW = tex:getWidthOrig()
+                local texLargeVal = (texH > texW) and texH or texW
+                
+                local texScale = h / texLargeVal
+                
+                local w = h
+                local x = -h 
+                local y = (-h/2) + self:getHeight()/2
+                
+                -- Draw images/textures
+                --self:drawTextureScaled(tex, -imgOffset/2, -w, w, w, 1, 1, 1, 1)
+                
+                -- background texture
+                if self.imageShowBack and self.texBG and self.idName ~= "calorie" then
+                    self:drawTextureScaled(self.texBG, x, y, w, h, 1, 1, 1, 1)
+                end
+                
+                if self.idName ~= "temperature" and self.idName ~= "calorie" then 
+                    if h % 2 == 0 then
+                        x = x + 1; 
+                        y = y + 1; 
+                    else
+                        y = y + 1; 
+                    end
+                end
+                
+                -- moodle texture
                 self:drawTextureScaledAspect(tex, x, y, w, h, 1, 1, 1, 1)
                 --self:drawTextureScaledUniform(tex, (-imgOffset/2), -w, texScale, 1, 1, 1, 1)
             end
@@ -370,18 +491,18 @@ function ISGenericMiniDisplayBar:render(...)
                 tColor.blue = 1
             end
             
-            if self.width > self.height then
-                -- Horizontal
-                innerWidth = 1
-                innerHeight = self.innerHeight
-                tX = math.floor((self.innerWidth * v) + 0.5)
-                tY = self.borderSizes.t
-            else 
+            if self.isVertical then
                 -- Vertical
                 innerWidth = self.innerWidth
                 innerHeight = 1
                 tX = self.borderSizes.l
                 tY = self.borderSizes.t + ((self.height - self.borderSizes.t - self.borderSizes.b) - math.floor((self.innerHeight * v) + 0.5))
+            else 
+                -- Horizontal
+                innerWidth = 1
+                innerHeight = self.innerHeight
+                tX = math.floor((self.innerWidth * v) + 0.5)
+                tY = self.borderSizes.t
             end
             
             -- ( x, y, w, h, a, r, g, b)
@@ -395,17 +516,6 @@ function ISGenericMiniDisplayBar:render(...)
                 tColor.green,
                 tColor.blue)
         end
-    end
-    
-    if self.moveBarsTogether and self.moveBarsTogetherRectangle then
-        local topLeft = {0, 0}
-        local topRight = {0, 0}
-        local botLeft = {0, 0}
-        local botRight = {0, 0}
-        for k, v in pairs(MinimalDisplayBars.displayBars) do
-            
-        end
-        self.rectangle = {topLeft, topRight, botLeft, botRight}
     end
     
     -- Indicate that the user/player is moving or resizing this display bar.
@@ -588,7 +698,7 @@ function ISGenericMiniDisplayBar:render(...)
         UIFont.Small)]]
 
     -- Save to file if the bar was suddenly moved.
-    if self.moving == false then
+    if self.moving == false and not ISGenericMiniDisplayBar.isEditing then
         if self.oldX ~= self.x or self.oldY ~= self.y then
             self.oldX = self.x
             self.oldY = self.y
@@ -599,16 +709,20 @@ function ISGenericMiniDisplayBar:render(...)
     end
     
     -- Force to the top of UI if true.
-    if self.alwaysBringToTop == true and (ISGenericMiniDisplayBar.alwaysBringToTop == true or self.idName == "menu") then self:bringToTop() end
+    if self.alwaysBringToTop == true 
+            and (ISGenericMiniDisplayBar.alwaysBringToTop == true 
+            or self.idName == "menu") then 
+        self:bringToTop() 
+    end
     
     return panel
 end
 
-function ISGenericMiniDisplayBar:resetToconfigTable(...)
-    --local panel = ISPanel.resetToconfigTable(self, ...)
+function ISGenericMiniDisplayBar:resetToConfigTable(...)
+    --local panel = ISPanel.resetToConfigTable(self, ...)
     
-    self.x = (MinimalDisplayBars.configTables[self.coopNum][self.idName]["x"] + self.xOffset)
-    self.y = (MinimalDisplayBars.configTables[self.coopNum][self.idName]["y"] + self.yOffset)
+    self.x = ( MinimalDisplayBars.configTables[self.coopNum][self.idName]["x"] + self.xOffset )
+    self.y = ( MinimalDisplayBars.configTables[self.coopNum][self.idName]["y"] + self.yOffset )
     self.oldX = self.x
     self.oldY = self.y
     
@@ -638,6 +752,7 @@ function ISGenericMiniDisplayBar:resetToconfigTable(...)
     
     self.isCompact = MinimalDisplayBars.configTables[self.coopNum][self.idName]["isCompact"]
     
+    --[[
     if self.isVertical then
         if self.width > self.height then
             local oldW = tonumber(self.oldWidth)
@@ -653,10 +768,13 @@ function ISGenericMiniDisplayBar:resetToconfigTable(...)
             self:setHeight(oldW)
         end
     end
+    --]]
     
     self.imageName = MinimalDisplayBars.configTables[self.coopNum][self.idName]["imageName"]
+    self.imageSize = MinimalDisplayBars.configTables[self.coopNum][self.idName]["imageSize"]
     self.imageShowBack = MinimalDisplayBars.configTables[self.coopNum][self.idName]["imageShowBack"]
     self.showImage = MinimalDisplayBars.configTables[self.coopNum][self.idName]["showImage"]
+    
     self.moveBarsTogether = MinimalDisplayBars.configTables[self.coopNum]["moveBarsTogether"]
     
 	self:setVisible(MinimalDisplayBars.configTables[self.coopNum][self.idName]["isVisible"])
@@ -728,6 +846,7 @@ function ISGenericMiniDisplayBar:new(
     
     panel.isCompact = configTable[idName]["isCompact"]
     
+    --[[
     if panel.isVertical then
         if panel.width > panel.height then
             local oldW = tonumber(panel.oldWidth)
@@ -743,6 +862,7 @@ function ISGenericMiniDisplayBar:new(
             panel:setHeight(oldW)
         end
     end
+    --]]
     
 	panel:setVisible(configTable[idName]["isVisible"])
     
@@ -750,9 +870,13 @@ function ISGenericMiniDisplayBar:new(
     --panel:setAlwaysOnTop(true)
     
     panel.imageName = configTable[idName]["imageName"]
+    panel.imageSize = configTable[idName]["imageSize"]
     panel.imageShowBack = configTable[idName]["imageShowBack"]
     panel.showImage = configTable[idName]["showImage"]
+    
     panel.moveBarsTogether = configTable["moveBarsTogether"]
+    
+    ISGenericMiniDisplayBar.isEditing = true
     
 	return panel
 end

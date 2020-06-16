@@ -1,7 +1,7 @@
 ContextMenu_CN = {
     
     
-    ----- ContextMenu (Chinese/Mandarin) -----
+    ----- ContextMenu (Chinese/Mandarin - Simplified) -----
     
     ----- Title for Display Bars when Right-Clicked -----
     ContextMenu_MinimalDisplayBars_Title = "最小显示栏",
@@ -45,8 +45,14 @@ ContextMenu_CN = {
     ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "右键单击以获取更多选项。",
     
     -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "所有",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "恢复您的设置",
     ContextMenu_MinimalDisplayBars_ON = "上",
     ContextMenu_MinimalDisplayBars_OFF = "关",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "图标大小",
+    ContextMenu_MinimalDisplayBars_Width = "宽度",
+    ContextMenu_MinimalDisplayBars_Height = "高度",
     
     
 }

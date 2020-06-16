@@ -45,8 +45,14 @@ ContextMenu_CS = {
     ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Klepnutím pravým tlacítkem myši zobrazíte další možnosti.",
     
     -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Všechno",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "OBNOVTE VAŠE NASTAVENÍ",
     ContextMenu_MinimalDisplayBars_ON = "ZAPNUTÝ",
     ContextMenu_MinimalDisplayBars_OFF = "VYPNUT",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Velikost Ikony",
+    ContextMenu_MinimalDisplayBars_Width = "Šírka",
+    ContextMenu_MinimalDisplayBars_Height = "Výška",
     
     
 }

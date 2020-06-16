@@ -45,8 +45,14 @@ ContextMenu_PL = {
     ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Kliknij prawym przyciskiem myszy, aby uzyskac wiecej opcji.",
     
     -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Wszystko",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "PRZYWRÓC SWOJE USTAWIENIA",
     ContextMenu_MinimalDisplayBars_ON = "WLACZ",
     ContextMenu_MinimalDisplayBars_OFF = "WYLACZ",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Rozmiar Ikony",
+    ContextMenu_MinimalDisplayBars_Width = "Szerokosc",
+    ContextMenu_MinimalDisplayBars_Height = "Wysokosc",
     
     
 }

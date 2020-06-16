@@ -1,4 +1,4 @@
-ContextMenu_EN = {
+ContextMenu_EE = {
     
     
     ----- ContextMenu (English - EE) -----
@@ -45,8 +45,14 @@ ContextMenu_EN = {
     ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Right Click for more options.",
     
     -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "All",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "RESTORE YOUR SETTINGS",
     ContextMenu_MinimalDisplayBars_ON = "ON",
     ContextMenu_MinimalDisplayBars_OFF = "OFF",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Icon Size",
+    ContextMenu_MinimalDisplayBars_Width = "Width",
+    ContextMenu_MinimalDisplayBars_Height = "Height",
     
     
 }

@@ -51,8 +51,14 @@ ContextMenu_RU = {
     ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Щелкните правой кнопкой мыши, чтобы увидеть больше вариантов.",
     
     -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Все",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "ВОССТАНОВИТЕ ВАШИ НАСТРОЙКИ",
     ContextMenu_MinimalDisplayBars_ON = "Да",
     ContextMenu_MinimalDisplayBars_OFF = "Нет",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Размер Значка",
+    ContextMenu_MinimalDisplayBars_Width = "Ширина",
+    ContextMenu_MinimalDisplayBars_Height = "Высота",
     
     
 }

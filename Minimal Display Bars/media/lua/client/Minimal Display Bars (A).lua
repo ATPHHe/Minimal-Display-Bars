@@ -4,13 +4,12 @@
 --****************************
 --* Coded by: ATPHHe
 --* Date Created: 02/19/2020
---* Date Modified: 06/10/2020
+--* Date Modified: 06/16/2020
 --*******************************
 --
 --============================================================
 
 MinimalDisplayBars = {}
-
 
 MinimalDisplayBars.MOD_ID = "MinimalDisplayBars"
 
@@ -18,8 +17,8 @@ local gameVersion = getCore():getVersionNumber()
 MinimalDisplayBars.gameVersionNum = 0
 
 local tempIndex, _ = string.find(gameVersion, " ")
+
 if tempIndex ~= nil then
-    
     MinimalDisplayBars.gameVersionNum = tonumber(string.sub(gameVersion, 0, tempIndex))
     if MinimalDisplayBars.gameVersionNum == nil then 
         tempIndex, _ = string.find(gameVersion, ".") + 1 
@@ -60,7 +59,7 @@ local function tprint(tbl, indent)
     end
 end
 
-local function deepcompare(t1,t2,ignore_mt)
+local function deepcompare(t1, t2, ignore_mt)
     local ty1 = type(t1)
     local ty2 = type(t2)
     if ty1 ~= ty2 then return false end
@@ -80,7 +79,7 @@ local function deepcompare(t1,t2,ignore_mt)
     return true
 end
 
-local function compare_and_insert(t1, t2, ignore_mt)
+function MinimalDisplayBars.compare_and_insert(t1, t2, ignore_mt)
     
     local isEqual = true
     
@@ -93,20 +92,43 @@ local function compare_and_insert(t1, t2, ignore_mt)
         isEqual = false
     end
     
-    for k1,v1 in pairs(t1) do
-        local v2 = t2[k1]
-        if (v2 == nil) then 
-            t2[k1] = v1
-            isEqual = false
+    if type(t1) == "table" then
+        for k1,v1 in pairs(t1) do
+            local v2 = t2[k1]
+            if (v2 == nil) then 
+                t2[k1] = v1
+                isEqual = false
+            end
+            
+            if type(t1[k1]) == "table" then
+                isEqual = MinimalDisplayBars.compare_and_insert(t1[k1], t2[k1], ignore_mt)
+            end
+            
         end
-        
-        if type(t1[k1]) == "table" then
-            isEqual = compare_and_insert(t1[k1], t2[k1], ignore_mt)
-        end
-        
     end
     
     return isEqual
+end
+
+function MinimalDisplayBars.deepcopy(orig, copies)
+    copies = copies or {}
+    local orig_type = type(orig)
+    local copy
+    if orig_type == 'table' then
+        if copies[orig] then
+            copy = copies[orig]
+        else
+            copy = {}
+            copies[orig] = copy
+            for orig_key, orig_value in pairs(orig) do
+                copy[MinimalDisplayBars.deepcopy(orig_key, copies)] = MinimalDisplayBars.deepcopy(orig_value, copies)
+            end
+            setmetatable(copy, MinimalDisplayBars.deepcopy(getmetatable(orig), copies))
+        end
+    else -- number, string, boolean, etc
+        copy = orig
+    end
+    return copy
 end
 
 -- Splits the string apart.
@@ -293,64 +315,64 @@ end;
 -- Format items for the purpose of restoring
 writers = {
 	["nil"] = function (file, item)
-			file:write("nil");
-		end;
+        file:write("nil");
+    end;
 	["number"] = function (file, item)
-			file:write(tostring(item));
-		end;
+        file:write(tostring(item));
+    end;
 	["string"] = function (file, item)
-			file:write(string.format("%q", item));
-		end;
+        file:write(string.format("%q", item));
+    end;
 	["boolean"] = function (file, item)
-			if item then
-				file:write("true");
-			else
-				file:write("false");
-			end
-		end;
+        if item then
+            file:write("true");
+        else
+            file:write("false");
+        end
+    end;
 	["table"] = function (file, item, level, objRefNames)
-			local refIdx = objRefNames[item];
-			if refIdx then
-				-- Table with multiple references
-				file:write("multiRefObjects["..refIdx.."]");
-			else
-				-- Single use table
-				file:write("{\r\n");
-				for k, v in pairs(item) do
-					writeIndent(file, level+1);
-					file:write("[");
-					write(file, k, level+1, objRefNames);
-					file:write("] = ");
-					write(file, v, level+1, objRefNames);
-					file:write(";\r\n");
-				end
-				writeIndent(file, level);
-				file:write("}");
-			end;
-		end;
+        local refIdx = objRefNames[item];
+        if refIdx then
+            -- Table with multiple references
+            file:write("multiRefObjects["..refIdx.."]");
+        else
+            -- Single use table
+            file:write("{\r\n");
+            for k, v in pairs(item) do
+                writeIndent(file, level+1);
+                file:write("[");
+                write(file, k, level+1, objRefNames);
+                file:write("] = ");
+                write(file, v, level+1, objRefNames);
+                file:write(";\r\n");
+            end
+            writeIndent(file, level);
+            file:write("}");
+        end;
+    end;
 	["function"] = function (file, item)
-			-- Does only work for "normal" functions, not those
-			-- with upvalues or c functions
-			local dInfo = debug.getinfo(item, "uS");
-			if dInfo.nups > 0 then
-				file:write("nil --[[functions with upvalue not supported]]");
-			elseif dInfo.what ~= "Lua" then
-				file:write("nil --[[non-lua function not supported]]");
-			else
-				local r, s = pcall(string.dump,item);
-				if r then
-					file:write(string.format("loadstring(%q)", s));
-				else
-					file:write("nil --[[function could not be dumped]]");
-				end
-			end
-		end;
+        -- Does only work for "normal" functions, not those
+        -- with upvalues or c functions
+        local dInfo = debug.getinfo(item, "uS");
+        if dInfo.nups > 0 then
+            file:write("nil --[[functions with upvalue not supported]]");
+        elseif dInfo.what ~= "Lua" then
+            file:write("nil --[[non-lua function not supported]]");
+        else
+            local r, s = pcall(string.dump,item);
+            if r then
+                file:write(string.format("loadstring(%q)", s));
+            else
+                file:write("nil --[[function could not be dumped]]");
+            end
+        end
+    end;
 	["thread"] = function (file, item)
-			file:write("nil --[[thread]]\r\n");
-		end;
+        file:write("nil --[[thread]]\r\n");
+    end;
 	["userdata"] = function (file, item)
-			file:write("nil --[[userdata]]\r\n");
-		end;
+        file:write("nil --[[userdata]]\r\n");
+    end;
 }
 
 -- Testing Persistence
@@ -428,8 +450,9 @@ local DEFAULT_SETTINGS = {
         ["isCompact"] = false,
         ["imageShowBack"] = false,
         ["imageName"] = "",
+        ["imageSize"] = 22,
         ["showImage"] = false,
-        },
+    },
     ["hp"] = {
         ["x"] = 70,
         ["y"] = 30,
@@ -452,8 +475,9 @@ local DEFAULT_SETTINGS = {
         ["isCompact"] = false,
         ["imageShowBack"] = false,
         ["imageName"] = "",
+        ["imageSize"] = 22,
         ["showImage"] = false,
-        },
+    },
     ["hunger"] = {
         ["x"] = 70 + 15,
         ["y"] = 30,
@@ -476,8 +500,9 @@ local DEFAULT_SETTINGS = {
         ["isCompact"] = false,
         ["imageShowBack"] = true,
         ["imageName"] = "media/ui/Moodles/Moodle_Icon_Hungry.png",
+        ["imageSize"] = 22,
         ["showImage"] = false,
-        },
+    },
     ["thirst"] = {
         ["x"] = 85 + (8 * 1),
         ["y"] = 30,
@@ -500,8 +525,9 @@ local DEFAULT_SETTINGS = {
         ["isCompact"] = false,
         ["imageShowBack"] = true,
         ["imageName"] = "media/ui/Moodles/Moodle_Icon_Thirsty.png",
+        ["imageSize"] = 22,
         ["showImage"] = false,
-        },
+    },
     ["endurance"] = {
         ["x"] = 85 + (8 * 2),
         ["y"] = 30,
@@ -524,8 +550,9 @@ local DEFAULT_SETTINGS = {
         ["isCompact"] = false,
         ["imageShowBack"] = true,
         ["imageName"] = "media/ui/Moodles/Moodle_Icon_Endurance.png",
+        ["imageSize"] = 22,
         ["showImage"] = false,
-        },
+    },
     ["fatigue"] = {
         ["x"] = 85 + (8 * 3),
         ["y"] = 30,
@@ -548,8 +575,9 @@ local DEFAULT_SETTINGS = {
         ["isCompact"] = false,
         ["imageShowBack"] = true,
         ["imageName"] = "media/ui/Moodles/Moodle_Icon_Tired.png",
+        ["imageSize"] = 22,
         ["showImage"] = false,
-        },
+    },
     ["boredomlevel"] = {
         ["x"] = 85 + (8 * 4),
         ["y"] = 30,
@@ -572,8 +600,9 @@ local DEFAULT_SETTINGS = {
         ["isCompact"] = false,
         ["imageShowBack"] = true,
         ["imageName"] = "media/ui/Moodles/Moodle_Icon_Bored.png",
+        ["imageSize"] = 22,
         ["showImage"] = false,
-        },
+    },
     ["unhappynesslevel"] = {
         ["x"] = 85 + (8 * 5),
         ["y"] = 30,
@@ -596,8 +625,9 @@ local DEFAULT_SETTINGS = {
         ["isCompact"] = false,
         ["imageShowBack"] = true,
         ["imageName"] = "media/ui/Moodles/Moodle_Icon_Unhappy.png",
+        ["imageSize"] = 22,
         ["showImage"] = false,
-        },
+    },
     ["temperature"] = {
         ["x"] = 85 + (8 * 6),
         ["y"] = 30,
@@ -620,8 +650,9 @@ local DEFAULT_SETTINGS = {
         ["isCompact"] = false,
         ["imageShowBack"] = true,
         ["imageName"] = "media/ui/MDBTemperature.png",
+        ["imageSize"] = 22,
         ["showImage"] = false,
-        },
+    },
     ["calorie"] = {
         ["x"] = 85 + (8 * 7),
         ["y"] = 30,
@@ -644,11 +675,12 @@ local DEFAULT_SETTINGS = {
         ["isCompact"] = false,
         ["imageShowBack"] = false,
         ["imageName"] = "media/ui/TraitNutritionist.png",
+        ["imageSize"] = 22,
         ["showImage"] = false,
-        },
+    },
         
     
-    }
+}
 
 
 --**********************************************
@@ -658,22 +690,7 @@ local DEFAULT_SETTINGS = {
 --*************************************
 -- Custom Functions
 
-
--- Display bars are stored here so that they may be accessed by the ContextMenu.
-local barMenu = {}
-local barHP = {}
-local barHunger = {}
-local barThirst = {}
-local barEndurance = {}
-local barFatigue = {}
-local barBoredomLevel = {}
-local barUnhappynessLevel = {}
-local barTemperature = {}
-local barCalorie = {}
-
-
 MinimalDisplayBars.displayBars = {} -- This should store all the display bars as they are created.
-
 
 --==========================
 -- Health Functions
@@ -1043,47 +1060,47 @@ local function getMoodletThresholdTables()
             [2] = calcHunger(0.25),
             [3] = calcHunger(0.45),
             [4] = calcHunger(0.70),
-            },
+        },
         ["thirst"] = {
             [1] = calcThirst(0.12), -- 0.12 / 1.00
             [2] = calcThirst(0.25),
             [3] = calcThirst(0.70),
             [4] = calcThirst(0.84),
-            },
+        },
         ["endurance"] = {
             [1] = calcEndurance(0.10), -- 0.10 / 1.00
             [2] = calcEndurance(0.25),
             [3] = calcEndurance(0.50),
             [4] = calcEndurance(0.75),
-            },
+        },
         ["fatigue"] = {
             [1] = calcFatigue(0.60), -- 0.60 / 1.00
             [2] = calcFatigue(0.70),
             [3] = calcFatigue(0.80),
             [4] = calcFatigue(0.90),
-            },
+        },
         ["boredomlevel"] = {
             [1] = calcBoredomLevel(25), -- 25/100
             [2] = calcBoredomLevel(50),
             [3] = calcBoredomLevel(75),
             [4] = calcBoredomLevel(90),
-            },
+        },
         ["unhappynesslevel"] = {
             [1] = calcUnhappynessLevel(20), -- 20/100
             [2] = calcUnhappynessLevel(45),
             [3] = calcUnhappynessLevel(60),
             [4] = calcUnhappynessLevel(80),
-            },
+        },
         ["temperature"] = {
             [1] = calcTemperature(30.0), -- 30.0 C (MIN: 19.0 C, MAX: 41.0 C)
             [2] = calcTemperature(25.0),
             [3] = calcTemperature(36.5),
             [4] = calcTemperature(37.5),
             [5] = calcTemperature(39.0),
-            },
+        },
             
             
-        }
+    }
     
     return t
 end
@@ -1234,7 +1251,7 @@ end
 
 
 
-local function createMoveBarsTogetherPanel(playerIndex)
+function MinimalDisplayBars.createMoveBarsTogetherPanel(playerIndex)
     local minX = 1000000
     local maxX = 0
     local minY = 1000000
@@ -1252,12 +1269,19 @@ local function createMoveBarsTogetherPanel(playerIndex)
         end
     end
     
+    local barHP = MinimalDisplayBars.displayBars[playerIndex]["hp"]
+    
     local moveBarsTogetherRectangle
-    if barHP[playerIndex].parent then
-        barHP[playerIndex].parent:removeFromUIManager()
+    if barHP.parent then
+        barHP.parent:removeFromUIManager()
     end
-    if barHP[playerIndex].moveBarsTogether then
-        moveBarsTogetherRectangle = ISPanel:new(minX, minY, maxX - minX, maxY - minY);
+    if barHP.moveBarsTogether then
+        moveBarsTogetherRectangle = 
+            ISPanel:new(
+                minX, 
+                minY, 
+                maxX - minX, 
+                maxY - minY);
         moveBarsTogetherRectangle:instantiate()
         moveBarsTogetherRectangle:addToUIManager()
         moveBarsTogetherRectangle:setVisible(false)
@@ -1274,8 +1298,7 @@ local function createMoveBarsTogetherPanel(playerIndex)
             end
         end
     end
-    
-    if not barHP[playerIndex].moveBarsTogether then 
+    if not barHP.moveBarsTogether then 
         if moveBarsTogetherRectangle then 
             moveBarsTogetherRectangle:removeFromUIManager()
         end
@@ -1286,7 +1309,11 @@ local function resetBar(bar)
     
     if not bar then return end
     
-    local DEFAULTS = MinimalDisplayBars.io_persistence.load(MinimalDisplayBars.defaultSettingsFileName, MinimalDisplayBars.MOD_ID)
+    local DEFAULTS = 
+        MinimalDisplayBars.io_persistence.load(
+            MinimalDisplayBars.defaultSettingsFileName, 
+            MinimalDisplayBars.MOD_ID)
+    
     for k, v in pairs(MinimalDisplayBars.configTables[bar.coopNum][bar.idName]) do
         
         -- Ignore resetting these toggle options
@@ -1306,12 +1333,15 @@ local function resetBar(bar)
     
     -- reset
     if bar then 
-        bar:resetToconfigTable() 
-        createMoveBarsTogetherPanel(bar.playerIndex)
+        bar:resetToConfigTable() 
+        MinimalDisplayBars.createMoveBarsTogetherPanel(bar.playerIndex)
     end
     
     -- store options
-    MinimalDisplayBars.io_persistence.store(bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[bar.coopNum])
+    MinimalDisplayBars.io_persistence.store(
+        bar.fileSaveLocation, 
+        MinimalDisplayBars.MOD_ID, 
+        MinimalDisplayBars.configTables[bar.coopNum])
     
     return
 end
@@ -1366,7 +1396,7 @@ local function toggleCompact(bar)
         MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["isCompact"] = true
         MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["height"] = 75
     end
-    bar:resetToconfigTable() 
+    --bar:resetToConfigTable() 
 end
 
 local function toggleMoveBarsTogether(bar)
@@ -1377,7 +1407,7 @@ local function toggleMoveBarsTogether(bar)
         bar.moveBarsTogether = true
         MinimalDisplayBars.configTables[bar.coopNum]["moveBarsTogether"] = true
     end
-    bar:resetToconfigTable() 
+    --bar:resetToConfigTable()
 end
 
 local function toggleShowImage(bar)
@@ -1388,12 +1418,12 @@ local function toggleShowImage(bar)
         bar.showImage = true
         MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["showImage"] = true
     end
-    bar:resetToconfigTable() 
+    --bar:resetToConfigTable() 
 end
 
 -- ContextMenu
 local contextMenu = nil
-local heightWidthPanel = nil
+MinimalDisplayBars.displayBarPropertiesPanel = nil
 local colorPicker = nil
 
 local function setHeightWidth(bar)
@@ -1402,24 +1432,22 @@ local function setHeightWidth(bar)
     
     ISGenericMiniDisplayBar.alwaysBringToTop = false
     
-    if heightWidthPanel and heightWidthPanel.close then heightWidthPanel:close() end
+    if MinimalDisplayBars.displayBarPropertiesPanel and MinimalDisplayBars.displayBarPropertiesPanel.close then 
+        MinimalDisplayBars.displayBarPropertiesPanel:close() 
+    end
     
-    local onApply = function()
-                        
-                    end
-    local onReset = function()
-                        
-                    end
-    local onCancel = function()
-                        
-                    end
+    MinimalDisplayBars.displayBarPropertiesPanel = 
+        ISDisplayBarPropertiesPanel:new(
+            bar:getX(), 
+            bar:getY(), 
+            bar)
     
-    heightWidthPanel = ISSetHeightWidthPanel:new(bar.x, bar.y, onApply, onReset, onCancel)
-    bar.heightWidthPanel = heightWidthPanel
-    heightWidthPanel:initialise()
-    bar:addChild(heightWidthPanel)
+    bar.displayBarPropertiesPanel = MinimalDisplayBars.displayBarPropertiesPanel
+    MinimalDisplayBars.displayBarPropertiesPanel:initialise()
+    --bar:addChild(MinimalDisplayBars.displayBarPropertiesPanel)
     
-    heightWidthPanel:setInitialColor(
+    --[[
+    MinimalDisplayBars.displayBarPropertiesPanel:setInitialColor(
         ColorInfo.new(
             bar.color.red, 
             bar.color.green, 
@@ -1427,37 +1455,40 @@ local function setHeightWidth(bar)
             bar.color.alpha)
         )
         
-    heightWidthPanel.pickedTarget = bar
-    heightWidthPanel.pickedFunc = 
-        function(bar, color)
-            bar.color = {
-                red = color.r, 
-                green = color.g, 
-                blue = color.b, 
-                alpha = bar.color.alpha
-            }
-                
-            MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["color"] = bar.color
-            MinimalDisplayBars.io_persistence.store(bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[bar.coopNum])
+    MinimalDisplayBars.displayBarPropertiesPanel.pickedTarget = bar
+    MinimalDisplayBars.displayBarPropertiesPanel.pickedFunc = function(bar, color)
+        bar.color = {
+            red = color.r, 
+            green = color.g, 
+            blue = color.b, 
+            alpha = bar.color.alpha
+        }
             
-            heightWidthPanel:close()
-            
-            return
-        end
+        MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["color"] = bar.color
+        MinimalDisplayBars.io_persistence.store(
+            bar.fileSaveLocation, 
+            MinimalDisplayBars.MOD_ID, 
+            MinimalDisplayBars.configTables[bar.coopNum])
         
+        MinimalDisplayBars.displayBarPropertiesPanel:close()
+        
+        return
+    end
+    --]]
+    
+    MinimalDisplayBars.displayBarPropertiesPanel:addToUIManager()
+    
     local screenHeight = getCore():getScreenHeight()
-    local bottom = (heightWidthPanel.y + heightWidthPanel.height)
+    local bottom = (MinimalDisplayBars.displayBarPropertiesPanel.y + MinimalDisplayBars.displayBarPropertiesPanel.height)
     if bottom > screenHeight then
-        heightWidthPanel.y = (heightWidthPanel.y - (bottom - screenHeight))
+        MinimalDisplayBars.displayBarPropertiesPanel:setY(MinimalDisplayBars.displayBarPropertiesPanel.y - (bottom - screenHeight))
     end
     
     local screenWidth = getCore():getScreenWidth()
-    local right = (heightWidthPanel.x + heightWidthPanel.width)
+    local right = (MinimalDisplayBars.displayBarPropertiesPanel.x + MinimalDisplayBars.displayBarPropertiesPanel.width)
     if right > screenWidth then
-        heightWidthPanel.x = (heightWidthPanel.x - (right - screenWidth))
+        MinimalDisplayBars.displayBarPropertiesPanel:setX(MinimalDisplayBars.displayBarPropertiesPanel.x - (right - screenWidth))
     end
-    
-    heightWidthPanel:addToUIManager()
     
     return
 end
@@ -1485,22 +1516,25 @@ local function setBarColor(bar)
         )
         
     colorPicker.pickedTarget = bar
-    colorPicker.pickedFunc = 
-        function(bar, color)
-            bar.color = {
-                red = color.r, 
-                green = color.g, 
-                blue = color.b, 
-                alpha = bar.color.alpha
-            }
-                
-            MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["color"] = bar.color
-            MinimalDisplayBars.io_persistence.store(bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[bar.coopNum])
+    colorPicker.pickedFunc = function(bar, color)
+        bar.color = 
+        {
+            red = color.r, 
+            green = color.g, 
+            blue = color.b, 
+            alpha = bar.color.alpha
+        }
             
-            colorPicker:close()
-            
-            return
-        end
+        MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["color"] = bar.color
+        MinimalDisplayBars.io_persistence.store(
+            bar.fileSaveLocation, 
+            MinimalDisplayBars.MOD_ID, 
+            MinimalDisplayBars.configTables[bar.coopNum])
+        
+        colorPicker:close()
+        
+        return
+    end
         
     local screenHeight = getCore():getScreenHeight()
     local bottom = (colorPicker.y + colorPicker.height)
@@ -1521,7 +1555,8 @@ end
 
 -- prevent UI from covering this context menu and color picker
 local contextMenuTicks = 0
-Events.OnRenderTick.Add(function()
+
+local function preventContextCoverup()
     
     contextMenuTicks = contextMenuTicks + 1
     
@@ -1531,8 +1566,8 @@ Events.OnRenderTick.Add(function()
         -- Prevent minimal display bars from covering context and other clicked UI.
         if contextMenu and not contextMenu:isVisible() then
             contextMenu = nil
-        elseif heightWidthPanel and not heightWidthPanel:isVisible() then
-            heightWidthPanel = nil
+        elseif MinimalDisplayBars.displayBarPropertiesPanel and not MinimalDisplayBars.displayBarPropertiesPanel:isVisible() then
+            MinimalDisplayBars.displayBarPropertiesPanel = nil
         elseif colorPicker and not colorPicker:isVisible() then
             colorPicker = nil
         end
@@ -1540,12 +1575,12 @@ Events.OnRenderTick.Add(function()
         -- Allow bring to top when all display bar UI's are closed.
         if not contextMenu 
                 and not colorPicker 
-                and not heightWidthPanel then
+                and not MinimalDisplayBars.displayBarPropertiesPanel then
             ISGenericMiniDisplayBar.alwaysBringToTop = true
         end
     end
     
-end)
+end
 
 
 
@@ -1554,8 +1589,11 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
     ISGenericMiniDisplayBar.alwaysBringToTop = false
     
 	contextMenu = ISContextMenu.get(
-                            generic_bar.playerIndex, 
-                            (generic_bar.x + dx), (generic_bar.y + dy), 1, 1)
+        generic_bar.playerIndex, 
+        (generic_bar.x + dx), (generic_bar.y + dy), 
+        1, 1
+    )
+    
     -- Title
 	--contextMenu:addOption("--- " .. getText("ContextMenu_MinimalDisplayBars_Title") .. " ---")
     contextMenu:addOption("--- " .. "Minimal Display Bars" .. " ---")
@@ -1563,37 +1601,48 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
     -- Display Bar Name
     contextMenu:addOption("==/   " .. getText("ContextMenu_MinimalDisplayBars_".. generic_bar.idName .."") .. "   \\==")
     
+    -- Bar HP
+    local barHP = MinimalDisplayBars.displayBars[generic_bar.playerIndex]["hp"]
+    
     -- === Menu ===
     if generic_bar.idName == "menu" then
     
         -- Reset All
-        contextMenu:addOption(getText("ContextMenu_MinimalDisplayBars_Reset"),
-                    generic_bar,
-                    function(generic_bar)
-                    
-                        if not generic_bar then return end
-                        
-                        MinimalDisplayBars.configTables[generic_bar.coopNum] = MinimalDisplayBars.io_persistence.load(MinimalDisplayBars.defaultSettingsFileName, MinimalDisplayBars.MOD_ID)
-                        MinimalDisplayBars.io_persistence.store(generic_bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[generic_bar.coopNum])
-                        
-                        if generic_bar then 
-                            generic_bar:resetToconfigTable() end
-                        
-                        for k, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
-                            if bar then 
-                                bar:resetToconfigTable() 
-                            end
-                        end
-                        
-                        createMoveBarsTogetherPanel(generic_bar.playerIndex)
-                        
-                        return
-                    end)
+        contextMenu:addOption(
+            getText("ContextMenu_MinimalDisplayBars_Reset"),
+            generic_bar,
+            function(generic_bar)
+            
+                if not generic_bar then return end
+                
+                MinimalDisplayBars.configTables[generic_bar.coopNum] = 
+                    MinimalDisplayBars.io_persistence.load(
+                        MinimalDisplayBars.defaultSettingsFileName, 
+                        MinimalDisplayBars.MOD_ID)
+                MinimalDisplayBars.io_persistence.store(
+                    generic_bar.fileSaveLocation, 
+                    MinimalDisplayBars.MOD_ID, 
+                    MinimalDisplayBars.configTables[generic_bar.coopNum])
+                
+                if generic_bar then 
+                    generic_bar:resetToConfigTable() end
+                
+                for _, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
+                    if bar then 
+                        bar:resetToConfigTable() 
+                    end
+                end
+                
+                MinimalDisplayBars.createMoveBarsTogetherPanel(generic_bar.playerIndex)
+                
+                return
+            end)
         
-        --[[local subMenu = ISContextMenu:getNew(contextMenu)
+        --[[
+        local subMenu = ISContextMenu:getNew(contextMenu)
         contextMenu:addSubMenu(
             contextMenu:addOption(getText("ContextMenu_MinimalDisplayBars_Reset_Display_Bar")), subMenu)
-        for k, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
+        for _, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
             if bar then 
                 subMenu:addOption(
                         getText("ContextMenu_MinimalDisplayBars_".. bar.idName ..""),
@@ -1608,53 +1657,64 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
                         end
                 )
             end
-        end]]
+        end
+        --]]
         
         -- Show Display Bar
         local subMenu = ISContextMenu:getNew(contextMenu)
         contextMenu:addSubMenu(
-            contextMenu:addOption(getText("ContextMenu_MinimalDisplayBars_Show_Bar")), subMenu)
+            contextMenu:addOption(getText("ContextMenu_MinimalDisplayBars_Show_Bar")), 
+            subMenu
+        )
         subMenu:addOption(getText("ContextMenu_MinimalDisplayBars_Show_All_Display_Bars"),
-                    generic_bar,
-                    function(generic_bar)
-                        
-                        if not generic_bar then return end
-                        
-                        --[[if generic_bar then 
-                            MinimalDisplayBars.configTables[generic_bar.coopNum][generic_bar.idName]["isVisible"] = true
-                            generic_bar:setVisible(true) 
-                        end]]
-                        
-                        for k, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
-                            if bar then 
-                                MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["isVisible"] = true
-                                bar:setVisible(true) 
-                            end
-                        end
-                        
-                        MinimalDisplayBars.io_persistence.store(generic_bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[generic_bar.coopNum])
-                        
-                        -- recreate MoveBarsTogether panel when showing a display bar
-                        createMoveBarsTogetherPanel(generic_bar.playerIndex)
-                        
-                        return
-                    end)
-        for k, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
+            generic_bar,
+            function(generic_bar)
+                
+                if not generic_bar then return end
+                
+                --[[if generic_bar then 
+                    MinimalDisplayBars.configTables[generic_bar.coopNum][generic_bar.idName]["isVisible"] = true
+                    generic_bar:setVisible(true) 
+                end]]
+                
+                for _, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
+                    if bar then 
+                        MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["isVisible"] = true
+                        bar:setVisible(true) 
+                    end
+                end
+                
+                MinimalDisplayBars.io_persistence.store(
+                    generic_bar.fileSaveLocation, 
+                    MinimalDisplayBars.MOD_ID, 
+                    MinimalDisplayBars.configTables[generic_bar.coopNum])
+                
+                -- recreate MoveBarsTogether panel when showing a display bar
+                MinimalDisplayBars.createMoveBarsTogetherPanel(generic_bar.playerIndex)
+                
+                return
+            end
+        )
+        
+        for _, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
             if bar then 
                 subMenu:addOption(
-                        getText("ContextMenu_MinimalDisplayBars_".. bar.idName ..""),
-                        nil,
-                        function()
-                            MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["isVisible"] = true
-                            bar:setVisible(true)
-                            
-                            MinimalDisplayBars.io_persistence.store(bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[bar.coopNum])
-                            
-                            -- recreate MoveBarsTogether panel when showing a display bar
-                            createMoveBarsTogetherPanel(generic_bar.playerIndex)
-                            
-                            return
-                        end
+                    getText("ContextMenu_MinimalDisplayBars_".. bar.idName ..""),
+                    nil,
+                    function()
+                        MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["isVisible"] = true
+                        bar:setVisible(true)
+                        
+                        MinimalDisplayBars.io_persistence.store(
+                            bar.fileSaveLocation, 
+                            MinimalDisplayBars.MOD_ID, 
+                            MinimalDisplayBars.configTables[bar.coopNum])
+                        
+                        -- recreate MoveBarsTogether panel when showing a display bar
+                        MinimalDisplayBars.createMoveBarsTogetherPanel(generic_bar.playerIndex)
+                        
+                        return
+                    end
                 )
             end
         end
@@ -1662,43 +1722,87 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
         -- Hide Display Bar
         local subMenu = ISContextMenu:getNew(contextMenu)
         contextMenu:addSubMenu(
-            contextMenu:addOption(getText("ContextMenu_MinimalDisplayBars_Hide_Bar")), subMenu)
-        subMenu:addOption(getText("ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars"),
-                    generic_bar,
-                    function(generic_bar)
-                        
-                        if not generic_bar then return end
-                        
-                        for k, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
-                            if bar then 
-                                MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["isVisible"] = false
-                                bar:setVisible(false) 
-                            end
-                        end
-                        
-                        MinimalDisplayBars.io_persistence.store(generic_bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[generic_bar.coopNum])
-                        
-                        -- recreate MoveBarsTogether panel when hiding a display bar
-                        createMoveBarsTogetherPanel(generic_bar.playerIndex)
-                        
-                        return
-                    end)
-        for k, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
+            contextMenu:addOption(getText("ContextMenu_MinimalDisplayBars_Hide_Bar")), 
+            subMenu
+        )
+        subMenu:addOption(
+            getText("ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars"),
+            generic_bar,
+            function(generic_bar)
+                
+                if not generic_bar then return end
+                
+                for _, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
+                    if bar then 
+                        MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["isVisible"] = false
+                        bar:setVisible(false) 
+                    end
+                end
+                
+                MinimalDisplayBars.io_persistence.store(
+                    generic_bar.fileSaveLocation, 
+                    MinimalDisplayBars.MOD_ID, 
+                    MinimalDisplayBars.configTables[generic_bar.coopNum])
+                
+                -- recreate MoveBarsTogether panel when hiding a display bar
+                MinimalDisplayBars.createMoveBarsTogetherPanel(generic_bar.playerIndex)
+                
+                return
+            end
+        )
+        
+        for _, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
             if bar then 
                 subMenu:addOption(
-                        getText("ContextMenu_MinimalDisplayBars_".. bar.idName ..""),
-                        nil,
-                        function()
-                            MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["isVisible"] = false
-                            bar:setVisible(false)
-                            
-                            MinimalDisplayBars.io_persistence.store(bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[bar.coopNum])
-                            
-                            -- recreate MoveBarsTogether panel when hiding a display bar
-                            createMoveBarsTogetherPanel(generic_bar.playerIndex)
-                            
-                            return
-                        end
+                    getText("ContextMenu_MinimalDisplayBars_".. bar.idName ..""),
+                    nil,
+                    function()
+                        MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["isVisible"] = false
+                        bar:setVisible(false)
+                        
+                        MinimalDisplayBars.io_persistence.store(
+                            bar.fileSaveLocation, 
+                            MinimalDisplayBars.MOD_ID, 
+                            MinimalDisplayBars.configTables[bar.coopNum])
+                        
+                        -- recreate MoveBarsTogether panel when hiding a display bar
+                        MinimalDisplayBars.createMoveBarsTogetherPanel(generic_bar.playerIndex)
+                        
+                        return
+                    end
+                )
+            end
+        end
+        
+        -- Set Height/Width
+        local subMenu = ISContextMenu:getNew(contextMenu)
+        contextMenu:addSubMenu(
+            contextMenu:addOption(getText("ContextMenu_MinimalDisplayBars_Set_HeightWidth")), 
+            subMenu
+        )
+        --[[
+        subMenu:addOption(
+            getText("ContextMenu_MinimalDisplayBars_All"),
+            generic_bar,
+            function(generic_bar)
+                
+                if not generic_bar then return end
+                
+                setHeightWidth(MinimalDisplayBars.displayBars[generic_bar.playerIndex]["hp"], true)
+                
+                return
+            end
+        )--]]
+        
+        for _, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
+            if bar then 
+                subMenu:addOption(
+                    getText("ContextMenu_MinimalDisplayBars_".. bar.idName ..""),
+                    nil,
+                    function()
+                        if not bar then return end
+                        setHeightWidth(bar)
+                    end
                 )
             end
         end
@@ -1706,19 +1810,22 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
         -- Change Display Bar Color
         local subMenu = ISContextMenu:getNew(contextMenu)
         contextMenu:addSubMenu(
-            contextMenu:addOption(getText("ContextMenu_MinimalDisplayBars_Set_Color")), subMenu)
-        for k, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
+            contextMenu:addOption(getText("ContextMenu_MinimalDisplayBars_Set_Color")), 
+            subMenu
+        )
         
+        for _, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
+            
             if bar.idName ~= "temperature" then
                 
                 if bar then 
                     subMenu:addOption(
-                            getText("ContextMenu_MinimalDisplayBars_".. bar.idName ..""),
-                            nil,
-                            function()
-                                setBarColor(bar)
-                                return
-                            end
+                        getText("ContextMenu_MinimalDisplayBars_".. bar.idName ..""),
+                        nil,
+                        function()
+                            if not bar then return end
+                            setBarColor(bar)
+                        end
                     )
                 end
                 
@@ -1728,7 +1835,7 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
         
         -- Toggle Movable All
         local str
-        if barHP[generic_bar.playerIndex].moveWithMouse == true then
+        if barHP.moveWithMouse == true then
             str = getText("ContextMenu_MinimalDisplayBars_Toggle_Movable_All")
                         .." ("..getText("ContextMenu_MinimalDisplayBars_ON")..")"
         else
@@ -1736,33 +1843,38 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
                         .." ("..getText("ContextMenu_MinimalDisplayBars_OFF")..")"
         end
         contextMenu:addOption(
-                    str,
-                    generic_bar,
-                    function(generic_bar)
+            str,
+            generic_bar,
+            function(generic_bar)
 
-                        if not generic_bar then return end
-                        
-                        if generic_bar then 
-                            toggleMovable(generic_bar) end
-                        
-                        toggleMovable(barHP[generic_bar.playerIndex]) 
-                        for k, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
-                            if bar then 
-                                if barHP[generic_bar.playerIndex].moveWithMouse ~= bar.moveWithMouse then
-                                    toggleMovable(bar) 
-                                end
-                            end
+                if not generic_bar then return end
+                
+                if generic_bar then 
+                    toggleMovable(generic_bar) end
+                
+                toggleMovable(barHP) 
+                
+                for _, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
+                    if bar then 
+                        if barHP.moveWithMouse ~= bar.moveWithMouse then
+                            toggleMovable(bar) 
                         end
-                        
-                        MinimalDisplayBars.io_persistence.store(generic_bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[generic_bar.coopNum])
-                        
-                        
-                        return
-                    end)
-                    
+                    end
+                end
+                
+                MinimalDisplayBars.io_persistence.store(
+                    generic_bar.fileSaveLocation, 
+                    MinimalDisplayBars.MOD_ID, 
+                    MinimalDisplayBars.configTables[generic_bar.coopNum])
+                
+                return
+            end
+        )
+            
         -- Toggle Resizable All
-        --[[local str
-        if barHP[generic_bar.playerIndex].resizeWithMouse == true then
+        --[[
+        local str
+        if barHP.resizeWithMouse == true then
             str = getText("ContextMenu_MinimalDisplayBars_Toggle_Resizable_All")
                         .." ("..getText("ContextMenu_MinimalDisplayBars_ON")..")"
         else
@@ -1770,30 +1882,36 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
                         .." ("..getText("ContextMenu_MinimalDisplayBars_OFF")..")"
         end
         contextMenu:addOption(
-                    str,
-                    generic_bar,
-                    function(generic_bar)
+            str,
+            generic_bar,
+            function(generic_bar)
 
-                        if not generic_bar then return end
-                        
-                        toggleResizeable(barHP[generic_bar.playerIndex]) 
-                        for k, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
-                            if bar then 
-                                if barHP[generic_bar.playerIndex].resizeWithMouse ~= bar.resizeWithMouse then
-                                    toggleResizeable(bar) 
-                                end
-                            end
+                if not generic_bar then return end
+                
+                toggleResizeable(barHP) 
+                
+                for _, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
+                    if bar then 
+                        if barHP.resizeWithMouse ~= bar.resizeWithMouse then
+                            toggleResizeable(bar) 
                         end
-                        
-                        MinimalDisplayBars.io_persistence.store(generic_bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[generic_bar.coopNum])
-                        
-                        
-                        return
-                    end)]]
+                    end
+                end
+                
+                MinimalDisplayBars.io_persistence.store(
+                    generic_bar.fileSaveLocation, 
+                    MinimalDisplayBars.MOD_ID, 
+                    MinimalDisplayBars.configTables[generic_bar.coopNum])
+                
+                
+                return
+            end
+        )
+        --]]
         
         -- Toggle Always Bring Display Bars To Top
         local str
-        if barHP[generic_bar.playerIndex].alwaysBringToTop == true then
+        if barHP.alwaysBringToTop == true then
             str = getText("ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top")
                         .." ("..getText("ContextMenu_MinimalDisplayBars_ON")..")"
         else
@@ -1801,29 +1919,34 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
                         .." ("..getText("ContextMenu_MinimalDisplayBars_OFF")..")"
         end
         contextMenu:addOption(
-                    str,
-                    generic_bar,
-                    function(generic_bar)
-                        
-                        if not generic_bar then return end
-                        
-                        toggleAlwaysBringToTop(barHP[generic_bar.playerIndex])
-                        for k, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
-                            if bar then 
-                                if barHP[generic_bar.playerIndex].alwaysBringToTop ~= bar.alwaysBringToTop then
-                                    toggleAlwaysBringToTop(bar) 
-                                end
-                            end
+            str,
+            generic_bar,
+            function(generic_bar)
+                
+                if not generic_bar then return end
+                
+                toggleAlwaysBringToTop(barHP)
+                
+                for _, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
+                    if bar then 
+                        if barHP.alwaysBringToTop ~= bar.alwaysBringToTop then
+                            toggleAlwaysBringToTop(bar) 
                         end
-                        
-                        MinimalDisplayBars.io_persistence.store(generic_bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[generic_bar.coopNum])
-                        
-                        return
-                    end)
-                    
+                    end
+                end
+                
+                MinimalDisplayBars.io_persistence.store(
+                    generic_bar.fileSaveLocation, 
+                    MinimalDisplayBars.MOD_ID, 
+                    MinimalDisplayBars.configTables[generic_bar.coopNum])
+                
+                return
+            end
+        )
+            
         -- Toggle Moodlet Threshold Lines
         local str
-        if barHP[generic_bar.playerIndex].showMoodletThresholdLines == true then
+        if barHP.showMoodletThresholdLines == true then
             str = getText("ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines")
                         .." ("..getText("ContextMenu_MinimalDisplayBars_ON")..")"
         else
@@ -1831,29 +1954,35 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
                         .." ("..getText("ContextMenu_MinimalDisplayBars_OFF")..")"
         end
         contextMenu:addOption(
-                    str,
-                    generic_bar,
-                    function(generic_bar)
-                    
-                        if not generic_bar then return end
-                        
-                        toggleMoodletThresholdLines(barHP[generic_bar.playerIndex]) 
-                        for k, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
-                            if bar then 
-                                if barHP[generic_bar.playerIndex].showMoodletThresholdLines ~= bar.showMoodletThresholdLines then
-                                    toggleMoodletThresholdLines(bar) 
-                                end
-                            end
+            str,
+            generic_bar,
+            function(generic_bar)
+            
+                if not generic_bar then return end
+                
+                toggleMoodletThresholdLines(barHP) 
+                
+                for _, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
+                    if bar then 
+                        if barHP.showMoodletThresholdLines ~= bar.showMoodletThresholdLines then
+                            toggleMoodletThresholdLines(bar) 
                         end
-                        
-                        MinimalDisplayBars.io_persistence.store(generic_bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[generic_bar.coopNum])
-                        
-                        return
-                    end)
-                    
+                    end
+                end
+                
+                MinimalDisplayBars.io_persistence.store(
+                    generic_bar.fileSaveLocation, 
+                    MinimalDisplayBars.MOD_ID, 
+                    MinimalDisplayBars.configTables[generic_bar.coopNum])
+                
+                return
+            end
+        )
+            
         -- Toggle Compact
+        --[[
         local str
-        if barHP[generic_bar.playerIndex].isCompact == true then
+        if barHP.isCompact == true then
             str = getText("ContextMenu_MinimalDisplayBars_Toggle_Compact")
                         .." ("..getText("ContextMenu_MinimalDisplayBars_ON")..")"
         else
@@ -1861,29 +1990,35 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
                         .." ("..getText("ContextMenu_MinimalDisplayBars_OFF")..")"
         end
         contextMenu:addOption(
-                    str,
-                    generic_bar,
-                    function(generic_bar)
-                    
-                        if not generic_bar then return end
-                        
-                        toggleCompact(barHP[generic_bar.playerIndex]) 
-                        for k, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
-                            if bar then 
-                                if barHP[generic_bar.playerIndex].isCompact ~= bar.isCompact then
-                                    toggleCompact(bar) 
-                                end
-                            end
+            str,
+            generic_bar,
+            function(generic_bar)
+            
+                if not generic_bar then return end
+                
+                toggleCompact(barHP) 
+                
+                for _, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
+                    if bar then 
+                        if barHP.isCompact ~= bar.isCompact then
+                            toggleCompact(bar) 
                         end
-                        
-                        MinimalDisplayBars.io_persistence.store(generic_bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[generic_bar.coopNum])
-                        
-                        return
-                    end)
-                    
+                    end
+                end
+                
+                MinimalDisplayBars.io_persistence.store(
+                    generic_bar.fileSaveLocation, 
+                    MinimalDisplayBars.MOD_ID, 
+                    MinimalDisplayBars.configTables[generic_bar.coopNum])
+                
+                return
+            end
+        )
+        --]]
+        
         -- Toggle Move Bars Together
         local str
-        if barHP[generic_bar.playerIndex].moveBarsTogether == true then
+        if barHP.moveBarsTogether == true then
             str = getText("ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together")
                         .." ("..getText("ContextMenu_MinimalDisplayBars_ON")..")"
         else
@@ -1891,31 +2026,36 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
                         .." ("..getText("ContextMenu_MinimalDisplayBars_OFF")..")"
         end
         contextMenu:addOption(
-                    str,
-                    generic_bar,
-                    function(generic_bar)
-                    
-                        if not generic_bar then return end
-                        
-                        toggleMoveBarsTogether(barHP[generic_bar.playerIndex]) 
-                        for _, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
-                            if bar then 
-                                if barHP[generic_bar.playerIndex].moveBarsTogether ~= bar.moveBarsTogether then
-                                    toggleMoveBarsTogether(bar) 
-                                end
-                            end
+            str,
+            generic_bar,
+            function(generic_bar)
+            
+                if not generic_bar then return end
+                
+                toggleMoveBarsTogether(barHP) 
+                
+                for _, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
+                    if bar then 
+                        if barHP.moveBarsTogether ~= bar.moveBarsTogether then
+                            toggleMoveBarsTogether(bar) 
                         end
-                        
-                        createMoveBarsTogetherPanel(generic_bar.playerIndex)
-                        
-                        MinimalDisplayBars.io_persistence.store(generic_bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[generic_bar.coopNum])
-                        
-                        return
-                    end)
+                    end
+                end
+                
+                MinimalDisplayBars.createMoveBarsTogetherPanel(generic_bar.playerIndex)
+                
+                MinimalDisplayBars.io_persistence.store(
+                    generic_bar.fileSaveLocation, 
+                    MinimalDisplayBars.MOD_ID, 
+                    MinimalDisplayBars.configTables[generic_bar.coopNum])
+                
+                return
+            end
+        )
         
         -- Toggle Show Image
         local str
-        if barHP[generic_bar.playerIndex].showImage == true then
+        if barHP.showImage == true then
             str = getText("ContextMenu_MinimalDisplayBars_Toggle_Show_Icon")
                         .." ("..getText("ContextMenu_MinimalDisplayBars_ON")..")"
         else
@@ -1923,108 +2063,152 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
                         .." ("..getText("ContextMenu_MinimalDisplayBars_OFF")..")"
         end
         contextMenu:addOption(
-                    str,
-                    generic_bar,
-                    function(generic_bar)
-                    
-                        if not generic_bar then return end
-                        
-                        toggleShowImage(barHP[generic_bar.playerIndex]) 
-                        for k, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
-                            if bar then 
-                                if barHP[generic_bar.playerIndex].showImage ~= bar.showImage then
-                                    toggleShowImage(bar) 
-                                end
-                            end
+            str,
+            generic_bar,
+            function(generic_bar)
+            
+                if not generic_bar then return end
+                
+                toggleShowImage(barHP) 
+                
+                for _, bar in pairs(MinimalDisplayBars.displayBars[generic_bar.playerIndex]) do
+                    if bar then 
+                        if barHP.showImage ~= bar.showImage then
+                            toggleShowImage(bar) 
                         end
-                        
-                        MinimalDisplayBars.io_persistence.store(generic_bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[generic_bar.coopNum])
-                        
-                        return
-                    end)
+                    end
+                end
+                
+                MinimalDisplayBars.io_persistence.store(
+                    generic_bar.fileSaveLocation, 
+                    MinimalDisplayBars.MOD_ID, 
+                    MinimalDisplayBars.configTables[generic_bar.coopNum])
+                
+                return
+            end
+        )
+        
     else
     
     -- === Display Bars ===
         -- reset
-        contextMenu:addOption(getText("ContextMenu_MinimalDisplayBars_Reset_Display_Bar"),
-                    generic_bar,
-                    function(generic_bar)
-                        resetBar(generic_bar)
-                        return
-                    end)
+        contextMenu:addOption(
+            getText("ContextMenu_MinimalDisplayBars_Reset_Display_Bar"),
+            generic_bar,
+            function(generic_bar)
+                resetBar(generic_bar)
+                return
+            end
+        )
+        
         -- set vertical
-        contextMenu:addOption(getText("ContextMenu_MinimalDisplayBars_Set_Vertical"),
-                    generic_bar,
-                    function(generic_bar)
-                        
-                        if not generic_bar then return end
-                        
-                        if MinimalDisplayBars.configTables[generic_bar.coopNum][generic_bar.idName]["isVertical"] == false then 
-                            generic_bar.isVertical = true
-                            MinimalDisplayBars.configTables[generic_bar.coopNum][generic_bar.idName]["isVertical"] = true
-                            
-                            local oldW = tonumber(generic_bar.oldWidth)
-                            local oldH = tonumber(generic_bar.oldHeight)
-                            generic_bar:setWidth(oldH)
-                            generic_bar:setHeight(oldW)
-                            
-                            MinimalDisplayBars.io_persistence.store(generic_bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[generic_bar.coopNum])
-                            
-                            -- recreate MoveBarsTogether panel
-                            createMoveBarsTogetherPanel(generic_bar.playerIndex)
-                        end
-                        return
-                    end)
-        -- set horizontal
-        contextMenu:addOption(getText("ContextMenu_MinimalDisplayBars_Set_Horizontal"),
-                    generic_bar,
-                    function(generic_bar)
+        contextMenu:addOption(
+            getText("ContextMenu_MinimalDisplayBars_Set_Vertical"),
+            generic_bar,
+            function(generic_bar)
+                
+                if not generic_bar then return end
+                
+                if MinimalDisplayBars.configTables[generic_bar.coopNum][generic_bar.idName]["isVertical"] == false then 
                     
-                        if not generic_bar then return end
-                        
-                        if MinimalDisplayBars.configTables[generic_bar.coopNum][generic_bar.idName]["isVertical"] == true then 
-                            generic_bar.isVertical = false
-                            MinimalDisplayBars.configTables[generic_bar.coopNum][generic_bar.idName]["isVertical"] = false
-                            
-                            local oldW = tonumber(generic_bar.oldWidth)
-                            local oldH = tonumber(generic_bar.oldHeight)
-                            generic_bar:setWidth(oldH)
-                            generic_bar:setHeight(oldW)
-                            
-                            MinimalDisplayBars.io_persistence.store(generic_bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[generic_bar.coopNum])
-                            
-                            -- recreate MoveBarsTogether panel
-                            createMoveBarsTogetherPanel(generic_bar.playerIndex)
-                        end
-                        return
-                    end)
+                    generic_bar.isVertical = true
+                    MinimalDisplayBars.configTables[generic_bar.coopNum][generic_bar.idName]["isVertical"] = true
+                    
+                    local oldW = tonumber(generic_bar.oldWidth)
+                    local oldH = tonumber(generic_bar.oldHeight)
+                    generic_bar:setWidth(oldH)
+                    generic_bar:setHeight(oldW)
+                    
+                    MinimalDisplayBars.io_persistence.store(
+                        generic_bar.fileSaveLocation, 
+                        MinimalDisplayBars.MOD_ID, 
+                        MinimalDisplayBars.configTables[generic_bar.coopNum])
+                    
+                    -- recreate MoveBarsTogether panel
+                    MinimalDisplayBars.createMoveBarsTogetherPanel(generic_bar.playerIndex)
+                end
+                return
+            end
+        )
+        
+        -- set horizontal
+        contextMenu:addOption(
+            getText("ContextMenu_MinimalDisplayBars_Set_Horizontal"),
+            generic_bar,
+            function(generic_bar)
+            
+                if not generic_bar then return end
+                
+                if MinimalDisplayBars.configTables[generic_bar.coopNum][generic_bar.idName]["isVertical"] == true then 
+                    
+                    generic_bar.isVertical = false
+                    MinimalDisplayBars.configTables[generic_bar.coopNum][generic_bar.idName]["isVertical"] = false
+                    
+                    local oldW = tonumber(generic_bar.oldWidth)
+                    local oldH = tonumber(generic_bar.oldHeight)
+                    generic_bar:setWidth(oldH)
+                    generic_bar:setHeight(oldW)
+                    
+                    MinimalDisplayBars.io_persistence.store(
+                        generic_bar.fileSaveLocation, 
+                        MinimalDisplayBars.MOD_ID, 
+                        MinimalDisplayBars.configTables[generic_bar.coopNum])
+                    
+                    -- recreate MoveBarsTogether panel
+                    MinimalDisplayBars.createMoveBarsTogetherPanel(generic_bar.playerIndex)
+                end
+                return
+            end
+        )
+        
         -- set color
         if generic_bar.idName ~= "temperature" then
-            contextMenu:addOption(getText("ContextMenu_MinimalDisplayBars_Set_Color"),
-                        generic_bar,
-                        function(generic_bar)
-                        
-                            setBarColor(generic_bar)
-                            
-                            return
-                        end)
+            
+            contextMenu:addOption(
+                getText("ContextMenu_MinimalDisplayBars_Set_Color"),
+                generic_bar,
+                function(generic_bar)
+                
+                    setBarColor(generic_bar)
+                    
+                    return
+                end)
         end
         
-        contextMenu:addOption(getText("ContextMenu_MinimalDisplayBars_Hide"),
-                    generic_bar,
-                    function(generic_bar)
-                    
-                        if not generic_bar then return end
-                        generic_bar:setVisible(false)
-                        MinimalDisplayBars.configTables[generic_bar.coopNum][generic_bar.idName]["isVisible"] = false
-                        
-                        MinimalDisplayBars.io_persistence.store(generic_bar.fileSaveLocation, MinimalDisplayBars.MOD_ID, MinimalDisplayBars.configTables[generic_bar.coopNum])
-                        
-                        -- recreate MoveBarsTogether panel when hiding a display bar
-                        createMoveBarsTogetherPanel(generic_bar.playerIndex)
-                        
-                        return
-                    end)
+        -- set height / width
+        contextMenu:addOption(
+            getText("ContextMenu_MinimalDisplayBars_Set_HeightWidth"),
+            generic_bar,
+            function(generic_bar)
+            
+                setHeightWidth(generic_bar)
+                
+                return
+            end
+        )
+        
+        -- hide
+        contextMenu:addOption(
+            getText("ContextMenu_MinimalDisplayBars_Hide"),
+            generic_bar,
+            function(generic_bar)
+            
+                if not generic_bar then return end
+                generic_bar:setVisible(false)
+                
+                MinimalDisplayBars.configTables[generic_bar.coopNum][generic_bar.idName]["isVisible"] = false
+                MinimalDisplayBars.io_persistence.store(
+                    generic_bar.fileSaveLocation, 
+                    MinimalDisplayBars.MOD_ID, 
+                    MinimalDisplayBars.configTables[generic_bar.coopNum])
+                
+                -- recreate MoveBarsTogether panel when hiding a display bar
+                MinimalDisplayBars.createMoveBarsTogetherPanel(generic_bar.playerIndex)
+                
+                return
+            end
+        )
+        
     end
     
 end
@@ -2094,7 +2278,7 @@ DEFAULT_SETTINGS = nil
 ]]
 
 -- Function that will create all of the display bars for a given ISOPlayer.
-local function createUI(playerIndex, isoPlayer)
+local function createUiFor(playerIndex, isoPlayer)
     
     -- Make sure this is a local player only.
     if not isoPlayer:isLocalPlayer() then return end
@@ -2129,11 +2313,20 @@ local function createUI(playerIndex, isoPlayer)
         MinimalDisplayBars.configFileLocations[coopNum] = MinimalDisplayBars.configFileName .. " P_wildcard.lua"
     end
     
-    MinimalDisplayBars.configTables[coopNum] = MinimalDisplayBars.io_persistence.load(MinimalDisplayBars.defaultSettingsFileName, MinimalDisplayBars.MOD_ID)
+    MinimalDisplayBars.configTables[coopNum] = 
+        MinimalDisplayBars.io_persistence.load(
+            MinimalDisplayBars.defaultSettingsFileName, 
+            MinimalDisplayBars.MOD_ID)
     
     if not deepcompare(MinimalDisplayBars.configTables[coopNum], DEFAULT_SETTINGS, false) then
-        MinimalDisplayBars.io_persistence.store(MinimalDisplayBars.defaultSettingsFileName, MinimalDisplayBars.MOD_ID, DEFAULT_SETTINGS)
-        MinimalDisplayBars.configTables[coopNum] = MinimalDisplayBars.io_persistence.load(MinimalDisplayBars.defaultSettingsFileName, MinimalDisplayBars.MOD_ID)
+        MinimalDisplayBars.io_persistence.store(
+            MinimalDisplayBars.defaultSettingsFileName, 
+            MinimalDisplayBars.MOD_ID, 
+            DEFAULT_SETTINGS)
+        MinimalDisplayBars.configTables[coopNum] = 
+            MinimalDisplayBars.io_persistence.load(
+                MinimalDisplayBars.defaultSettingsFileName, 
+                MinimalDisplayBars.MOD_ID)
     end
     
     --if isoPlayer:isLocalPlayer() then numOfLocalClients = numOfLocalClients + 1 end
@@ -2154,10 +2347,16 @@ local function createUI(playerIndex, isoPlayer)
     
     --===============================================================================
     -- Get/Setup all configuration settings from the config file.
-    local t_restored = MinimalDisplayBars.io_persistence.load(MinimalDisplayBars.configFileLocations[coopNum], MinimalDisplayBars.MOD_ID)
+    local t_restored = 
+        MinimalDisplayBars.io_persistence.load(
+            MinimalDisplayBars.configFileLocations[coopNum], 
+            MinimalDisplayBars.MOD_ID)
     
-    if not compare_and_insert(MinimalDisplayBars.configTables[coopNum], t_restored, true) then
-        MinimalDisplayBars.io_persistence.store(MinimalDisplayBars.configFileLocations[coopNum], MinimalDisplayBars.MOD_ID, t_restored)
+    if not MinimalDisplayBars.compare_and_insert(MinimalDisplayBars.configTables[coopNum], t_restored, true) then
+        MinimalDisplayBars.io_persistence.store(
+            MinimalDisplayBars.configFileLocations[coopNum], 
+            MinimalDisplayBars.MOD_ID, 
+            t_restored)
     end
 
     if t_restored then 
@@ -2180,163 +2379,178 @@ local function createUI(playerIndex, isoPlayer)
     
     --==================================
     -- Create Display Bars
-    MinimalDisplayBars.displayBars[playerIndex] = {}
     
     --[[ === REFERENCE ===
-    
     someBar must be created above the ContextMenu. local someBar = {}
     someBar = ISGenericMiniDisplayBar:new(
-                    idName, fileSaveLocation,  
-                    playerIndex, isoPlayer, coopNum, 
-                    configTable, xOffset, yOffset, 
-                    bChild, 
-                    valueFunction, 
-                    colorFunction, useColorFunction,
-                    moodletThresholdTable)
+        idName, 
+        fileSaveLocation,  
+        playerIndex, isoPlayer, coopNum, 
+        configTable, 
+        xOffset, yOffset, 
+        bChild, 
+        valueFunction, 
+        colorFunction, useColorFunction,
+        moodletThresholdTable)
     ]]
+    --====================
     
-    local idName = "menu"
-    if barMenu[playerIndex] then barMenu[playerIndex]:close() end
-    barMenu[playerIndex] = ISGenericMiniDisplayBar:new(
-                    idName, MinimalDisplayBars.configFileLocations[coopNum], 
-                    playerIndex, isoPlayer, coopNum, 
-                    MinimalDisplayBars.configTables[coopNum], xOffset, yOffset, 
-                    nil, 
-                    function(tIsoPlayer) 
-                        if tIsoPlayer:isDead() then return -1 else return 1 end 
-                    end,
-                    nil, false,
-                    nil)
-    barMenu[playerIndex]:initialise()
-    barMenu[playerIndex]:addToUIManager()
+    local idName1 = "menu"
+    local bar1 = ISGenericMiniDisplayBar:new(
+        idName1, 
+        MinimalDisplayBars.configFileLocations[coopNum], 
+        playerIndex, isoPlayer, coopNum, 
+        MinimalDisplayBars.configTables[coopNum], 
+        xOffset, yOffset, 
+        nil, 
+        function(tIsoPlayer) 
+            if tIsoPlayer:isDead() then return -1 else return 1 end 
+        end,
+        nil, false,
+        nil)
+    bar1:initialise()
+    bar1:addToUIManager()
     
-    local idName = "hp"
-    if barHP[playerIndex] then barHP[playerIndex]:close() end
-    barHP[playerIndex] = ISGenericMiniDisplayBar:new(
-                    idName, MinimalDisplayBars.configFileLocations[coopNum], 
-                    playerIndex, isoPlayer, coopNum, 
-                    MinimalDisplayBars.configTables[coopNum], xOffset, yOffset, 
-                    nil, 
-                    getHealth,
-                    getColorHealth, true,
-                    nil)
-                    --moodletThresholdTables[idName])
-    barHP[playerIndex]:initialise()
-    barHP[playerIndex]:addToUIManager()
-    table.insert(MinimalDisplayBars.displayBars[playerIndex], barHP[playerIndex])
+    local idName2 = "hp"
+    local bar2 = ISGenericMiniDisplayBar:new(
+        idName2, 
+        MinimalDisplayBars.configFileLocations[coopNum], 
+        playerIndex, isoPlayer, coopNum, 
+        MinimalDisplayBars.configTables[coopNum], 
+        xOffset, yOffset, 
+        nil, 
+        getHealth,
+        getColorHealth, true,
+        nil)
+        --moodletThresholdTables[idName2])
+    bar2:initialise()
+    bar2:addToUIManager()
     
-    local idName = "hunger"
-    if barHunger[playerIndex] then barHunger[playerIndex]:close() end
-    barHunger[playerIndex] = ISGenericMiniDisplayBar:new(
-                    idName, MinimalDisplayBars.configFileLocations[coopNum], 
-                    playerIndex, isoPlayer, coopNum, 
-                    MinimalDisplayBars.configTables[coopNum], xOffset, yOffset, 
-                    nil, 
-                    getHunger,
-                    getColorHunger, true,
-                    moodletThresholdTables[idName])
-    barHunger[playerIndex]:initialise()
-    barHunger[playerIndex]:addToUIManager()
-    table.insert(MinimalDisplayBars.displayBars[playerIndex], barHunger[playerIndex])
+    local idName3 = "hunger"
+    local bar3 = ISGenericMiniDisplayBar:new(
+        idName3, 
+        MinimalDisplayBars.configFileLocations[coopNum], 
+        playerIndex, isoPlayer, coopNum, 
+        MinimalDisplayBars.configTables[coopNum], 
+        xOffset, yOffset, 
+        nil, 
+        getHunger,
+        getColorHunger, true,
+        moodletThresholdTables[idName3])
+    bar3:initialise()
+    bar3:addToUIManager()
     
-    local idName = "thirst"
-    if barThirst[playerIndex] then barThirst[playerIndex]:close() end
-    barThirst[playerIndex] = ISGenericMiniDisplayBar:new(
-                    idName, MinimalDisplayBars.configFileLocations[coopNum], 
-                    playerIndex, isoPlayer, coopNum, 
-                    MinimalDisplayBars.configTables[coopNum], xOffset, yOffset, 
-                    nil, 
-                    getThirst,
-                    getColorThirst, true,
-                    moodletThresholdTables[idName])
-    barThirst[playerIndex]:initialise()
-    barThirst[playerIndex]:addToUIManager()
-    table.insert(MinimalDisplayBars.displayBars[playerIndex], barThirst[playerIndex])
+    local idName4 = "thirst"
+    local bar4 = ISGenericMiniDisplayBar:new(
+        idName4, 
+        MinimalDisplayBars.configFileLocations[coopNum], 
+        playerIndex, isoPlayer, coopNum, 
+        MinimalDisplayBars.configTables[coopNum], 
+        xOffset, yOffset, 
+        nil, 
+        getThirst,
+        getColorThirst, true,
+        moodletThresholdTables[idName4])
+    bar4:initialise()
+    bar4:addToUIManager()
     
-    local idName = "endurance"
-    if barEndurance[playerIndex] then barEndurance[playerIndex]:close() end
-    barEndurance[playerIndex] = ISGenericMiniDisplayBar:new(
-                    idName, MinimalDisplayBars.configFileLocations[coopNum], 
-                    playerIndex, isoPlayer, coopNum, 
-                    MinimalDisplayBars.configTables[coopNum], xOffset, yOffset, 
-                    nil, 
-                    getEndurance,
-                    getColorEndurance, true,
-                    moodletThresholdTables[idName])
-    barEndurance[playerIndex]:initialise()
-    barEndurance[playerIndex]:addToUIManager()
-    table.insert(MinimalDisplayBars.displayBars[playerIndex], barEndurance[playerIndex])
+    local idName5 = "endurance"
+    local bar5 = ISGenericMiniDisplayBar:new(
+        idName5, 
+        MinimalDisplayBars.configFileLocations[coopNum], 
+        playerIndex, isoPlayer, coopNum, 
+        MinimalDisplayBars.configTables[coopNum], 
+        xOffset, yOffset, 
+        nil, 
+        getEndurance,
+        getColorEndurance, true,
+        moodletThresholdTables[idName5])
+    bar5:initialise()
+    bar5:addToUIManager()
     
-    local idName = "fatigue"
-    if barFatigue[playerIndex] then barFatigue[playerIndex]:close() end
-    barFatigue[playerIndex] = ISGenericMiniDisplayBar:new(
-                    idName, MinimalDisplayBars.configFileLocations[coopNum], 
-                    playerIndex, isoPlayer, coopNum, 
-                    MinimalDisplayBars.configTables[coopNum], xOffset, yOffset, 
-                    nil, 
-                    getFatigue,
-                    getColorFatigue, true,
-                    moodletThresholdTables[idName])
-    barFatigue[playerIndex]:initialise()
-    barFatigue[playerIndex]:addToUIManager()
-    table.insert(MinimalDisplayBars.displayBars[playerIndex], barFatigue[playerIndex])
+    local idName6 = "fatigue"
+    local bar6 = ISGenericMiniDisplayBar:new(
+        idName6, 
+        MinimalDisplayBars.configFileLocations[coopNum], 
+        playerIndex, isoPlayer, coopNum, 
+        MinimalDisplayBars.configTables[coopNum], 
+        xOffset, yOffset, 
+        nil, 
+        getFatigue,
+        getColorFatigue, true,
+        moodletThresholdTables[idName6])
+    bar6:initialise()
+    bar6:addToUIManager()
     
-    local idName = "boredomlevel"
-    if barBoredomLevel[playerIndex] then barBoredomLevel[playerIndex]:close() end
-    barBoredomLevel[playerIndex] = ISGenericMiniDisplayBar:new(
-                    idName, MinimalDisplayBars.configFileLocations[coopNum], 
-                    playerIndex, isoPlayer, coopNum, 
-                    MinimalDisplayBars.configTables[coopNum], xOffset, yOffset, 
-                    nil, 
-                    getBoredomLevel,
-                    getColorBoredomLevel, true,
-                    moodletThresholdTables[idName])
-    barBoredomLevel[playerIndex]:initialise()
-    barBoredomLevel[playerIndex]:addToUIManager()
-    table.insert(MinimalDisplayBars.displayBars[playerIndex], barBoredomLevel[playerIndex])
+    local idName7 = "boredomlevel"
+    local bar7 = ISGenericMiniDisplayBar:new(
+        idName7, 
+        MinimalDisplayBars.configFileLocations[coopNum], 
+        playerIndex, isoPlayer, coopNum, 
+        MinimalDisplayBars.configTables[coopNum], 
+        xOffset, yOffset, 
+        nil, 
+        getBoredomLevel,
+        getColorBoredomLevel, true,
+        moodletThresholdTables[idName7])
+    bar7:initialise()
+    bar7:addToUIManager()
     
-    local idName = "unhappynesslevel"
-    if barUnhappynessLevel[playerIndex] then barUnhappynessLevel[playerIndex]:close() end
-    barUnhappynessLevel[playerIndex] = ISGenericMiniDisplayBar:new(
-                    idName, MinimalDisplayBars.configFileLocations[coopNum], 
-                    playerIndex, isoPlayer, coopNum, 
-                    MinimalDisplayBars.configTables[coopNum], xOffset, yOffset, 
-                    nil, 
-                    getUnhappynessLevel,
-                    getColorUnhappynessLevel, true,
-                    moodletThresholdTables[idName])
-    barUnhappynessLevel[playerIndex]:initialise()
-    barUnhappynessLevel[playerIndex]:addToUIManager()
-    table.insert(MinimalDisplayBars.displayBars[playerIndex], barUnhappynessLevel[playerIndex])
+    local idName8 = "unhappynesslevel"
+    local bar8 = ISGenericMiniDisplayBar:new(
+        idName8, 
+        MinimalDisplayBars.configFileLocations[coopNum], 
+        playerIndex, isoPlayer, coopNum, 
+        MinimalDisplayBars.configTables[coopNum], xOffset, yOffset, 
+        nil, 
+        getUnhappynessLevel,
+        getColorUnhappynessLevel, true,
+        moodletThresholdTables[idName8])
+    bar8:initialise()
+    bar8:addToUIManager()
     
-    local idName = "temperature"
-    if barTemperature[playerIndex] then barTemperature[playerIndex]:close() end
-    barTemperature[playerIndex] = ISGenericMiniDisplayBar:new(
-                    idName, MinimalDisplayBars.configFileLocations[coopNum], 
-                    playerIndex, isoPlayer, coopNum, 
-                    MinimalDisplayBars.configTables[coopNum], xOffset, yOffset, 
-                    nil, 
-                    getTemperature,
-                    getColorTemperature, true,
-                    moodletThresholdTables[idName])
-    barTemperature[playerIndex]:initialise()
-    barTemperature[playerIndex]:addToUIManager()
-    table.insert(MinimalDisplayBars.displayBars[playerIndex], barTemperature[playerIndex])
+    local idName9 = "temperature"
+    local bar9 = ISGenericMiniDisplayBar:new(
+        idName9, 
+        MinimalDisplayBars.configFileLocations[coopNum], 
+        playerIndex, isoPlayer, coopNum, 
+        MinimalDisplayBars.configTables[coopNum], 
+        xOffset, yOffset, 
+        nil, 
+        getTemperature,
+        getColorTemperature, true,
+        moodletThresholdTables[idName9])
+    bar9:initialise()
+    bar9:addToUIManager()
     
-    local idName = "calorie"
-    if barCalorie[playerIndex] then barCalorie[playerIndex]:close() end
-    barCalorie[playerIndex] = ISGenericMiniDisplayBar:new(
-                    idName, MinimalDisplayBars.configFileLocations[coopNum], 
-                    playerIndex, isoPlayer, coopNum, 
-                    MinimalDisplayBars.configTables[coopNum], xOffset, yOffset, 
-                    nil, 
-                    getCalorie,
-                    getColorCalorie, true,
-                    nil)
-    barCalorie[playerIndex]:initialise()
-    barCalorie[playerIndex]:addToUIManager()
-    table.insert(MinimalDisplayBars.displayBars[playerIndex], barCalorie[playerIndex])
+    local idName10 = "calorie"
+    local bar10 = ISGenericMiniDisplayBar:new(
+        idName10, 
+        MinimalDisplayBars.configFileLocations[coopNum], 
+        playerIndex, isoPlayer, coopNum, 
+        MinimalDisplayBars.configTables[coopNum], 
+        xOffset, yOffset, 
+        nil, 
+        getCalorie,
+        getColorCalorie, true,
+        nil)
+    bar10:initialise()
+    bar10:addToUIManager()
     
+    
+    -- Add all valid display bars to a Global varible to be shared.
+    MinimalDisplayBars.displayBars[playerIndex] = 
+    {
+        [idName2] = bar2,
+        [idName3] = bar3,
+        [idName4] = bar4,
+        [idName5] = bar5,
+        [idName6] = bar6,
+        [idName7] = bar7,
+        [idName8] = bar8,
+        [idName9] = bar9,
+        [idName10] = bar10,
+    }
     
     -- Make sure bars are all toggled correctly when new bars are added.
     for _, bar in pairs(MinimalDisplayBars.displayBars[playerIndex]) do
@@ -2345,39 +2559,49 @@ local function createUI(playerIndex, isoPlayer)
             -- Override settings
             MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["imageName"] = DEFAULT_SETTINGS[bar.idName]["imageName"]
             bar.imageName = DEFAULT_SETTINGS[bar.idName]["imageName"]
+            MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["imageSize"] = DEFAULT_SETTINGS[bar.idName]["imageSize"]
+            bar.imageSize = DEFAULT_SETTINGS[bar.idName]["imageSize"]
             MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["imageShowBack"] = DEFAULT_SETTINGS[bar.idName]["imageShowBack"]
             bar.imageShowBack = DEFAULT_SETTINGS[bar.idName]["imageShowBack"]
             
+            local barHP = MinimalDisplayBars.displayBars[playerIndex]["hp"]
+            
             -- Make sure bars are toggled correctly
-            if barHP[playerIndex].moveWithMouse ~= bar.moveWithMouse then
+            if barHP.moveWithMouse ~= bar.moveWithMouse then
                 toggleMovable(bar) end
-            if barHP[playerIndex].resizeWithMouse ~= bar.resizeWithMouse then
+            if barHP.resizeWithMouse ~= bar.resizeWithMouse then
                 toggleResizeable(bar) end
-            if barHP[playerIndex].alwaysBringToTop ~= bar.alwaysBringToTop then
+            if barHP.alwaysBringToTop ~= bar.alwaysBringToTop then
                 toggleAlwaysBringToTop(bar) end
-            if barHP[playerIndex].showMoodletThresholdLines ~= bar.showMoodletThresholdLines then
+            if barHP.showMoodletThresholdLines ~= bar.showMoodletThresholdLines then
                 toggleMoodletThresholdLines(bar) end
-            if barHP[playerIndex].isCompact ~= bar.isCompact then
+            if barHP.isCompact ~= bar.isCompact then
                 toggleCompact(bar) end
-            if barHP[playerIndex].moveBarsTogether ~= bar.moveBarsTogether then
+            if barHP.moveBarsTogether ~= bar.moveBarsTogether then
                 toggleMoveBarsTogether(bar) end
-            if barHP[playerIndex].showImage ~= bar.showImage then
+            if barHP.showImage ~= bar.showImage then
                 toggleShowImage(bar) end
         end
     end
     
     -- Create MoveBarsTogether Panel.
-    createMoveBarsTogetherPanel(playerIndex)
+    MinimalDisplayBars.createMoveBarsTogetherPanel(playerIndex)
     
 end
 
-Events.OnGameBoot.Add(OnBootGame)
-
-Events.OnCreatePlayer.Add(createUI)
-Events.OnDisconnect.Add(OnLocalPlayerDisconnect)
---Events.OnPlayerDeath.Add(OnLocalPlayerDeath)
+Events.OnRenderTick.Add(preventContextCoverup)
 
 Events.OnRenderTick.Add(onTickHP)
 Events.OnPlayerUpdate.Add(onPlayerUpdateCheckBodyDamage)
+
+Events.OnGameBoot.Add(OnBootGame)
+Events.OnDisconnect.Add(OnLocalPlayerDisconnect)
+--Events.OnPlayerDeath.Add(OnLocalPlayerDeath)
+
+Events.OnCreatePlayer.Add(createUiFor)
+
+
+
+
 
 

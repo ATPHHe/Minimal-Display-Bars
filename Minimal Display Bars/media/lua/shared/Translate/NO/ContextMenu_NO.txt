@@ -45,8 +45,14 @@ ContextMenu_NO = {
     ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Høyreklikk for flere alternativer.",
     
     -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Alle",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "GJENOPPRETT INNSTILLINGENE DINE",
     ContextMenu_MinimalDisplayBars_ON = "AV",
     ContextMenu_MinimalDisplayBars_OFF = "PÅ",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Ikonstørrelse",
+    ContextMenu_MinimalDisplayBars_Width = "Bredde",
+    ContextMenu_MinimalDisplayBars_Height = "Høyde",
     
     
 }

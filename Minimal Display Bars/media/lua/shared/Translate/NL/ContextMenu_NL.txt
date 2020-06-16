@@ -45,8 +45,14 @@ ContextMenu_NL = {
     ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Klik met de rechtermuisknop voor meer opties.",
     
     -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Allemaal",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "HERSTEL UW INSTELLINGEN",
     ContextMenu_MinimalDisplayBars_ON = "AAN",
     ContextMenu_MinimalDisplayBars_OFF = "UIT",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Icoon Grootte",
+    ContextMenu_MinimalDisplayBars_Width = "Breedte",
+    ContextMenu_MinimalDisplayBars_Height = "Hoogte",
     
     
 }

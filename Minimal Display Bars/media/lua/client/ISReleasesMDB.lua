@@ -132,13 +132,14 @@ local function okModal(_text, _centered, _width, _height, _posX, _posY, _func)
 end
 
 
+local MOD_VERSION = "4.3.1"
 
 Events.OnGameStart.Add(function()
     
     data = MinimalDisplayBars.LoadFromFile("_data")
     if not data or data[1] == nil then 
         data = {} end
-    if data[1] == "true" then return end
+    if data[1] == MOD_VERSION then return end
     
     local fContents = MinimalDisplayBars.LoadFromFile("_ReleaseNotes.txt")
     
@@ -168,7 +169,7 @@ Events.OnGameStart.Add(function()
     okModal(text, true, nil, nil, nil, nil, 
                 function() 
                     data = {}
-                    data[1] = true
+                    data[1] = MOD_VERSION
                     
                     local text = "";
                     for i, v in ipairs(data) do

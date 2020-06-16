@@ -45,8 +45,14 @@ ContextMenu_CH = {
     ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "右鍵單擊以獲取更多選項。",
     
     -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "所有",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "恢復您的設置",
     ContextMenu_MinimalDisplayBars_ON = "上",
     ContextMenu_MinimalDisplayBars_OFF = "關",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "圖標大小",
+    ContextMenu_MinimalDisplayBars_Width = "寬度",
+    ContextMenu_MinimalDisplayBars_Height = "高度",
     
     
 }

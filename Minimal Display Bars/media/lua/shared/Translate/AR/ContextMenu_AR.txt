@@ -24,7 +24,7 @@ ContextMenu_ES = {
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Restablecer barra de visualización",
     ContextMenu_MinimalDisplayBars_Set_Vertical = "Establecer vertical",
     ContextMenu_MinimalDisplayBars_Set_Horizontal = "Establecer horizontal",
-    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Establecer altura / ancho",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Establecer Altura / Ancho",
     ContextMenu_MinimalDisplayBars_Set_Color = "Establecer color",
     ContextMenu_MinimalDisplayBars_Hide = "Ocultar",
     
@@ -45,8 +45,14 @@ ContextMenu_ES = {
     ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Haga clic derecho para más opciones.",
     
     -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Todas",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "RESTAURAR SUS AJUSTES",
     ContextMenu_MinimalDisplayBars_ON = "ACTIVADO",
     ContextMenu_MinimalDisplayBars_OFF = "DESACTIVADO",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Tamaño de ícono",
+    ContextMenu_MinimalDisplayBars_Width = "Ancho",
+    ContextMenu_MinimalDisplayBars_Height = "Altura",
     
     
 }

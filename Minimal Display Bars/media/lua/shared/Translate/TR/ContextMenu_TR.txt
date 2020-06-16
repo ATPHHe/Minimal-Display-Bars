@@ -46,8 +46,14 @@ ContextMenu_TR = {
     ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Daha fazla seçenek için Sag Tiklayin.",
     
     -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Tüm",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "AYARLARI GERI YÜKLE",
     ContextMenu_MinimalDisplayBars_ON = "AÇIK",
     ContextMenu_MinimalDisplayBars_OFF = "KAPALI",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Ikon Boyutu",
+    ContextMenu_MinimalDisplayBars_Width = "Genislik",
+    ContextMenu_MinimalDisplayBars_Height = "Yükseklik",
     
     
 }

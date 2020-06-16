@@ -45,8 +45,14 @@ ContextMenu_DA = {
     ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Højreklik for flere muligheder.",
     
     -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Alle",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "GENDAN DINE INDSTILLINGER",
     ContextMenu_MinimalDisplayBars_ON = "TÆNDT",
     ContextMenu_MinimalDisplayBars_OFF = "SLUKKET",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Ikonstørrelse",
+    ContextMenu_MinimalDisplayBars_Width = "Bredde",
+    ContextMenu_MinimalDisplayBars_Height = "Højde",
     
     
 }

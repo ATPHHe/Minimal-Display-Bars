@@ -51,8 +51,13 @@ ContextMenu_DE = {
     ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Klicken Sie mit der rechten Maustaste, um weitere Optionen anzuzeigen.",
     
     -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Alle",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "WIEDERHERSTELLEN EINSTELLUNGEN",
     ContextMenu_MinimalDisplayBars_ON = "EIN",
     ContextMenu_MinimalDisplayBars_OFF = "AUS",
     
+    ContextMenu_MinimalDisplayBars_IconSize = "Symbolgröße",
+    ContextMenu_MinimalDisplayBars_Width = "Breite",
+    ContextMenu_MinimalDisplayBars_Height = "Höhe",
     
 }

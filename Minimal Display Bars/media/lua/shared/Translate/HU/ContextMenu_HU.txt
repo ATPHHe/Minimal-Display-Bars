@@ -45,8 +45,14 @@ ContextMenu_HU = {
     ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Kattintson jobb gombbal erre a további lehetoségekhez.",
     
     -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Minden",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "VISSZAÁLLÍTÁS A BEÁLLÍTÁSOKAT",
     ContextMenu_MinimalDisplayBars_ON = "BEKAPCSOLVA",
     ContextMenu_MinimalDisplayBars_OFF = "KIKAPCSOLVA",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Ikon méret",
+    ContextMenu_MinimalDisplayBars_Width = "Szélesség",
+    ContextMenu_MinimalDisplayBars_Height = "Magasság",
     
     
 }

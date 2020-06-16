@@ -24,7 +24,7 @@ ContextMenu_TH = {
     ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "รีเซ็ตแถบแสดงผล",
     ContextMenu_MinimalDisplayBars_Set_Vertical = "ตั้งค่าแนวตั้ง",
     ContextMenu_MinimalDisplayBars_Set_Horizontal = "ตั้งแนวนอน",
-    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "ตั้งค่าความสูง / ความกว้าง",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "ตั้งค่าความสูง / ตั้งค่าความกว้าง",
     ContextMenu_MinimalDisplayBars_Set_Color = "ตั้งค่าสี",
     ContextMenu_MinimalDisplayBars_Hide = "ซ่อนแถบแสดงผล",
     
@@ -45,8 +45,14 @@ ContextMenu_TH = {
     ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "คลิกขวาเพื่อดูตัวเลือกเพิ่มเติม",
     
     -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "ทั้งหมด",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "คืนค่าการตั้งค่าของคุณ",
     ContextMenu_MinimalDisplayBars_ON = "สลับกับ",
     ContextMenu_MinimalDisplayBars_OFF = "ปิดการใช้งาน",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "ขนาดไอคอน",
+    ContextMenu_MinimalDisplayBars_Width = "ความกว้าง",
+    ContextMenu_MinimalDisplayBars_Height = "ความสูง",
     
     
 }

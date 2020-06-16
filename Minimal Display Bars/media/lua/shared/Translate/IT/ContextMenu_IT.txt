@@ -45,8 +45,14 @@ ContextMenu_IT = {
     ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Fare clic con il tasto destro per ulteriori opzioni.",
     
     -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Tutti",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "RIPRISTINA LE TUE IMPOSTAZIONI",
     ContextMenu_MinimalDisplayBars_ON = "ATTIVA",
     ContextMenu_MinimalDisplayBars_OFF = "DISATTIVA",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Dimensione dell'icona",
+    ContextMenu_MinimalDisplayBars_Width = "Larghezza",
+    ContextMenu_MinimalDisplayBars_Height = "Altezza",
     
     
 }

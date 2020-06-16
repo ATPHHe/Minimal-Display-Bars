@@ -417,7 +417,10 @@ end
 -- Recreates the default configuration files for this mod.
 local function recreateConfigFiles(locationIndex)
     local fileContents1 = MinimalDisplayBars.io_persistence.load(MinimalDisplayBars.defaultSettingsFileName, MinimalDisplayBars.MOD_ID)
-    MinimalDisplayBars.io_persistence.store(MinimalDisplayBars.configFileLocations[locationIndex], MinimalDisplayBars.MOD_ID, fileContents1)
+    MinimalDisplayBars.io_persistence.store(
+        MinimalDisplayBars.configFileLocations[locationIndex], 
+        MinimalDisplayBars.MOD_ID, 
+        fileContents1)
     return fileContents1
 end
 
@@ -2552,10 +2555,51 @@ local function createUiFor(playerIndex, isoPlayer)
         [idName10] = bar10,
     }
     
+    ------------------------------------------------------------------------------
+    -- required fix for any Horizontal Bars from 4.3.0 and versions below 4.3.0
+    local data = MinimalDisplayBars.LoadFromFile("_horizontalbarfix")
+    if not data or data[1] == nil then 
+        data = {} end
+    
+    if data[1] ~= "fixed" then
+        for _, bar in pairs(MinimalDisplayBars.displayBars[playerIndex]) do
+            if bar then 
+                if bar.isVertical then
+                    if bar.width > bar.height then
+                        local oldW = tonumber(bar.oldWidth)
+                        local oldH = tonumber(bar.oldHeight)
+                        bar:setWidth(oldH)
+                        bar:setHeight(oldW)
+                        MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["width"] = oldH
+                        MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["height"] = oldW
+                    end
+                else
+                    if bar.width < bar.height then
+                        local oldW = tonumber(bar.oldWidth)
+                        local oldH = tonumber(bar.oldHeight)
+                        bar:setWidth(oldH)
+                        bar:setHeight(oldW)
+                        MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["width"] = oldH
+                        MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["height"] = oldW
+                    end
+                end
+            end
+        end
+        
+        -- store options
+        MinimalDisplayBars.io_persistence.store(
+            MinimalDisplayBars.configFileLocations[coopNum], 
+            MinimalDisplayBars.MOD_ID, 
+            MinimalDisplayBars.configTables[coopNum])
+        
+        MinimalDisplayBars.SaveToFile("_horizontalbarfix", "fixed")
+    end
+    ------------------------------------------------------------------------------
+    
     -- Make sure bars are all toggled correctly when new bars are added.
     for _, bar in pairs(MinimalDisplayBars.displayBars[playerIndex]) do
         if bar then 
-        
+            
             -- Override settings
             MinimalDisplayBars.configTables[bar.coopNum][bar.idName]["imageName"] = DEFAULT_SETTINGS[bar.idName]["imageName"]
             bar.imageName = DEFAULT_SETTINGS[bar.idName]["imageName"]

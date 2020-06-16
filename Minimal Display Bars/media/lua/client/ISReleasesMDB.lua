@@ -1,14 +1,4 @@
---
--- Created by IntelliJ IDEA.
--- User: RJ
--- Date: 21/09/16
--- Time: 10:19
--- To change this template use File | Settings | File Templates.
---
 
---***********************************************************
---**                    ROBERT JOHNSON                     **
---***********************************************************
 
 require "ISUI/ISPanel"
 
@@ -17,11 +7,6 @@ ISReleasesMDB = ISPanel:derive("ISReleasesMDB");
 local FONT_HGT_SMALL = getTextManager():getFontHeight(UIFont.Small)
 local FONT_HGT_MEDIUM = getTextManager():getFontHeight(UIFont.Medium)
 local FONT_HGT_LARGE = getTextManager():getFontHeight(UIFont.Large)
-
---************************************************************************--
---** ISPanel:initialise
---**
---************************************************************************--
 
 function ISReleasesMDB:initialise()
     ISPanel.initialise(self);
@@ -136,7 +121,7 @@ local MOD_VERSION = "4.3.1"
 
 Events.OnGameStart.Add(function()
     
-    data = MinimalDisplayBars.LoadFromFile("_data")
+    local data = MinimalDisplayBars.LoadFromFile("_data")
     if not data or data[1] == nil then 
         data = {} end
     if data[1] == MOD_VERSION then return end
@@ -168,7 +153,7 @@ Events.OnGameStart.Add(function()
     
     okModal(text, true, nil, nil, nil, nil, 
                 function() 
-                    data = {}
+                    local data = {}
                     data[1] = MOD_VERSION
                     
                     local text = "";

@@ -876,7 +876,7 @@ function ISGenericMiniDisplayBar:new(
     
     panel.moveBarsTogether = configTable["moveBarsTogether"]
     
-    ISGenericMiniDisplayBar.isEditing = true
+    ISGenericMiniDisplayBar.isEditing = false
     
 	return panel
 end

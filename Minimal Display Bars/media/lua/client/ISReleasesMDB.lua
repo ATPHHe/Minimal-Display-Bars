@@ -117,7 +117,7 @@ local function okModal(_text, _centered, _width, _height, _posX, _posY, _func)
 end
 
 
-local MOD_VERSION = "4.3.1"
+local MOD_VERSION = "4.3.2"
 
 Events.OnGameStart.Add(function()
     

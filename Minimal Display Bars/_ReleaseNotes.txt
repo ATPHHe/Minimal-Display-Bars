@@ -1,5 +1,9 @@
 ========================================================
 ======= UPDATES (Minimal Display Bars) =======
+4.3.2
+- Fixed major bug which caused display bar positions, width, and height to stop saving.
+--------------------------------------------------
+
 4.3.1
 --- Menu Box ---
 - Added menu box item "$ContextMenu_MinimalDisplayBars_Set_HeightWidth$". You may now set the "Width", "Height", and "Icon Size" of each display bar by right-clicking a display bar or the menu box and selecting "$ContextMenu_MinimalDisplayBars_Set_HeightWidth$". 

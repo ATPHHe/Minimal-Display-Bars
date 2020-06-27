@@ -1,5 +1,8 @@
 ========================================================
 ======= UPDATES (Minimal Display Bars) =======
+4.3.3
+- Fixed bug where clicking "$ContextMenu_MinimalDisplayBars_Set_Vertical$" and "$ContextMenu_MinimalDisplayBars_Set_Horizontal$" did not save display bar alignments.
+
 4.3.2
 - Fixed major bug which caused display bar positions, width, and height to stop saving.
 --------------------------------------------------

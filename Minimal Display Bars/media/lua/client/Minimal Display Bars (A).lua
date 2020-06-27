@@ -4,7 +4,7 @@
 --****************************
 --* Coded by: ATPHHe
 --* Date Created: 02/19/2020
---* Date Modified: 06/16/2020
+--* Date Modified: 06/27/2020
 --*******************************
 --
 --============================================================
@@ -2122,6 +2122,9 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
                     generic_bar:setWidth(oldH)
                     generic_bar:setHeight(oldW)
                     
+                    MinimalDisplayBars.configTables[generic_bar.coopNum][generic_bar.idName]["width"] = generic_bar:getWidth()
+                    MinimalDisplayBars.configTables[generic_bar.coopNum][generic_bar.idName]["height"] = generic_bar:getHeight()
+                    
                     MinimalDisplayBars.io_persistence.store(
                         generic_bar.fileSaveLocation, 
                         MinimalDisplayBars.MOD_ID, 
@@ -2151,6 +2154,9 @@ MinimalDisplayBars.showContextMenu = function(generic_bar, dx, dy)
                     local oldH = tonumber(generic_bar.oldHeight)
                     generic_bar:setWidth(oldH)
                     generic_bar:setHeight(oldW)
+                    
+                    MinimalDisplayBars.configTables[generic_bar.coopNum][generic_bar.idName]["width"] = generic_bar:getWidth()
+                    MinimalDisplayBars.configTables[generic_bar.coopNum][generic_bar.idName]["height"] = generic_bar:getHeight()
                     
                     MinimalDisplayBars.io_persistence.store(
                         generic_bar.fileSaveLocation, 

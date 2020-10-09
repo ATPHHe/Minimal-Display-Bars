@@ -11,7 +11,7 @@
 
 MinimalDisplayBars = {}
 
-MinimalDisplayBars.MOD_ID = "MinimalDisplayBars"
+MinimalDisplayBars.MOD_ID = "MinimalDisplayBars_Test"
 
 local gameVersion = getCore():getVersionNumber()
 MinimalDisplayBars.gameVersionNum = 0
@@ -681,8 +681,81 @@ local DEFAULT_SETTINGS = {
         ["imageSize"] = 22,
         ["showImage"] = false,
     },
-        
-    
+	["stress"] = {
+        ["x"] = 85 + (8 * 7),
+        ["y"] = 30,
+        ["width"] = 8,
+        ["height"] = 150,
+        ["l"] = 2,
+        ["t"] = 3,
+        ["r"] = 2,
+        ["b"] = 3,
+        ["color"] = {red = (100 / 255), 
+                    green = (255 / 255), 
+                    blue = (0 / 255), 
+                    alpha = 0.75},
+        ["isMovable"] = true,
+        ["isResizable"] = false,
+        ["isVisible"] = true,
+        ["isVertical"] = true,
+        ["alwaysBringToTop"] = true,
+        ["showMoodletThresholdLines"] = true,
+        ["isCompact"] = false,
+        ["imageShowBack"] = false,
+        ["imageName"] = "media/ui/Moodles/Moodle_Icon_Stressed.png",
+        ["imageSize"] = 22,
+        ["showImage"] = false,
+    },
+    ["panic"] = {
+        ["x"] = 85 + (8 * 7),
+        ["y"] = 30,
+        ["width"] = 8,
+        ["height"] = 150,
+        ["l"] = 2,
+        ["t"] = 3,
+        ["r"] = 2,
+        ["b"] = 3,
+        ["color"] = {red = (100 / 255), 
+                    green = (255 / 255), 
+                    blue = (0 / 255), 
+                    alpha = 0.75},
+        ["isMovable"] = true,
+        ["isResizable"] = false,
+        ["isVisible"] = true,
+        ["isVertical"] = true,
+        ["alwaysBringToTop"] = true,
+        ["showMoodletThresholdLines"] = true,
+        ["isCompact"] = false,
+        ["imageShowBack"] = false,
+        ["imageName"] = "media/ui/Moodles/Moodle_Icon_Panic.png",
+        ["imageSize"] = 22,
+        ["showImage"] = false,
+    },
+	["calorie"] = {
+        ["x"] = 85 + (8 * 7),
+        ["y"] = 30,
+        ["width"] = 8,
+        ["height"] = 150,
+        ["l"] = 2,
+        ["t"] = 3,
+        ["r"] = 2,
+        ["b"] = 3,
+        ["color"] = {red = (100 / 255), 
+                    green = (255 / 255), 
+                    blue = (0 / 255), 
+                    alpha = 0.75},
+        ["isMovable"] = true,
+        ["isResizable"] = false,
+        ["isVisible"] = true,
+        ["isVertical"] = true,
+        ["alwaysBringToTop"] = true,
+        ["showMoodletThresholdLines"] = true,
+        ["isCompact"] = false,
+        ["imageShowBack"] = false,
+        ["imageName"] = "media/ui/TraitNutritionist.png",
+        ["imageSize"] = 22,
+        ["showImage"] = false,
+    },
 }
 
 

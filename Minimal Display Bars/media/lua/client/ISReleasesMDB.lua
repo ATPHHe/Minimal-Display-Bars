@@ -4,6 +4,8 @@ require "ISUI/ISPanel"
 
 ISReleasesMDB = ISPanel:derive("ISReleasesMDB");
 
+local MOD_VERSION = "4.3.4"
+
 local FONT_HGT_SMALL = getTextManager():getFontHeight(UIFont.Small)
 local FONT_HGT_MEDIUM = getTextManager():getFontHeight(UIFont.Medium)
 local FONT_HGT_LARGE = getTextManager():getFontHeight(UIFont.Large)
@@ -117,7 +119,6 @@ local function okModal(_text, _centered, _width, _height, _posX, _posY, _func)
 end
 
 
-local MOD_VERSION = "4.3.2"
 
 Events.OnGameStart.Add(function()
     

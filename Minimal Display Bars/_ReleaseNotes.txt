@@ -1,5 +1,8 @@
 ========================================================
 ======= UPDATES (Minimal Display Bars) =======
+4.3.4
+- Fixed issue in Build 41 causing the temperature bar to not display Celsius or Fahrenheit preferences.
+
 4.3.3
 - Fixed bug where clicking "$ContextMenu_MinimalDisplayBars_Set_Vertical$" and "$ContextMenu_MinimalDisplayBars_Set_Horizontal$" did not save display bar alignments.
 

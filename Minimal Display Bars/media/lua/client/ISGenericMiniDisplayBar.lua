@@ -532,7 +532,7 @@ function ISGenericMiniDisplayBar:render(...)
         local unit = ""
         local realValue = string.format("%.4g", self.valueFunction.getValue(self.isoPlayer, true))
         if self.idName == "temperature" then
-            if core:isCelsius() then
+            if core:isCelsius() or (core.getOptionDisplayAsCelsius and core:getOptionDisplayAsCelsius()) then
                 unit = "°C"
             else
                 realValue = string.format("%.4g", (self.valueFunction.getValue(self.isoPlayer, true) * 9/5) + 32)

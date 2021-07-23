@@ -1,0 +1,64 @@
+ContextMenu_RU = {
+    
+    
+    ----- ContextMenu (Russian) -----
+    /* Translation Improved by star */
+    
+    ----- Title for Display Bars when Right-Clicked -----
+    ContextMenu_MinimalDisplayBars_Title = "Minimal Display Bars", /* The name of the mod should be unchanged. */
+    
+    -- Menu Options
+    ContextMenu_MinimalDisplayBars_Reset = "Сброс к настройкам по умолчанию",
+    ContextMenu_MinimalDisplayBars_Show_Bar = "Показать панель",
+    ContextMenu_MinimalDisplayBars_Show_All_Display_Bars = "Показать все панели отображения",
+    ContextMenu_MinimalDisplayBars_Hide_Bar = "Скрыть панель",
+    ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars= "Скрыть все панели отображения",
+    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "Возможность двигать панели",
+    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "Изменять размеры панелей", 
+    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Панели поверх других окон",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Пороги состояний",
+    ContextMenu_MinimalDisplayBars_Toggle_Compact = "Компактный вид",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Переместить все панели дисплея вместе",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Показать значки панели дисплея",
+    
+    -- Display Bar Options
+    ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Сбросить панель отображения",
+    ContextMenu_MinimalDisplayBars_Set_Vertical = "Вертикальное отображение",
+    ContextMenu_MinimalDisplayBars_Set_Horizontal = "Горизонтальное отображение",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Установите отображение высоту и ширину",
+    ContextMenu_MinimalDisplayBars_Set_Color = "Установить отображение цвет",
+    ContextMenu_MinimalDisplayBars_Hide = "Скрыть панель",
+    
+    -- Display Names
+    ContextMenu_MinimalDisplayBars_menu = "Меню",
+    ContextMenu_MinimalDisplayBars_hp = "Здоровье",
+    ContextMenu_MinimalDisplayBars_hunger = "Голод",
+    ContextMenu_MinimalDisplayBars_thirst = "Жажда",
+    ContextMenu_MinimalDisplayBars_endurance = "Напряжение",
+    ContextMenu_MinimalDisplayBars_fatigue = "Сонливость",
+    ContextMenu_MinimalDisplayBars_boredomlevel = "Уровень скуки",
+    ContextMenu_MinimalDisplayBars_unhappynesslevel = "Уровень грусти",
+    ContextMenu_MinimalDisplayBars_temperature = "Температура",
+    ContextMenu_MinimalDisplayBars_calorie = "Калории",
+    
+    /* ContextMenu_MinimalDisplayBars_stress = "Тревога", -- getStress() */
+    /* ContextMenu_MinimalDisplayBars_catchAColdStrength = "Простуда", -- getCatchACold() */
+    /* ContextMenu_MinimalDisplayBars_coldStrength = "Слабость иммунитета", -- getColdStrength() */
+    /* ContextMenu_MinimalDisplayBars_poison = "Яд", -- getPoisonLevel() */
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Удерживая левую кнопку мыши, перетащите для перемещения.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Щелкните правой кнопкой мыши, чтобы увидеть больше вариантов.",
+    
+    -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Все",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "ВОССТАНОВИТЕ ВАШИ НАСТРОЙКИ",
+    ContextMenu_MinimalDisplayBars_ON = "Да",
+    ContextMenu_MinimalDisplayBars_OFF = "Нет",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Размер Значка",
+    ContextMenu_MinimalDisplayBars_Width = "Ширина",
+    ContextMenu_MinimalDisplayBars_Height = "Высота",
+    
+    
+}

@@ -1,0 +1,58 @@
+ContextMenu_HU = {
+    
+    
+    ----- ContextMenu (Hungarian) -----
+    
+    ----- Title for Display Bars when Right-Clicked -----
+    ContextMenu_MinimalDisplayBars_Title = "Minimális Kijelzosávok",
+    
+    -- Menu Options
+    ContextMenu_MinimalDisplayBars_Reset = "Visszaállítás alapértelmezettre",
+    ContextMenu_MinimalDisplayBars_Show_Bar = "Megjeleníto sáv megjelenítése",
+    ContextMenu_MinimalDisplayBars_Show_All_Display_Bars = "Összes kijelzosáv megjelenítése",
+    ContextMenu_MinimalDisplayBars_Hide_Bar = "A kijelzosáv elrejtése",
+    ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars= "Az összes kijelzosáv elrejtése",
+    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "Váltás mindenki számára",
+    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "Váltás mindenki számára átméretezheto",
+    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Váltás mindig a tetejére állítsa a kijelzosávokat",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Thresholds_Lines = "Váltás a Moodlet küszöbvonalakra a kijelzosávokon",
+    ContextMenu_MinimalDisplayBars_Toggle_Compact = "Váltás Kompakt",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Váltás a kijelzosávok mozgatására együtt",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Váltás a kijelzosáv ikonjaira",
+    
+    -- Display Bar Options
+    ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Visszaállítja a kijelzosávot",
+    ContextMenu_MinimalDisplayBars_Set_Vertical = "Állítsa függolegesre",
+    ContextMenu_MinimalDisplayBars_Set_Horizontal = "Állítsa vízszintesen",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Állítsa be a magasságot / szélességet",
+    ContextMenu_MinimalDisplayBars_Set_Color = "Állítsa be a színt",
+    ContextMenu_MinimalDisplayBars_Hide = "Elrejt",
+    
+    -- Display Names
+    ContextMenu_MinimalDisplayBars_menu = "Menü",
+    ContextMenu_MinimalDisplayBars_hp = "Egészség",
+    ContextMenu_MinimalDisplayBars_hunger = "Éhség",
+    ContextMenu_MinimalDisplayBars_thirst = "Szomjúság",
+    ContextMenu_MinimalDisplayBars_endurance = "Kitartás",
+    ContextMenu_MinimalDisplayBars_fatigue = "Fáradtság",
+    ContextMenu_MinimalDisplayBars_boredomlevel = "Unalom Szintje",
+    ContextMenu_MinimalDisplayBars_unhappynesslevel = "Boldogtalanság Szintje",
+    ContextMenu_MinimalDisplayBars_temperature = "Hofok",
+    ContextMenu_MinimalDisplayBars_calorie = "Kalória",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "A bal egérgombbal tartsa és húzza a mozgatáshoz.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Kattintson jobb gombbal erre a további lehetoségekhez.",
+    
+    -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Minden",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "VISSZAÁLLÍTÁS A BEÁLLÍTÁSOKAT",
+    ContextMenu_MinimalDisplayBars_ON = "BEKAPCSOLVA",
+    ContextMenu_MinimalDisplayBars_OFF = "KIKAPCSOLVA",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Ikon méret",
+    ContextMenu_MinimalDisplayBars_Width = "Szélesség",
+    ContextMenu_MinimalDisplayBars_Height = "Magasság",
+    
+    
+}

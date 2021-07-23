@@ -1,0 +1,58 @@
+ContextMenu_ES = {
+    
+    
+    ----- ContextMenu (Español) -----
+    
+    ----- Title for Display Bars when Right-Clicked -----
+    ContextMenu_MinimalDisplayBars_Title = "Barras de Visualización Mínimas",
+    
+    -- Menu Options
+    ContextMenu_MinimalDisplayBars_Reset = "Restablecer barras de visualización",
+    ContextMenu_MinimalDisplayBars_Show_Bar = "Mostrar barra",
+    ContextMenu_MinimalDisplayBars_Show_All_Display_Bars = "Mostrar todas las barras de visualización",
+    ContextMenu_MinimalDisplayBars_Hide_Bar = "Ocultar barra",
+    ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars= "Ocultar todas las barras de visualización",
+    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "Activar / Desactivar movible para todos",
+    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "Activar / Desactivar redimensionable para todos",
+    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Activar / Desactivar Siempre lleve las barras de visualización hacia arriba",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Activar / Desactivar líneas de umbral de Moodlet en barras de visualización",
+    ContextMenu_MinimalDisplayBars_Toggle_Compact = "Activar / Desactivar Compacto",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Activar / Desactivar Mover barras de visualización juntas",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Activar / Desactivar Mostrar los iconos de la barra de visualización",
+    
+    -- Display Bar Options
+    ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Restablecer barra de visualización",
+    ContextMenu_MinimalDisplayBars_Set_Vertical = "Establecer vertical",
+    ContextMenu_MinimalDisplayBars_Set_Horizontal = "Establecer horizontal",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Establecer Altura / Ancho",
+    ContextMenu_MinimalDisplayBars_Set_Color = "Establecer color",
+    ContextMenu_MinimalDisplayBars_Hide = "Ocultar barra",
+    
+    -- Display Names
+    ContextMenu_MinimalDisplayBars_menu = "Menú",
+    ContextMenu_MinimalDisplayBars_hp = "Salud",
+    ContextMenu_MinimalDisplayBars_hunger = "Hambre",
+    ContextMenu_MinimalDisplayBars_thirst = "Sed",
+    ContextMenu_MinimalDisplayBars_endurance = "Resistencia",
+    ContextMenu_MinimalDisplayBars_fatigue = "Fatiga",
+    ContextMenu_MinimalDisplayBars_boredomlevel = "Nivel de Aburrimiento",
+    ContextMenu_MinimalDisplayBars_unhappynesslevel = "Nivel de Infelicidad",
+    ContextMenu_MinimalDisplayBars_temperature = "Temperatura",
+    ContextMenu_MinimalDisplayBars_calorie = "Calorías",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Haga clic izquierdo, mantenga presionado y arrastre para mover.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Haga clic derecho para más opciones.",
+    
+    -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Todas",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "RESTAURAR SUS AJUSTES",
+    ContextMenu_MinimalDisplayBars_ON = "ACTIVADO",
+    ContextMenu_MinimalDisplayBars_OFF = "DESACTIVADO",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Tamaño de ícono",
+    ContextMenu_MinimalDisplayBars_Width = "Ancho",
+    ContextMenu_MinimalDisplayBars_Height = "Altura",
+    
+    
+}

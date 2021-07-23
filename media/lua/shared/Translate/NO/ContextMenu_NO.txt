@@ -1,0 +1,58 @@
+ContextMenu_NO = {
+    
+    
+    ----- ContextMenu (Norwegian) -----
+    
+    ----- Title for Display Bars when Right-Clicked -----
+    ContextMenu_MinimalDisplayBars_Title = "Minimale Visningsboks",
+    
+    -- Menu Options
+    ContextMenu_MinimalDisplayBars_Reset = "Tilbakestill til standardinnstillinger",
+    ContextMenu_MinimalDisplayBars_Show_Bar = "Vis skjermpanel",
+    ContextMenu_MinimalDisplayBars_Show_All_Display_Bars = "Vis alle skjermpaneler",
+    ContextMenu_MinimalDisplayBars_Hide_Bar = "Skjul skjermpanel",
+    ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars= "Skjul alle skjermpaneler",
+    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "Slå PÅ / AV flyttbare skjermpaneler",
+    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "Slå PÅ / AV Endre størrelse for alle skjermpaneler",
+    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Slå PÅ / AV alltid Ta skjermpaneler til toppen",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Slå PÅ / AV humør terskel-linjer på skjermpaneler",
+    ContextMenu_MinimalDisplayBars_Toggle_Compact = "Slå PÅ / AV Kompakt",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Slå PÅ / AV Flytte skjermpaneler sammen",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Slå PÅ / AV Skjermpaneler Ikoner",
+    
+    -- Display Bar Options
+    ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Tilbakestill skjermpanel",
+    ContextMenu_MinimalDisplayBars_Set_Vertical = "Angi vertikal",
+    ContextMenu_MinimalDisplayBars_Set_Horizontal = "Sett horisontalt",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Still høyde / bredde",
+    ContextMenu_MinimalDisplayBars_Set_Color = "Set Color",
+    ContextMenu_MinimalDisplayBars_Hide = "Skjul skjermpanel",
+    
+    -- Display Names
+    ContextMenu_MinimalDisplayBars_menu = "Meny",
+    ContextMenu_MinimalDisplayBars_hp = "Helse",
+    ContextMenu_MinimalDisplayBars_hunger = "Sult",
+    ContextMenu_MinimalDisplayBars_thirst = "Tørst",
+    ContextMenu_MinimalDisplayBars_endurance = "Utholdenhet",
+    ContextMenu_MinimalDisplayBars_fatigue = "Utmattelse",
+    ContextMenu_MinimalDisplayBars_boredomlevel = "Kjedsomhet Nivå",
+    ContextMenu_MinimalDisplayBars_unhappynesslevel = "Ulykkelighet Nivå",
+    ContextMenu_MinimalDisplayBars_temperature = "Temperatur",
+    ContextMenu_MinimalDisplayBars_calorie = "Kalorier",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Venstreklikk Hold + Dra for å flytte.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Høyreklikk for flere alternativer.",
+    
+    -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Alle",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "GJENOPPRETT INNSTILLINGENE DINE",
+    ContextMenu_MinimalDisplayBars_ON = "AV",
+    ContextMenu_MinimalDisplayBars_OFF = "PÅ",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Ikonstørrelse",
+    ContextMenu_MinimalDisplayBars_Width = "Bredde",
+    ContextMenu_MinimalDisplayBars_Height = "Høyde",
+    
+    
+}

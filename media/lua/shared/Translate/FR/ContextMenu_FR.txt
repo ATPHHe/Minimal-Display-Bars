@@ -1,0 +1,58 @@
+ContextMenu_FR = {
+    
+    
+    ----- ContextMenu (French) -----
+    
+    ----- Title for Display Bars when Right-Clicked -----
+    ContextMenu_MinimalDisplayBars_Title = "Barres D'affichage Minimales",
+    
+    -- Menu Options
+    ContextMenu_MinimalDisplayBars_Reset = "Réinitialiser",
+    ContextMenu_MinimalDisplayBars_Show_Bar = "Afficher la barre",
+    ContextMenu_MinimalDisplayBars_Show_All_Display_Bars = "Afficher toutes les barres d'affichage",
+    ContextMenu_MinimalDisplayBars_Hide_Bar = "Masquer la barre",
+    ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars= "Masquer toutes les barres d'affichage",
+    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "Basculer mobile pour tous",
+    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "Basculer redimensionnable pour tous",
+    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Basculer toujours les barres d'affichage en haut",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Basculer les lignes de seuil de l'humeur sur les barres d'affichage",
+    ContextMenu_MinimalDisplayBars_Toggle_Compact = "Basculer les barres d'affichage Compactes",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Basculer pour déplacer les barres d'affichage ensemble",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Basculer les icônes de la barre d'affichage",
+    
+    -- Display Bar Options
+    ontextMenu_MinimalDisplayBars_Reset_Display_Bar = "Réinitialiser la barre d'affichage",
+    ContextMenu_MinimalDisplayBars_Set_Vertical = "Définir vertical",
+    ContextMenu_MinimalDisplayBars_Set_Horizontal = "Définir horizontal",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Définir la hauteur / largeur",
+    ContextMenu_MinimalDisplayBars_Set_Color = "Définir la couleur",
+    ContextMenu_MinimalDisplayBars_Hide = "Masquer",
+    
+    -- Display Names
+    ContextMenu_MinimalDisplayBars_menu = "Menu",
+    ContextMenu_MinimalDisplayBars_hp = "Santé",
+    ContextMenu_MinimalDisplayBars_hunger = "Faim",
+    ContextMenu_MinimalDisplayBars_thirst = "La soif",
+    ContextMenu_MinimalDisplayBars_endurance = "Endurance",
+    ContextMenu_MinimalDisplayBars_fatigue = "Fatigue",
+    ContextMenu_MinimalDisplayBars_boredomlevel = "Niveau d'ennui",
+    ContextMenu_MinimalDisplayBars_unhappynesslevel = "Niveau de mécontentement",
+    ContextMenu_MinimalDisplayBars_temperature = "Température",
+    ContextMenu_MinimalDisplayBars_calorie = "Calories",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Clic gauche Maintenez enfoncé + faites glisser pour vous déplacer.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Clic droit pour plus d'options.",
+    
+    -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Tout",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "RESTAUREZ VOS RÉGLAGES",
+    ContextMenu_MinimalDisplayBars_ON = "ALLUMÉ",
+    ContextMenu_MinimalDisplayBars_OFF = "ÉTEINT",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Taille de l'icône",
+    ContextMenu_MinimalDisplayBars_Width = "Largeur",
+    ContextMenu_MinimalDisplayBars_Height = "La Hauteur",
+    
+    
+}

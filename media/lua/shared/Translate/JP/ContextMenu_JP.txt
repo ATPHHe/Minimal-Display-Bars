@@ -1,0 +1,58 @@
+﻿ContextMenu_JP = {
+    
+    
+    ----- ContextMenu (Japanese) -----
+    
+    ----- Title for Display Bars when Right-Clicked -----
+    ContextMenu_MinimalDisplayBars_Title = "最小限のディスプレイバー",
+    
+    -- Menu Options
+    ContextMenu_MinimalDisplayBars_Reset = "デフォルト設定にリセット",
+    ContextMenu_MinimalDisplayBars_Show_Bar = "ショーバー",
+    ContextMenu_MinimalDisplayBars_Show_All_Display_Bars = "すべての表示バーを表示",
+    ContextMenu_MinimalDisplayBars_Hide_Bar = "バーを非表示",
+    ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars= "すべての表示バーを表示",
+    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "すべてのユーザーに合わせて移動可能",
+    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "すべてのサイズ変更可能に切り替え",
+    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "トグル常に表示バーを上部に移動する常に表示バーを上部に移動する",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "ディスプレイバーのMoodletしきい値線の切り替え",
+    ContextMenu_MinimalDisplayBars_Toggle_Compact = "トグルコンパクト",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "表示バーを一緒に移動するように切り替え",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "表示バーアイコンの切り替え",
+    
+    -- Display Bar Options
+    ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "ディスプレイバーをリセット",
+    ContextMenu_MinimalDisplayBars_Set_Vertical = "垂直に設定",
+    ContextMenu_MinimalDisplayBars_Set_Horizontal = "水平に設定",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "高さ/幅を設定",
+    ContextMenu_MinimalDisplayBars_Set_Color = "色を設定",
+    ContextMenu_MinimalDisplayBars_Hide = "バーを非表示",
+    
+    -- Display Bar Names
+    ContextMenu_MinimalDisplayBars_menu = "メニュー",
+    ContextMenu_MinimalDisplayBars_hp = "健康",
+    ContextMenu_MinimalDisplayBars_hunger = "空腹",
+    ContextMenu_MinimalDisplayBars_thirst = "喉が乾く",
+    ContextMenu_MinimalDisplayBars_endurance = "耐久",
+    ContextMenu_MinimalDisplayBars_fatigue = "倦怠感",
+    ContextMenu_MinimalDisplayBars_boredomlevel = "退屈れレベル",
+    ContextMenu_MinimalDisplayBars_unhappynesslevel = "悲しみレベル",
+    ContextMenu_MinimalDisplayBars_temperature = "温度",
+    ContextMenu_MinimalDisplayBars_calorie = "カロリー",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "左クリックホールド+ドラッグして移動します。",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "右クリックしてその他のオプションを表示します。",
+    
+    -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "すべて",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "設定を復元する",
+    ContextMenu_MinimalDisplayBars_ON = "オン",
+    ContextMenu_MinimalDisplayBars_OFF = "オフ",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "アイコンサイズ",
+    ContextMenu_MinimalDisplayBars_Width = "幅",
+    ContextMenu_MinimalDisplayBars_Height = "高さ",
+    
+    
+}

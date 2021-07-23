@@ -1,0 +1,53 @@
+========================================================
+======= UPDATES (Minimal Display Bars) =======
+4.3.5
+- Fixed bug that caused HP display bar to continue flashing after tending to wounds.
+
+4.3.4
+- Fixed issue in Build 41 causing the temperature bar to not display Celsius or Fahrenheit preferences.
+
+4.3.3
+- Fixed bug where clicking "$ContextMenu_MinimalDisplayBars_Set_Vertical$" and "$ContextMenu_MinimalDisplayBars_Set_Horizontal$" did not save display bar alignments.
+
+4.3.2
+- Fixed major bug which caused display bar positions, width, and height to stop saving.
+--------------------------------------------------
+
+4.3.1
+--- Menu Box ---
+- Added menu box item "$ContextMenu_MinimalDisplayBars_Set_HeightWidth$". You may now set the "Width", "Height", and "Icon Size" of each display bar by right-clicking a display bar or the menu box and selecting "$ContextMenu_MinimalDisplayBars_Set_HeightWidth$". 
+- Removed menu box item "$ContextMenu_MinimalDisplayBars_Toggle_Compact$".
+--------------------------------------------------
+
+4.3.0
+- Added Special Moodle Level circles to the Icons when toggling on the Menu Box setting, "$ContextMenu_MinimalDisplayBars_Toggle_Show_Icon$".
+- Bugfix: Fixed error caused by Color Picker when clicking outside of the Color Picker.
+
+--------------------------------------------------
+4.2.2
+- Hotfix: Fixed issue with the menu option "$ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together$" not working properly when some display bars are hidden.
+
+--------------------------------------------------
+4.2.1
+- Improved German (DE) Translation (Thanks to Amalek for the translation).
+
+--------------------------------------------------
+4.2
+- Menu Box: Added new option "$ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together$".
+        Allows display bars to be dragged together.
+- Menu Box: Added new option "$ContextMenu_MinimalDisplayBars_Toggle_Show_Icon$".
+        Shows little icons above some display bars.
+
+--------------------------------------------------
+4.1.1
+- Hotfix: Modified display bar tooltips so that they do not get positioned off the screen.
+
+--------------------------------------------------
+4.1
+- Added a Calorie display bar to the top-left to track how many calories your character has.
+
+- Left-click and dragging a display bar will now show it's name and stats.
+- Hovering your mouse over a display bar will now show it's name and stats.
+
+- You may now change the color of all the display bars, except for the temperature bar. 
+        Right-click the menu box or a display bar and left-click on "Set Color".

@@ -1,0 +1,58 @@
+ContextMenu_DA = {
+    
+    
+    ----- ContextMenu (Danish) -----
+    
+    ----- Title for Display Bars when Right-Clicked -----
+    ContextMenu_MinimalDisplayBars_Title = "Minimale Skærmbar",
+    
+    -- Menu Options
+    ContextMenu_MinimalDisplayBars_Reset = "Nulstil",
+    ContextMenu_MinimalDisplayBars_Show_Bar = "Vis skærmbjælke",
+    ContextMenu_MinimalDisplayBars_Show_All_Display_Bars = "Vis alle skærmbjælker",
+    ContextMenu_MinimalDisplayBars_Hide_Bar = "Skjul skærmbjælke",
+    ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars= "Skjul alle skærmbjælker",
+    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "Skift til / fra Bevægelig for alle skærmbjælker",
+    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "Skift til / fra Kan ændres til alle skærmbjælker",
+    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Skift til / fra Altid medbring skærmbar til toppen",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Skift til / fra Humørtærskelinjer på skærmbjælker",
+    ContextMenu_MinimalDisplayBars_Toggle_Compact = "Skift til / fra Kompakt",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Skift til / fra Flyt skærmbjælker sammen",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Skift til / fra Ikoner for skærmbjælker",
+    
+    -- Display Bar Options
+    ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Nulstil skærmbjælken",
+    ContextMenu_MinimalDisplayBars_Set_Vertical = "Indstil lodret",
+    ContextMenu_MinimalDisplayBars_Set_Horizontal = "Indstil vandret",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Indstil højde / bredde",
+    ContextMenu_MinimalDisplayBars_Set_Color = "Indstil farve",
+    ContextMenu_MinimalDisplayBars_Hide = "Skjule",
+    
+    -- Display Names
+    ContextMenu_MinimalDisplayBars_menu = "Menu",
+    ContextMenu_MinimalDisplayBars_hp = "Sundhed",
+    ContextMenu_MinimalDisplayBars_hunger = "Sult",
+    ContextMenu_MinimalDisplayBars_thirst = "Tørst",
+    ContextMenu_MinimalDisplayBars_endurance = "Udholdenhed",
+    ContextMenu_MinimalDisplayBars_fatigue = "Træthed",
+    ContextMenu_MinimalDisplayBars_boredomlevel = "Kedsomheds Niveau",
+    ContextMenu_MinimalDisplayBars_unhappynesslevel = "Ulykke Niveau",
+    ContextMenu_MinimalDisplayBars_temperature = "Temperatur",
+    ContextMenu_MinimalDisplayBars_calorie = "Kalorier",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Venstreklik på Hold + Træk for at flytte.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Højreklik for flere muligheder.",
+    
+    -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Alle",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "GENDAN DINE INDSTILLINGER",
+    ContextMenu_MinimalDisplayBars_ON = "TÆNDT",
+    ContextMenu_MinimalDisplayBars_OFF = "SLUKKET",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Ikonstørrelse",
+    ContextMenu_MinimalDisplayBars_Width = "Bredde",
+    ContextMenu_MinimalDisplayBars_Height = "Højde",
+    
+    
+}

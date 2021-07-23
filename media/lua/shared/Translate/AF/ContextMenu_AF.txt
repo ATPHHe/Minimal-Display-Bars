@@ -1,0 +1,57 @@
+ContextMenu_AF = {
+    
+    
+    ----- ContextMenu (Afrikaans) -----
+    
+    ----- Title for Display Bars when Right-Clicked -----
+    ContextMenu_MinimalDisplayBars_Title = "Klein Gesondheidsbalk",
+    
+    -- Menu Options
+    ContextMenu_MinimalDisplayBars_Reset = "Stel vertoonstawe terug",
+    ContextMenu_MinimalDisplayBars_Show_Bar = "Wys balk",
+    ContextMenu_MinimalDisplayBars_Show_All_Display_Bars = "Wys alle vertoonstawe",
+    ContextMenu_MinimalDisplayBars_Hide_Bar = "Versteek balk",
+    ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars= "Versteek alle vertoonstawe",
+    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "Wissel aan / af beweegbaar vir almal",
+    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "Wissel aan / af veranderlik vir almal",
+    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Wissel aan / af altyd bring vertoonstawe na bo",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Wissel aan / af Moodlet-drempellyne op vertoonstawe",
+    ContextMenu_MinimalDisplayBars_Toggle_Compact = "Wissel aan / af kompak",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Wissel aan / af Skuif vertoonstawe saam",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Wissel aan / af Vertoonstawe ikone",
+    
+    -- Display Bar Options
+    ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Stel vertoonbalk weer in",
+    ContextMenu_MinimalDisplayBars_Set_Vertical = "Stel vertikaal",
+    ContextMenu_MinimalDisplayBars_Set_Horizontal = "Stel horisontaal",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Stel Hoogte / Wydte",
+    ContextMenu_MinimalDisplayBars_Set_Color = "Stel kleur in",
+    ContextMenu_MinimalDisplayBars_Hide = "Verberg",
+    
+    -- Display Names
+    ContextMenu_MinimalDisplayBars_menu = "Spyskaart",
+    ContextMenu_MinimalDisplayBars_hp = "Gesondheid",
+    ContextMenu_MinimalDisplayBars_hunger = "Honger",
+    ContextMenu_MinimalDisplayBars_thirst = "Dors",
+    ContextMenu_MinimalDisplayBars_endurance = "Uithouvermoë",
+    ContextMenu_MinimalDisplayBars_fatigue = "Moegheid",
+    ContextMenu_MinimalDisplayBars_boredomlevel = "Verveeldheid Vlak",
+    ContextMenu_MinimalDisplayBars_unhappynesslevel = "Ongelukkigheid Vlak",
+    ContextMenu_MinimalDisplayBars_temperature = "Temperatuur",
+    ContextMenu_MinimalDisplayBars_calorie = "Kalorieë",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Links klik, hou en sleep om te skuif.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Regsklik vir meer opsies.",
+    
+    -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Alle",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "HERSTEL U INSTELLINGS",
+    ContextMenu_MinimalDisplayBars_ON = "AAN",
+    ContextMenu_MinimalDisplayBars_OFF = "AF",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Ikoon Grootte",
+    ContextMenu_MinimalDisplayBars_Width = "Wydte",
+    ContextMenu_MinimalDisplayBars_Height = "Hoogte",
+    
+}

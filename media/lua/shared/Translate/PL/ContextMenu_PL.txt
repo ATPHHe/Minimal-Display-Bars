@@ -1,0 +1,58 @@
+ContextMenu_PL = {
+    
+    
+    ----- ContextMenu (Polish) -----
+    
+    ----- Title for Display Bars when Right-Clicked -----
+    ContextMenu_MinimalDisplayBars_Title = "Minimalne Paski Wyswietlania",
+    
+    -- Menu Options
+    ContextMenu_MinimalDisplayBars_Reset = "Zresetuj do ustawien domyslnych",
+    ContextMenu_MinimalDisplayBars_Show_Bar = "Ukryj pasek wyswietlania",
+    ContextMenu_MinimalDisplayBars_Show_All_Display_Bars = "Pokaz wszystkie paski wyswietlania",
+    ContextMenu_MinimalDisplayBars_Hide_Bar = "Ukryj pasek wyswietlania",
+    ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars= "Ukryj wszystkie paski wyswietlania",
+    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "Przelacz ruchome dla wszystkich",
+    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "Przelacz zmiane rozmiaru dla wszystkich",
+    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Przelacz Zawsze doprowadzaj paski wyswietlacza do góry",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Przelacz linie progowe Moodleta na paskach wyswietlacza",
+    ContextMenu_MinimalDisplayBars_Toggle_Compact = "Przelacz Kompaktowe paski wyswietlacza",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Przelacz Przenies paski wyswietlania razem",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Przelacz ikony paska wyswietlacza",
+    
+    -- Display Bar Options
+    ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Zresetuj pasek wyswietlacza",
+    ContextMenu_MinimalDisplayBars_Set_Vertical = "Ustaw w pionie",
+    ContextMenu_MinimalDisplayBars_Set_Horizontal = "Ustaw poziomo",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Ustaw wysokosc / szerokosc",
+    ContextMenu_MinimalDisplayBars_Set_Color = "Ustaw kolor",
+    ContextMenu_MinimalDisplayBars_Hide = "Ukryc",
+    
+    -- Display Names
+    ContextMenu_MinimalDisplayBars_menu = "Karta",
+    ContextMenu_MinimalDisplayBars_hp = "Zdrowie",
+    ContextMenu_MinimalDisplayBars_hunger = "Laknienie",
+    ContextMenu_MinimalDisplayBars_thirst = "Pragnienie",
+    ContextMenu_MinimalDisplayBars_endurance = "Wytrzymalosc",
+    ContextMenu_MinimalDisplayBars_fatigue = "Zmeczenie",
+    ContextMenu_MinimalDisplayBars_boredomlevel = "Poziom Nudy",
+    ContextMenu_MinimalDisplayBars_unhappynesslevel = "Poziom Nieszczescia",
+    ContextMenu_MinimalDisplayBars_temperature = "Temperatura",
+    ContextMenu_MinimalDisplayBars_calorie = "Kalorie",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Kliknij lewym przyciskiem przytrzymaj + przeciagnij, aby przeniesc.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Kliknij prawym przyciskiem myszy, aby uzyskac wiecej opcji.",
+    
+    -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Wszystko",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "PRZYWRÓC SWOJE USTAWIENIA",
+    ContextMenu_MinimalDisplayBars_ON = "WLACZ",
+    ContextMenu_MinimalDisplayBars_OFF = "WYLACZ",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Rozmiar Ikony",
+    ContextMenu_MinimalDisplayBars_Width = "Szerokosc",
+    ContextMenu_MinimalDisplayBars_Height = "Wysokosc",
+    
+    
+}

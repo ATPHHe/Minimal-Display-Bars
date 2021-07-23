@@ -1,0 +1,58 @@
+ContextMenu_NL = {
+    
+    
+    ----- ContextMenu (Dutch) -----
+    
+    ----- Title for Display Bars when Right-Clicked -----
+    ContextMenu_MinimalDisplayBars_Title = "Minimale Weergavebalken",
+    
+    -- Menu Options
+    ContextMenu_MinimalDisplayBars_Reset = "Reset naar standaardinstellingen",
+    ContextMenu_MinimalDisplayBars_Show_Bar = "Toon balk",
+    ContextMenu_MinimalDisplayBars_Show_All_Display_Bars = "Alle weergavebalken weergeven",
+    ContextMenu_MinimalDisplayBars_Hide_Bar = "Verberg balk",
+    ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars= "Alle weergavebalken verbergen",
+    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "Schakel AAN / UIT Beweegbaar voor alle weergavebalken",
+    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "Schakel AAN / UIT Formaat wijzigen voor alle weergavebalken",
+    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Schakel AAN / UIT Breng altijd weergavebalken naar boven",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Schakel AAN / UIT de Moodlet-drempellijnen op de weergavebalken",
+    ContextMenu_MinimalDisplayBars_Toggle_Compact = "Schakel AAN / UIT Compact",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Schakel AAN / UIT Weergavebalken samen verplaatsen",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Schakel AAN / UIT Pictogrammen op de balk weergevens",
+    
+    -- Display Bar Options
+    ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Reset weergavebalk",
+    ContextMenu_MinimalDisplayBars_Set_Vertical = "Verticaal instellen",
+    ContextMenu_MinimalDisplayBars_Set_Horizontal = "Horizontaal instellen",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Hoogte / breedte instellen",
+    ContextMenu_MinimalDisplayBars_Set_Color = "Kleur instellen",
+    ContextMenu_MinimalDisplayBars_Hide = "Verbergen",
+    
+    -- Display Names
+    ContextMenu_MinimalDisplayBars_menu = "Menu",
+    ContextMenu_MinimalDisplayBars_hp = "Gezondheid",
+    ContextMenu_MinimalDisplayBars_hunger = "Honger",
+    ContextMenu_MinimalDisplayBars_thirst = "Dorst",
+    ContextMenu_MinimalDisplayBars_endurance = "Uithoudingsvermogen",
+    ContextMenu_MinimalDisplayBars_fatigue = "Vermoeidheid",
+    ContextMenu_MinimalDisplayBars_boredomlevel = "Verveling Niveau",
+    ContextMenu_MinimalDisplayBars_unhappynesslevel = "Verdriet Niveau",
+    ContextMenu_MinimalDisplayBars_temperature = "Temperatuur",
+    ContextMenu_MinimalDisplayBars_calorie = "Calorieën",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Klik met de linkermuisknop, houd vast en sleep om te verplaatsen.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Klik met de rechtermuisknop voor meer opties.",
+    
+    -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Allemaal",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "HERSTEL UW INSTELLINGEN",
+    ContextMenu_MinimalDisplayBars_ON = "AAN",
+    ContextMenu_MinimalDisplayBars_OFF = "UIT",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Icoon Grootte",
+    ContextMenu_MinimalDisplayBars_Width = "Breedte",
+    ContextMenu_MinimalDisplayBars_Height = "Hoogte",
+    
+    
+}

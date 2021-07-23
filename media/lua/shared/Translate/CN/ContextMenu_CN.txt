@@ -1,0 +1,58 @@
+ContextMenu_CN = {
+    
+    
+    ----- ContextMenu (Chinese/Mandarin - Simplified) -----
+    
+    ----- Title for Display Bars when Right-Clicked -----
+    ContextMenu_MinimalDisplayBars_Title = "最小显示栏",
+    
+    -- Menu Options
+    ContextMenu_MinimalDisplayBars_Reset = "重置所有显示",
+    ContextMenu_MinimalDisplayBars_Show_Bar = "显示栏",
+    ContextMenu_MinimalDisplayBars_Show_All_Display_Bars = "显示所有显示栏",
+    ContextMenu_MinimalDisplayBars_Hide_Bar = "隐藏栏",
+    ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars= "隐藏所有显示栏",
+    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "所有人都可移动",
+    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "切换全部大小",
+    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "切换始终将显示栏置于顶部",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "在显示栏上切换Moodlet阈值线",
+    ContextMenu_MinimalDisplayBars_Toggle_Compact = "开启/关闭紧凑型",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "切换在一起移动显示栏",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "切换显示栏图标",
+    
+    -- Display Bar Options
+    ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "重置显示栏",
+    ContextMenu_MinimalDisplayBars_Set_Vertical = "设置垂直",
+    ContextMenu_MinimalDisplayBars_Set_Horizontal = "设置水平",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "设置高度/宽度",
+    ContextMenu_MinimalDisplayBars_Set_Color = "设置颜色",
+    ContextMenu_MinimalDisplayBars_Hide = "隐藏",
+    
+    -- Display Names
+    ContextMenu_MinimalDisplayBars_menu = "菜单",
+    ContextMenu_MinimalDisplayBars_hp = "身体",
+    ContextMenu_MinimalDisplayBars_hunger = "饥饿",
+    ContextMenu_MinimalDisplayBars_thirst = "口渴",
+    ContextMenu_MinimalDisplayBars_endurance = "耐力",
+    ContextMenu_MinimalDisplayBars_fatigue = "疲劳",
+    ContextMenu_MinimalDisplayBars_boredomlevel = "无聊的水平",
+    ContextMenu_MinimalDisplayBars_unhappynesslevel = "不快乐程度",
+    ContextMenu_MinimalDisplayBars_temperature = "温度",
+    ContextMenu_MinimalDisplayBars_calorie = "卡路里",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "左键按住，拖动移动。",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "右键单击以获取更多选项。",
+    
+    -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "所有",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "恢复您的设置",
+    ContextMenu_MinimalDisplayBars_ON = "上",
+    ContextMenu_MinimalDisplayBars_OFF = "关",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "图标大小",
+    ContextMenu_MinimalDisplayBars_Width = "宽度",
+    ContextMenu_MinimalDisplayBars_Height = "高度",
+    
+    
+}

@@ -1,0 +1,63 @@
+ContextMenu_DE = {
+    
+    
+    ----- ContextMenu (German) -----
+    
+    /* Translation Improved by Amalek */
+    
+    
+    ----- Title for Display Bars when Right-Clicked -----
+    ContextMenu_MinimalDisplayBars_Title = "Minimale Anzeigeleisten",
+
+    -- Menu Options
+    ContextMenu_MinimalDisplayBars_Reset = "Zurücksetzen",
+    ContextMenu_MinimalDisplayBars_Make_All_Bars_Visible = "Mache alle Anzeigeleisten sichtbar",
+    ContextMenu_MinimalDisplayBars_Make_Visible = "Sichtbar machen",
+    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "Einzelne Anzeigeleiste verschieben",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Alle Anzeigeleisten zusammen verschieben",
+    ContextMenu_MinimalDisplayBars_Toggle_Compact = "Kompakt",
+    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "Groeßenaenderung für alle Anzeigeleisten",
+    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Bring die Anzeigeleisten immer nach oben",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Schwellenwertlinien einblenden in den Anzeigeleisten",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Zeige die Symbole der Anzeigeleiste an",
+    ContextMenu_MinimalDisplayBars_Show_All_Display_Bars = "Alle Anzeigeleisten einblenden",
+    ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars = "Alle Anzeigeleisten ausblenden",
+
+
+    -- Display Bar Options
+    ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Anzeigeleiste zurücksetzen",
+    ContextMenu_MinimalDisplayBars_Set_Vertical = "Vertikal einstellen",
+    ContextMenu_MinimalDisplayBars_Set_Horizontal = "Horizontal einstellen",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Höhe / Breite einstellen",
+    ContextMenu_MinimalDisplayBars_Set_Color = "Farbe einstellen",
+    ContextMenu_MinimalDisplayBars_Hide_Bar = "Anzeigeleiste ausblenden",
+    ContextMenu_MinimalDisplayBars_Show_Bar = "Anzeigeleiste einbelenden",
+    ContextMenu_MinimalDisplayBars_Hide = "Verstecken",
+
+    -- Display Names
+    ContextMenu_MinimalDisplayBars_menu = "Menü"
+    ContextMenu_MinimalDisplayBars_hp = "Gesundheit",
+    ContextMenu_MinimalDisplayBars_hunger = "Hunger",
+    ContextMenu_MinimalDisplayBars_thirst = "Durst",
+    ContextMenu_MinimalDisplayBars_endurance = "Ausdauer",
+    ContextMenu_MinimalDisplayBars_fatigue = "Ermüdung",
+    ContextMenu_MinimalDisplayBars_boredomlevel = "Langeweile",
+    ContextMenu_MinimalDisplayBars_unhappynesslevel = "Unglücklich",
+    ContextMenu_MinimalDisplayBars_temperature = "Temperatur",
+    ContextMenu_MinimalDisplayBars_calorie = "Kalorien",
+
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Klicken, halten und ziehen Sie mit der linken Maustaste, um es zu verschieben.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Klicken Sie mit der rechten Maustaste, um weitere Optionen anzuzeigen.",
+    
+    -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Alle",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "WIEDERHERSTELLEN EINSTELLUNGEN",
+    ContextMenu_MinimalDisplayBars_ON = "EIN",
+    ContextMenu_MinimalDisplayBars_OFF = "AUS",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Symbolgröße",
+    ContextMenu_MinimalDisplayBars_Width = "Breite",
+    ContextMenu_MinimalDisplayBars_Height = "Höhe",
+    
+}

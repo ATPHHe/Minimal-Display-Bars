@@ -1,0 +1,58 @@
+ContextMenu_EE = {
+    
+    
+    ----- ContextMenu (English - EE) -----
+    
+    ----- Title for Display Bars when Right-Clicked -----
+    ContextMenu_MinimalDisplayBars_Title = "Minimal Display Bars",
+    
+    -- Menu Options
+    ContextMenu_MinimalDisplayBars_Reset = "Reset All",
+    ContextMenu_MinimalDisplayBars_Show_Bar = "Show Bar",
+    ContextMenu_MinimalDisplayBars_Show_All_Display_Bars = "Show All Display Bars",
+    ContextMenu_MinimalDisplayBars_Hide_Bar = "Hide Bar",
+    ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars= "Hide All Display Bars",
+    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "Toggle Movable For All",
+    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "Toggle Resizable For All",
+    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Toggle Always Bring Display Bars To Top",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Toggle Moodlet Threshold Lines on Display Bars",
+    ContextMenu_MinimalDisplayBars_Toggle_Compact = "Toggle Compact",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Toggle Move Display Bars Together",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Toggle Display Bar Icons",
+    
+    -- Display Bar Options
+    ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Reset Display Bar",
+    ContextMenu_MinimalDisplayBars_Set_Vertical = "Set Vertical",
+    ContextMenu_MinimalDisplayBars_Set_Horizontal = "Set Horizontal",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Set Height/Width",
+    ContextMenu_MinimalDisplayBars_Set_Color = "Set Color",
+    ContextMenu_MinimalDisplayBars_Hide = "Hide",
+    
+    -- Display Names
+    ContextMenu_MinimalDisplayBars_menu = "Menu",
+    ContextMenu_MinimalDisplayBars_hp = "Health",
+    ContextMenu_MinimalDisplayBars_hunger = "Hunger",
+    ContextMenu_MinimalDisplayBars_thirst = "Thirst",
+    ContextMenu_MinimalDisplayBars_endurance = "Endurance",
+    ContextMenu_MinimalDisplayBars_fatigue = "Fatigue",
+    ContextMenu_MinimalDisplayBars_boredomlevel = "Boredom Level",
+    ContextMenu_MinimalDisplayBars_unhappynesslevel = "Unhappiness Level",
+    ContextMenu_MinimalDisplayBars_temperature = "Temperature",
+    ContextMenu_MinimalDisplayBars_calorie = "Calories",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Left Click Hold + Drag to move.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Right Click for more options.",
+    
+    -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "All",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "RESTORE YOUR SETTINGS",
+    ContextMenu_MinimalDisplayBars_ON = "ON",
+    ContextMenu_MinimalDisplayBars_OFF = "OFF",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Icon Size",
+    ContextMenu_MinimalDisplayBars_Width = "Width",
+    ContextMenu_MinimalDisplayBars_Height = "Height",
+    
+    
+}

@@ -1,0 +1,59 @@
+ContextMenu_TR = {
+    
+    
+    ----- ContextMenu (Turkish) -----
+    /* Translation Improved by SariserpitoTR */
+    
+    ----- Title for Display Bars when Right-Clicked -----
+    ContextMenu_MinimalDisplayBars_Title = "Küçültülmüþ Durum Göstergeleri",
+    
+    -- Menu Options
+    ContextMenu_MinimalDisplayBars_Reset = "Varsayýlan Ayarlara Sýfýrla",
+    ContextMenu_MinimalDisplayBars_Show_Bar = "Göstergeyi Göster",
+    ContextMenu_MinimalDisplayBars_Show_All_Display_Bars = "Tüm Göstergeleri Göster",
+    ContextMenu_MinimalDisplayBars_Hide_Bar = "Göstergeyi Gizle",
+    ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars= "Tüm Göstergeleri Gizle",
+    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "Göstergeler Ýçin Hareketi Aç / Kapat",
+    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "Göstergeleri Yeniden Boyutlandirilabilir Aç / Kapat",
+    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "Göstergeleri Daima En Üste Getir Aç / Kapat",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "Göstergelerde Sýnýr Çizgileri Aç / Kapat",
+    ContextMenu_MinimalDisplayBars_Toggle_Compact = "Göstergeleri Daha Küçük Yap Aç / Kapat",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "Ekran Çubuklarini Birlikte Tasi Aç / Kapat",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "Ekran Çubugu Simgelerini Aç / Kapat",
+    
+    -- Display Bar Options
+    ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "Ekran Çubugunu Sifirla",
+    ContextMenu_MinimalDisplayBars_Set_Vertical = "Göstergeyi Dikey Durumuna Getir",
+    ContextMenu_MinimalDisplayBars_Set_Horizontal = "Göstergeyi Yatay Durumuna Getir",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "Gösterge Yüksekligini ve Genisligini Ayarla",
+    ContextMenu_MinimalDisplayBars_Set_Color = "Rengini Deðiþtir",
+    ContextMenu_MinimalDisplayBars_Hide = "Göstergeyi Gizle",
+    
+    -- Display Names
+    ContextMenu_MinimalDisplayBars_menu = "Menü",
+    ContextMenu_MinimalDisplayBars_hp = "Saðlýk",
+    ContextMenu_MinimalDisplayBars_hunger = "Açlýk",
+    ContextMenu_MinimalDisplayBars_thirst = "Susuzluk",
+    ContextMenu_MinimalDisplayBars_endurance = "Dayanýklýlýk",
+    ContextMenu_MinimalDisplayBars_fatigue = "Yorgunluk",
+    ContextMenu_MinimalDisplayBars_boredomlevel = "Sýkkýnlýk Seviyesi",
+    ContextMenu_MinimalDisplayBars_unhappynesslevel = "Mutsuzluk Seviyesi",
+    ContextMenu_MinimalDisplayBars_temperature = "Sýcaklýk",
+    ContextMenu_MinimalDisplayBars_calorie = "Kalori",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Tasimak için Sol tiklayin Tut ve Sürükle.",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "Daha fazla seçenek için Sag Tiklayin.",
+    
+    -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "Tüm",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "AYARLARI GERI YÜKLE",
+    ContextMenu_MinimalDisplayBars_ON = "AÇIK",
+    ContextMenu_MinimalDisplayBars_OFF = "KAPALI",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "Ikon Boyutu",
+    ContextMenu_MinimalDisplayBars_Width = "Genislik",
+    ContextMenu_MinimalDisplayBars_Height = "Yükseklik",
+    
+    
+}

@@ -1,0 +1,58 @@
+ContextMenu_TH = {
+    
+    
+    ----- ContextMenu (Thai) -----
+    
+    ----- Title for Display Bars when Right-Clicked -----
+    ContextMenu_MinimalDisplayBars_Title = "แถบแสดงผลน้อยที่สุด",
+    
+    -- Menu Options
+    ContextMenu_MinimalDisplayBars_Reset = "รีเซ็ตเป็นค่าเริ่มต้น",
+    ContextMenu_MinimalDisplayBars_Show_Bar = "แสดงแถบแสดงผล",
+    ContextMenu_MinimalDisplayBars_Show_All_Display_Bars = "แสดงแถบแสดงผลทั้งหมด",
+    ContextMenu_MinimalDisplayBars_Hide_Bar = "ซ่อนแถบแสดงผล",
+    ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars= "ซ่อนแถบแสดงผลทั้งหมด",
+    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "สลับเปิดหรือปิดเคลื่อนย้ายได้สำหรับแถบการแสดงผลทั้งหมด",
+    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "สลับเปิดหรือปิดปรับขนาดได้สำหรับแถบการแสดงผลทั้งหมด",
+    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "สลับเปิดหรือปิดนำแถบแสดงผลขึ้นด้านบนเสมอ",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "สลับเปิดหรือปิดบรรทัดเกณฑ์ Moodlet บนแถบแสดงผล",
+    ContextMenu_MinimalDisplayBars_Toggle_Compact = "สลับเปิดหรือปิดกะทัดรัด",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "สลับเลื่อนแผงจอแสดงผลทั้งหมดพร้อมกัน",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "สลับแสดงไอคอนแต่ละแถบแสดงผล",
+    
+    -- Display Bar Options
+    ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "รีเซ็ตแถบแสดงผล",
+    ContextMenu_MinimalDisplayBars_Set_Vertical = "ตั้งค่าแนวตั้ง",
+    ContextMenu_MinimalDisplayBars_Set_Horizontal = "ตั้งแนวนอน",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "ตั้งค่าความสูง / ตั้งค่าความกว้าง",
+    ContextMenu_MinimalDisplayBars_Set_Color = "ตั้งค่าสี",
+    ContextMenu_MinimalDisplayBars_Hide = "ซ่อนแถบแสดงผล",
+    
+    -- Display Names
+    ContextMenu_MinimalDisplayBars_menu = "รายการอาหาร",
+    ContextMenu_MinimalDisplayBars_hp = "ร่างกาย",
+    ContextMenu_MinimalDisplayBars_hunger = "ความหิว",
+    ContextMenu_MinimalDisplayBars_thirst = "ความกระหายน้ำ",
+    ContextMenu_MinimalDisplayBars_endurance = "ความทนทาน",
+    ContextMenu_MinimalDisplayBars_fatigue = "ความเมื่อยล้า",
+    ContextMenu_MinimalDisplayBars_boredomlevel = "ระดับความเบื่อ",
+    ContextMenu_MinimalDisplayBars_unhappynesslevel = "ระดับความโศกเศร้า",
+    ContextMenu_MinimalDisplayBars_temperature = "อุณหภูมิ",
+    ContextMenu_MinimalDisplayBars_calorie = "แคลอรี่",
+    
+    -- UI
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "คลิกซ้ายค้างไว้แล้วลากเพื่อย้าย",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "คลิกขวาเพื่อดูตัวเลือกเพิ่มเติม",
+    
+    -- OTHER
+    ContextMenu_MinimalDisplayBars_All = "ทั้งหมด",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "คืนค่าการตั้งค่าของคุณ",
+    ContextMenu_MinimalDisplayBars_ON = "สลับกับ",
+    ContextMenu_MinimalDisplayBars_OFF = "ปิดการใช้งาน",
+    
+    ContextMenu_MinimalDisplayBars_IconSize = "ขนาดไอคอน",
+    ContextMenu_MinimalDisplayBars_Width = "ความกว้าง",
+    ContextMenu_MinimalDisplayBars_Height = "ความสูง",
+    
+    
+}

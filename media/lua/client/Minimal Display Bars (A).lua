@@ -842,7 +842,7 @@ local function calcHunger(value)
 end
 local function getHunger(isoPlayer, useRealValue) 
     if useRealValue then
-        return isoPlayer:getStats():getThirst()
+        return isoPlayer:getStats():getHunger()
     else
         if isoPlayer:isDead() then
             return -1

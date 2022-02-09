@@ -39,6 +39,7 @@ ContextMenu_EN = {
     ContextMenu_MinimalDisplayBars_unhappynesslevel = "Unhappiness Level",
     ContextMenu_MinimalDisplayBars_temperature = "Temperature",
     ContextMenu_MinimalDisplayBars_calorie = "Calories",
+    ContextMenu_MinimalDisplayBars_stress = "Stress",
     
     -- UI
     ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "Left Click Hold + Drag to move.",

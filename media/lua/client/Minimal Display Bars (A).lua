@@ -681,8 +681,31 @@ local DEFAULT_SETTINGS = {
         ["imageSize"] = 22,
         ["showImage"] = false,
     },
-        
-    
+    ["stress"] = {
+        ["x"] = 85 + (8 * 8),
+        ["y"] = 30,
+        ["width"] = 8,
+        ["height"] = 150,
+        ["l"] = 2,
+        ["t"] = 3,
+        ["r"] = 2,
+        ["b"] = 3,
+        ["color"] = {red = (200 / 255), 
+                    green = (0 / 255), 
+                    blue = (100 / 255), 
+                    alpha = 0.75},
+        ["isMovable"] = true,
+        ["isResizable"] = false,
+        ["isVisible"] = true,
+        ["isVertical"] = true,
+        ["alwaysBringToTop"] = true,
+        ["showMoodletThresholdLines"] = true,
+        ["isCompact"] = false,
+        ["imageShowBack"] = true,
+        ["imageName"] = "media/ui/Moodle_stressed.png",
+        ["imageSize"] = 22,
+        ["showImage"] = false,
+    }
 }
 
 
@@ -842,7 +865,7 @@ local function calcHunger(value)
 end
 local function getHunger(isoPlayer, useRealValue) 
     if useRealValue then
-        return isoPlayer:getStats():getThirst()
+        return isoPlayer:getStats():getHunger()
     else
         if isoPlayer:isDead() then
             return -1
@@ -921,6 +944,28 @@ end
 local function getColorFatigue(isoPlayer) 
     local color
     color = MinimalDisplayBars.configTables[isoPlayer:getPlayerNum() + 1]["fatigue"]["color"]
+    return color
+end
+
+-- Stress Functions
+local function calcStress(value)
+    return value
+end
+local function getStress(isoPlayer, useRealValue) 
+    if useRealValue then
+        return isoPlayer:getStats():getStress()
+    else
+        if isoPlayer:isDead() then
+            return -1
+        else
+            return calcStress( isoPlayer:getStats():getStress() )
+        end
+    end
+end
+
+local function getColorStress(isoPlayer) 
+    local color
+    color = MinimalDisplayBars.configTables[isoPlayer:getPlayerNum() + 1]["stress"]["color"]
     return color
 end
 
@@ -1082,6 +1127,12 @@ local function getMoodletThresholdTables()
             [3] = calcFatigue(0.80),
             [4] = calcFatigue(0.90),
         },
+        ["stress"] = {
+            [1] = calcStress(0.25),
+            [2] = calcStress(0.50), 
+            [3] = calcStress(0.75),
+            [4] = calcStress(0.90),
+        },        
         ["boredomlevel"] = {
             [1] = calcBoredomLevel(25), -- 25/100
             [2] = calcBoredomLevel(50),
@@ -2546,6 +2597,19 @@ local function createUiFor(playerIndex, isoPlayer)
     bar10:initialise()
     bar10:addToUIManager()
     
+    local idName11 = "stress"
+    local bar11 = ISGenericMiniDisplayBar:new(
+        idName11, 
+        MinimalDisplayBars.configFileLocations[coopNum], 
+        playerIndex, isoPlayer, coopNum, 
+        MinimalDisplayBars.configTables[coopNum], 
+        xOffset, yOffset, 
+        nil, 
+        getStress,
+        getColorStress, true,
+        moodletThresholdTables[idName11])
+    bar11:initialise()
+    bar11:addToUIManager() 
     
     -- Add all valid display bars to a Global varible to be shared.
     MinimalDisplayBars.displayBars[playerIndex] = 
@@ -2559,6 +2623,7 @@ local function createUiFor(playerIndex, isoPlayer)
         [idName8] = bar8,
         [idName9] = bar9,
         [idName10] = bar10,
+        [idName11] = bar11,
     }
     
     ------------------------------------------------------------------------------

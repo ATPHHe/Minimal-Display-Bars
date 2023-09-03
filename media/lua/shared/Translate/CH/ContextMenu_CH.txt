@@ -4,55 +4,55 @@ ContextMenu_CH = {
     ----- ContextMenu (Chinese/Mandarin - Traditional) -----
     
     ----- Title for Display Bars when Right-Clicked -----
-    ContextMenu_MinimalDisplayBars_Title = "³Ì¤pÅã¥ÜÄæ",
+    ContextMenu_MinimalDisplayBars_Title = "æœ€å°é¡¯ç¤ºæ¬„",
     
     -- Menu Options
-    ContextMenu_MinimalDisplayBars_Reset = "­«¸m©Ò¦³",
-    ContextMenu_MinimalDisplayBars_Show_Bar = "Åã¥ÜÄæ",
-    ContextMenu_MinimalDisplayBars_Show_All_Display_Bars = "Åã¥Ü©Ò¦³Åã¥ÜÄæ",
-    ContextMenu_MinimalDisplayBars_Hide_Bar = "ÁôÂÃÄæ",
-    ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars= "ÁôÂÃ©Ò¦³Åã¥ÜÄæ",
-    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "©Ò¦³¤H³£¥i²¾°Ê",
-    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "¤Á´«©l²×±NÅã¥ÜÄæ¸m©ó³»³¡",
-    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "¤Á´«©l²×±NÅã¥ÜÄæ¸m©ó³»³¡",
-    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "¦bÅã¥ÜÄæ¤W¤Á´«MoodletìH­È½u",
-    ContextMenu_MinimalDisplayBars_Toggle_Compact = "¶}±Ò/Ãö³¬ºò´ê«¬",
-    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "¤Á´«¦b¤@°_²¾°ÊÅã¥ÜÄæ",
-    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "¤Á´«Åã¥ÜÄæ¹Ï¼Ğ",
+    ContextMenu_MinimalDisplayBars_Reset = "é‡ç½®æ‰€æœ‰",
+    ContextMenu_MinimalDisplayBars_Show_Bar = "é¡¯ç¤ºæ¬„",
+    ContextMenu_MinimalDisplayBars_Show_All_Display_Bars = "é¡¯ç¤ºæ‰€æœ‰é¡¯ç¤ºæ¬„",
+    ContextMenu_MinimalDisplayBars_Hide_Bar = "éš±è—æ¬„",
+    ContextMenu_MinimalDisplayBars_Hide_All_Display_Bars= "éš±è—æ‰€æœ‰é¡¯ç¤ºæ¬„",
+    ContextMenu_MinimalDisplayBars_Toggle_Movable_All = "æ‰€æœ‰äººéƒ½å¯ç§»å‹•",
+    ContextMenu_MinimalDisplayBars_Toggle_Resizable_All = "åˆ‡æ›å§‹çµ‚å°‡é¡¯ç¤ºæ¬„ç½®æ–¼é ‚éƒ¨",
+    ContextMenu_MinimalDisplayBars_Toggle_Always_Bring_Display_Bars_To_Top = "åˆ‡æ›å§‹çµ‚å°‡é¡¯ç¤ºæ¬„ç½®æ–¼é ‚éƒ¨",
+    ContextMenu_MinimalDisplayBars_Toggle_Moodlet_Threshold_Lines = "åœ¨é¡¯ç¤ºæ¬„ä¸Šåˆ‡æ›Moodleté–¾å€¼ç·š",
+    ContextMenu_MinimalDisplayBars_Toggle_Compact = "é–‹å•Ÿ/é—œé–‰ç·Šæ¹Šå‹",
+    ContextMenu_MinimalDisplayBars_Toggle_Move_Bars_Together = "åˆ‡æ›åœ¨ä¸€èµ·ç§»å‹•é¡¯ç¤ºæ¬„",
+    ContextMenu_MinimalDisplayBars_Toggle_Show_Icon = "åˆ‡æ›é¡¯ç¤ºæ¬„åœ–æ¨™",
     
     -- Display Bar Options
-    ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "­«¸mÅã¥ÜÄæ",
-    ContextMenu_MinimalDisplayBars_Set_Vertical = "³]¸m««ª½",
-    ContextMenu_MinimalDisplayBars_Set_Horizontal = "³]¸m¤ô¥­",
-    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "³]©w°ª«×/¼e«×",
-    ContextMenu_MinimalDisplayBars_Set_Color = "³]¸mÃC¦â",
-    ContextMenu_MinimalDisplayBars_Hide = "ÁôÂÃ",
+    ContextMenu_MinimalDisplayBars_Reset_Display_Bar = "é‡ç½®é¡¯ç¤ºæ¬„",
+    ContextMenu_MinimalDisplayBars_Set_Vertical = "è¨­ç½®å‚ç›´",
+    ContextMenu_MinimalDisplayBars_Set_Horizontal = "è¨­ç½®æ°´å¹³",
+    ContextMenu_MinimalDisplayBars_Set_HeightWidth = "è¨­å®šé«˜åº¦/å¯¬åº¦",
+    ContextMenu_MinimalDisplayBars_Set_Color = "è¨­ç½®é¡è‰²",
+    ContextMenu_MinimalDisplayBars_Hide = "éš±è—",
     
     -- Display Names
-    ContextMenu_MinimalDisplayBars_menu = "µæ³æ",
-    ContextMenu_MinimalDisplayBars_hp = "¨­Åé",
-    ContextMenu_MinimalDisplayBars_hunger = "°§¾j",
-    ContextMenu_MinimalDisplayBars_thirst = "¤f´÷",
-    ContextMenu_MinimalDisplayBars_endurance = "­@¤O",
-    ContextMenu_MinimalDisplayBars_fatigue = "¯h³Ò",
-    ContextMenu_MinimalDisplayBars_boredomlevel = "µL²áªº¤ô¥­",
-    ContextMenu_MinimalDisplayBars_unhappynesslevel = "¤£§Ö¼Öµ{«×",
-    ContextMenu_MinimalDisplayBars_temperature = "·Å«×",
-    ContextMenu_MinimalDisplayBars_calorie = "¥d¸ô¨½",
+    ContextMenu_MinimalDisplayBars_menu = "èœå–®",
+    ContextMenu_MinimalDisplayBars_hp = "èº«é«”",
+    ContextMenu_MinimalDisplayBars_hunger = "é£¢é¤“",
+    ContextMenu_MinimalDisplayBars_thirst = "å£æ¸´",
+    ContextMenu_MinimalDisplayBars_endurance = "è€åŠ›",
+    ContextMenu_MinimalDisplayBars_fatigue = "ç–²å‹",
+    ContextMenu_MinimalDisplayBars_boredomlevel = "ç„¡èŠçš„æ°´å¹³",
+    ContextMenu_MinimalDisplayBars_unhappynesslevel = "ä¸å¿«æ¨‚ç¨‹åº¦",
+    ContextMenu_MinimalDisplayBars_temperature = "æº«åº¦",
+    ContextMenu_MinimalDisplayBars_calorie = "å¡è·¯é‡Œ",
     
     -- UI
-    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "¥ªÁä³æÀ»¨Ã«ö¦í¡A©ì°Ê¥H²¾°Ê¡C",
-    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "¥kÁä³æÀ»¥HÀò¨ú§ó¦h¿ï¶µ¡C",
+    ContextMenu_MinimalDisplayBars_Tutorial_LeftClick = "å·¦éµå–®æ“Šä¸¦æŒ‰ä½ï¼Œæ‹–å‹•ä»¥ç§»å‹•ã€‚",
+    ContextMenu_MinimalDisplayBars_Tutorial_RightClick = "å³éµå–®æ“Šä»¥ç²å–æ›´å¤šé¸é …ã€‚",
     
     -- OTHER
-    ContextMenu_MinimalDisplayBars_All = "©Ò¦³",
-    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "«ì´_±zªº³]¸m",
-    ContextMenu_MinimalDisplayBars_ON = "¤W",
-    ContextMenu_MinimalDisplayBars_OFF = "Ãö",
+    ContextMenu_MinimalDisplayBars_All = "æ‰€æœ‰",
+    ContextMenu_MinimalDisplayBars_RestoreYourSettings = "æ¢å¾©æ‚¨çš„è¨­ç½®",
+    ContextMenu_MinimalDisplayBars_ON = "ä¸Š",
+    ContextMenu_MinimalDisplayBars_OFF = "é—œ",
     
-    ContextMenu_MinimalDisplayBars_IconSize = "¹Ï¼Ğ¤j¤p",
-    ContextMenu_MinimalDisplayBars_Width = "¼e«×",
-    ContextMenu_MinimalDisplayBars_Height = "°ª«×",
+    ContextMenu_MinimalDisplayBars_IconSize = "åœ–æ¨™å¤§å°",
+    ContextMenu_MinimalDisplayBars_Width = "å¯¬åº¦",
+    ContextMenu_MinimalDisplayBars_Height = "é«˜åº¦",
     
     
 }

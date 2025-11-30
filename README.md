@@ -1,16 +1,16 @@
-# Minimal-Display-Bars
+# Minimal-Display-Bars  
+  
+Minimal Display Bars 4.3.5  
+**(Updates __(Discontinued)__)**  
 
-Minimal Display Bars 4.3.5
-**(Updates __(Discontinued)__)**
 
+I apologize as I am not currently maintaining this project.  
+Here's a port of this mod with Vorshim's B42 port: [Minimal Display Bars + Nutritions + Discomfort \[B41\/B42\]](https://steamcommunity.com/sharedfiles/filedetails/?id=3388844542)  
 
-I apologize as I am not currently maintaining this project.
-Here's a port of this mod with Vorshim's B42 port: [Minimal Display Bars + Nutritions + Discomfort \[B41\/B42\]](https://steamcommunity.com/sharedfiles/filedetails/?id=3388844542) 
-
-Everyone has permission to fork, rework, or reuse code under the Github MIT license.
-__GitHub:__
-- Repo: https://github.com/ATPHHe/Minimal-Display-Bars
-- Releases: https://github.com/ATPHHe/Minimal-Display-Bars/releases
+Everyone has permission to fork, rework, or reuse code under the Github MIT license.  
+__GitHub:__  
+- Repo: https://github.com/ATPHHe/Minimal-Display-Bars  
+- Releases: https://github.com/ATPHHe/Minimal-Display-Bars/releases  
 
 
 
@@ -19,9 +19,9 @@ __Quick Info:__
 - Current Display Bars: Health, Hunger, Thirst, Endurance, Fatigue, Boredom, Unhappiness, Temperature, Calories.
 - Everyone with credit given may add this to their modpacks and servers.
 
-[07/23/2021] - Tested on Build 40.43 and Build 40.43 Multiplayer.
-[07/31/2021] - Tested on IWBUMS Build 41.53.
-[12/20/2021] - Tested on Build 41.65 MP.
+[07/23/2021] - Tested on Build 40.43 and Build 40.43 Multiplayer.  
+[07/31/2021] - Tested on IWBUMS Build 41.53.  
+[12/20/2021] - Tested on Build 41.65 MP.  
 
 **__Mod Info:__**
 - Displays some of your stats. (Right-click a bar and click "Hide" if you don't want some stats to show)
